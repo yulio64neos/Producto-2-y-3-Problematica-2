@@ -45,3 +45,69 @@ select * from CPU_Generico
 
 sp_help ModeloCPU
 sp_help mouse
+
+sp_help Marca
+select * from Marca
+select * from DiscoDuro
+
+create table Componentes(
+id_Componente int primary key identity(1,1),
+nom_Componente varchar(15)
+)
+
+--alter table Componentes drop constraint fk_marca_componente
+--alter table Componentes drop column id_Marca
+--drop table Componentes
+
+insert into Componentes (nom_Componente)
+values
+('Disco Duro'),
+('SSD'),
+('Monitor'),
+('Teclado'),
+('Mouse'),
+('Gabinete'),
+('ModeloCPU')
+
+update Marca set Marca.Marca = 'Adata' where Id_Marca = 29
+
+select * from Componentes
+
+select * from Marca
+
+delete  from Componentes
+--Comando para resetear el ID auto incrementable
+DBCC CHECKIDENT (Componentes, RESEED, 0)
+
+alter table Marca drop column Extra
+delete from Marca where Id_Componente = 4
+
+alter table Marca add constraint fk_marca_componente foreign key (Id_Componente) references Componentes(id_Componente)
+
+alter table Marca alter column Id_Componente int
+
+sp_help Marca
+
+select * from Componentes
+
+insert into Marca (Marca, Id_Componente) values
+('Intel', 7),
+('AMD', 7),
+('HP', 1),
+('ADATA', 1),
+('WD', 2),
+('SAMSUNG', 2),
+('ASUS', 3),
+('MSI', 3),
+('VORAGO', 4),
+('LOGITECH', 4),
+('MICROSOFT', 5),
+('COOLER MASTER', 5),
+('XPG', 6),
+('CORSAIR', 6)
+
+select Componentes.nom_Componente as 'Componente', Marca.Marca from Componentes inner join Marca on (Componentes.id_Componente = Marca.Id_Componente)
+where nom_Componente = 'ModeloCPU'
+
+
+
