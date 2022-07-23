@@ -11,6 +11,7 @@ select Marca, f_marcam from Marca inner join monitor on (Marca.Id_Marca = monito
 select Marca, f_marcat from Marca inner join teclado on (Marca.Id_Marca = teclado.f_marcat);
 select Marca, f_marcamouse from Marca inner join mouse on (Marca.Id_Marca = mouse.f_marcamouse);
 select Marca, f_Marca from Marca inner join ModeloCPU on (Marca.Id_Marca = ModeloCPU.f_marca);
+select Marca, f_MarcaCpu from Marca inner join CPU_Generico on (Marca.Id_Marca = CPU_Generico.f_MarcaCpu)
 
 sp_help DiscoDuro
 alter table DiscoDuro drop constraint FK_DiscoDuro_Marca;
@@ -36,7 +37,11 @@ sp_help ModeloCPU
 alter table ModeloCPU drop constraint FK_ModeloCPU_Marca
 alter table ModeloCPU drop column f_marca
 
+sp_help CPU_Generico
+alter table CPU_Generico drop constraint FK_CPU_Generico_Marca
+alter table CPU_Generico drop column f_MarcaCpu
 
+select * from CPU_Generico
 
 sp_help ModeloCPU
 sp_help mouse
