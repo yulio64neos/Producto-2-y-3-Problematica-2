@@ -252,3 +252,22 @@ sp_help monitor
 sp_help teclado
 sp_help mouse
 sp_help Gabinete
+
+
+select * from Tipo_CPU
+select * from ModeloCPU
+
+sp_help Tipo_CPU
+
+alter table Tipo_CPU drop column Extra
+alter table Tipo_CPU add id_modcpu int
+alter table Tipo_CPU add constraint fk_tipo_modelo_cpu foreign key (id_modcpu) references ModeloCPU(id_modcpu)
+
+update Tipo_CPU set Tipo_CPU.id_modcpu = 7 where id_Tcpu = 12
+update Tipo_CPU set Tipo_CPU.id_modcpu = 7 where id_Tcpu = 13
+update Tipo_CPU set Tipo_CPU.Velocidad = '3.5Ghz' where id_Tcpu = 12
+update Tipo_CPU set Tipo_CPU.Velocidad = '4.2Ghz' where id_Tcpu = 13
+
+select modeloCPU, Familia, Velocidad from Tipo_CPU inner join ModeloCPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
+
+
