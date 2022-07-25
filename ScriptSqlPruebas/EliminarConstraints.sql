@@ -164,11 +164,16 @@ select Marca.Id_Marca, Marca, nom_Componente from Marca inner join Marca_Compone
 ON (Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes
 ON (Componentes.id_Componente = Marca_Componente.id_Compo)
 
-SELECT TipoDisco, nom_Componente, Marca 
+select Marca, nom_Componente as 'Componente' from Marca inner join Marca_Componente
+ON (Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes
+ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+
+SELECT TipoDisco as 'Tipo del Disco', nom_Componente as 'Componente', Marca 
 FROM DiscoDuro inner join Marca ON (Marca.Id_Marca = DiscoDuro.Id_Marca)
 inner join Marca_Componente  ON (Marca.Id_Marca = Marca_Componente.id_Marca)
 inner join Componentes ON (Marca_Componente.id_Compo = Componentes.id_Componente)
 
+select * from DiscoDuro
 
 alter table monitor add Id_Marca int
 alter table monitor add constraint fk_marca_monitor foreign key (Id_Marca) references Marca(Id_Marca)
@@ -176,7 +181,7 @@ alter table monitor add constraint fk_marca_monitor foreign key (Id_Marca) refer
 update monitor set monitor.Id_Marca = 7 where monitor.id_monitor = 4
 update monitor set monitor.Id_Marca = 8 where monitor.id_monitor = 5
 
-SELECT conectores, nom_Componente, Marca 
+SELECT conectores as 'Adaptador', nom_Componente as 'Componente', Marca 
 FROM monitor inner join Marca ON (Marca.Id_Marca = monitor.Id_Marca)
 inner join Marca_Componente  ON (Marca.Id_Marca = Marca_Componente.id_Marca)
 inner join Componentes ON (Marca_Componente.id_Compo = Componentes.id_Componente)
@@ -191,7 +196,7 @@ update teclado set teclado.Id_Marca = 9 where teclado.id_teclado = 5
 update teclado set teclado.Id_Marca = 10 where teclado.id_teclado = 6
 
 
-SELECT conector, nom_Componente, Marca 
+SELECT conector as 'Adaptador', nom_Componente as 'Componente', Marca 
 FROM teclado inner join Marca ON (Marca.Id_Marca = teclado.Id_Marca)
 inner join Marca_Componente  ON (Marca.Id_Marca = Marca_Componente.id_Marca)
 inner join Componentes ON (Marca_Componente.id_Compo = Componentes.id_Componente)
@@ -270,4 +275,12 @@ update Tipo_CPU set Tipo_CPU.Velocidad = '4.2Ghz' where id_Tcpu = 13
 
 select modeloCPU, Familia, Velocidad from Tipo_CPU inner join ModeloCPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
 
+select Marca, modeloCPU, Familia, Velocidad from
+Marca inner join ModeloCPU on (Marca.Id_Marca = ModeloCPU.Id_Marca)
+inner join Tipo_CPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
 
+select * from computadorafinal
+
+sp_help computadorafinal
+
+select nom_Componente as 'Componente' from Componentes

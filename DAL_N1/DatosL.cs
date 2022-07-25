@@ -52,6 +52,131 @@ namespace DAL_N1
                 }
             }
             return (tabla);
-        }
+        }//Fín del método
+
+        public DataTable ConsultarComponente()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select nom_Componente as 'Componente' from Componentes;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }//Fin del método
+
+        //Consulta de la relación entre la Marca y el componente
+        public DataTable ConsultMarcaCompo()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select Marca, nom_Componente as 'Componente' from Marca inner join Marca_Componente" +
+                    "ON(Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes" +
+                    "ON(Componentes.id_Componente = Marca_Componente.id_Compo);";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }//Fin del método
+
+        //Consulta de la relación entre el Disco, la marca y el componente
+        public DataTable ConsultDisco()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "SELECT TipoDisco as 'Tipo del Disco', nom_Componente as 'Componente', Marca" +
+                    "FROM DiscoDuro inner join Marca ON(Marca.Id_Marca = DiscoDuro.Id_Marca)" +
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)" +
+                    "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente);";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }//Fin del método
+
+        //Consulta de la relación entre el monitor, marca y el componente
+        public DataTable ConsultMonitor()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "SELECT conectores as 'Adaptador', nom_Componente as 'Componente', Marca" +
+                    "FROM monitor inner join Marca ON(Marca.Id_Marca = monitor.Id_Marca)"+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente);";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }//Fin del método
+
+        public DataTable ConsultTeclado()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "SELECT conector as 'Adaptador', nom_Componente as 'Componente', Marca" +
+                    "FROM teclado inner join Marca ON(Marca.Id_Marca = teclado.Id_Marca)" +
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)" +
+                    "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }//Fin del método
+
+        //public DataTable ConsultMarcaCompo()
+        //{
+        //    DataTable tabla = null;
+        //    DataSet Contenedor = new DataSet();
+        //    using (SqlConnection con = new SqlConnection(CadConnectSql))
+        //    {
+        //        using (SqlCommand Com = new SqlCommand())
+        //        {
+        //            Com.Connection = con;
+        //            Com.CommandText = "select Marca, nom_Componente as 'Componente' from Marca inner join Marca_Componente" +
+        //            "ON(Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes" +
+        //            "ON(Componentes.id_Componente = Marca_Componente.id_Compo)";
+        //            SqlDataAdapter DA = new SqlDataAdapter(Com);
+        //            DA.Fill(Contenedor);
+        //            tabla = Contenedor.Tables[0];
+        //        }
+        //    }
+        //    return (tabla);
+        //}//Fin del método
+
     }//Fin de la clase
 }
