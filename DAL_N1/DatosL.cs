@@ -36,6 +36,7 @@ namespace DAL_N1
             return "La conexión se abríó y se cerró correctamente";
         }//Fin del método
 
+        //Tabla marcas
         public DataTable ConsultarMarca()
         {
             DataTable tabla = null;
@@ -82,8 +83,8 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "select Marca, nom_Componente as 'Componente' from Marca inner join Marca_Componente" +
-                    "ON(Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes" +
+                    Com.CommandText = "select Marca, nom_Componente as 'Componente' from Marca inner join Marca_Componente " +
+                    "ON(Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes " +
                     "ON(Componentes.id_Componente = Marca_Componente.id_Compo);";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -103,9 +104,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT TipoDisco as 'Tipo del Disco', nom_Componente as 'Componente', Marca" +
-                    "FROM DiscoDuro inner join Marca ON(Marca.Id_Marca = DiscoDuro.Id_Marca)" +
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)" +
+                    Com.CommandText = "SELECT TipoDisco as 'Tipo del Disco', nom_Componente as 'Componente', Marca " +
+                    "FROM DiscoDuro inner join Marca ON(Marca.Id_Marca = DiscoDuro.Id_Marca) " +
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) " +
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente);";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -125,9 +126,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT conectores as 'Adaptador', nom_Componente as 'Componente', Marca" +
-                    "FROM monitor inner join Marca ON(Marca.Id_Marca = monitor.Id_Marca)"+
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    Com.CommandText = "SELECT conectores as 'Adaptador', nom_Componente as 'Componente', Marca " +
+                    "FROM monitor inner join Marca ON(Marca.Id_Marca = monitor.Id_Marca) "+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) "+
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente);";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -146,10 +147,10 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT conector as 'Adaptador', nom_Componente as 'Componente', Marca" +
-                    "FROM teclado inner join Marca ON(Marca.Id_Marca = teclado.Id_Marca)" +
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)" +
-                    "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
+                    Com.CommandText = "SELECT conector as 'Adaptador', nom_Componente as 'Componente', Marca " +
+                    "FROM teclado inner join Marca ON(Marca.Id_Marca = teclado.Id_Marca) " +
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) " +
+                    "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente);";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
