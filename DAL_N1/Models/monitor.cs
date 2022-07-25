@@ -11,5 +11,6 @@ namespace DAL_N1.Models
         public int id_monitor { get; set; }
         public string conectores { get; set; }
         public string tamano { set; get; }
+        public int Id_Marca { set; get; }
     }
 }

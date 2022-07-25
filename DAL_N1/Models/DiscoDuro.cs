@@ -12,6 +12,6 @@ namespace DAL_N1.Models
         public string TipoDisco { set; get; }
         public string conector { set; get; }
         public string Capacidad { set; get; }
-        public string Extra { set; get; }
+        public int Id_Marca { set; get; }
     }
 }

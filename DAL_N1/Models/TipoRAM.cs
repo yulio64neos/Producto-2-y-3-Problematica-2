@@ -10,6 +10,6 @@ namespace DAL_N1.Models
     {
         public string id_tipoRam { set; get; }
         public string Tipo { set; get; }
-        public string Extra 
+        public string Extra { set; get; }
     }
 }

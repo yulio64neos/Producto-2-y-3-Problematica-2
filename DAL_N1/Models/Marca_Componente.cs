@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class mouse
+    internal class Marca_Componente
     {
-        public int id_mouse { set; get; }
-        public string conector { set; get; }
-        public int Id_Marca { set; get; }
+        public int id_Marca { set; get; }
+        public int id_Compo { set; get; }
     }
 }

@@ -10,6 +10,5 @@ namespace DAL_N1.Models
     {
         public int id_Marca { get; set; }
         public string Marca { get; set; }
-        public int id_Componente { get; set; }
     }
 }
