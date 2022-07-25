@@ -1,0 +1,6 @@
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\DAL_N1\bin\Debug\DAL_N1.dll
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\DAL_N1\bin\Debug\DAL_N1.pdb
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.csproj.AssemblyReference.cache
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.csproj.CoreCompileInputs.cache
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.dll
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.pdb
