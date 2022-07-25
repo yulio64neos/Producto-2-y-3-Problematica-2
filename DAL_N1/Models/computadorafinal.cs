@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class computadorafinal
+    public class computadorafinal
     {
         public string num_inv { set; get; }
         public string num_scpu { set; get; }

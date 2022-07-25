@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class CPU_Generico
+    public class CPU_Generico
     {
         public int id_CPU { get; set; }
         public int f_Tcpu { set; get; }

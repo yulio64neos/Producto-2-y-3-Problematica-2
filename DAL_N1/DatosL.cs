@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DAL_N1;
 using System.Data.SqlClient;
 using System.Configuration;
+using Entidades_N0;
 using System.Data;
 
 namespace DAL_N1

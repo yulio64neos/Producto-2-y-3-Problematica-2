@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class actualizacion
+    public class actualizacion
     {
         public int id_act { set; get; }
         public string num_inv { set; get; }

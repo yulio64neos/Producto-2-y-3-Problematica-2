@@ -1,0 +1,2 @@
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.AssemblyReference.cache
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.CoreCompileInputs.cache
