@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class RAM
+    public class RAM
     {
         public int id_RAM { set; get; }
         public int Capacidad { set; get; }

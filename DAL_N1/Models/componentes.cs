@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class componentes
+    public class componentes
     {
         public int id_Componente { set; get; }  
         public int nom_Componente { set; get; }

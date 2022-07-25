@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class Gabinete
+    public class Gabinete
     {
         public int id_Gabinete { get; set; }
         public string Modelo { get; set; }

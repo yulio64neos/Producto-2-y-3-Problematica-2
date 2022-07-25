@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class teclado
+    public class teclado
     {
         public int id_teclado { get; set; }
         public string conector { get; set; }

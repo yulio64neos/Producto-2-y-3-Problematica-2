@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class ubicacion
+    public class ubicacion
     {
         public string num_int { get; set; }
         public string nombre_laboratorio { set; get; }

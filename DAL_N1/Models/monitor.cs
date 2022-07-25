@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class monitor
+    public class monitor
     {
         public int id_monitor { get; set; }
         public string conectores { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_N1.Models
 {
-    internal class usuarios
+    public class usuarios
     {
         public int id_usuario { set; get; }
         public string nombre { set; get; }
