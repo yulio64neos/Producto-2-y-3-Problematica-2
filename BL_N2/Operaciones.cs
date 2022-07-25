@@ -45,7 +45,7 @@ namespace BL_N2
         public DataTable getTeclado()
         {
             return obj.ConsultTeclado();
-        }
+        }//Fin del método
 
     }//Fin de la clase
 }
