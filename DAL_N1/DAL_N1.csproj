@@ -50,8 +50,10 @@
     <Compile Include="Models\CPU_Generico.cs" />
     <Compile Include="Models\DiscoDuro.cs" />
     <Compile Include="Models\Gabinete.cs" />
+    <Compile Include="Models\imagenes.cs" />
     <Compile Include="Models\laboratorio.cs" />
     <Compile Include="Models\Marca.cs" />
+    <Compile Include="Models\Marca_Componente.cs" />
     <Compile Include="Models\ModeloCPU.cs" />
     <Compile Include="Models\monitor.cs" />
     <Compile Include="Models\mouse.cs" />

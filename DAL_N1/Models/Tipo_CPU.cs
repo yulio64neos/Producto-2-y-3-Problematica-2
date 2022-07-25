@@ -8,10 +8,9 @@ namespace DAL_N1.Models
 {
     internal class Tipo_CPU
     {
-        public int id_Tcpu { set; get; }    
-        public string Tipo { set; get; }
+        public int id_Tcpu { set; get; } 
         public string Familia { set; get; }
         public string Velicidad { set; get; }
-        public string Extra { se; get; }
+        public int id_modcpu { set; get; }
     }
 }

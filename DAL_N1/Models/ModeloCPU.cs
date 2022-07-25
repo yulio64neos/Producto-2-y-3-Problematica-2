@@ -10,5 +10,6 @@ namespace DAL_N1.Models
     {
         public int id_modcpu { set; get; }
         public string modeloCPU { set; get; }
+        public int Id_Marca { set; get; }
     }
 }
