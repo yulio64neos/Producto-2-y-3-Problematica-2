@@ -47,24 +47,29 @@ namespace BL_N2
             return obj.ConsultTeclado();
         }//Fin del método
 
-     /*   public DataTable getMouse()
-        {
-            return obj.ConsultMouse();
-        }//Fin del método
+        //public DataTable getMouse()
+        //{
+        //    return obj.ConsultMouse();
+        //}//Fin del método
 
-        public DataTable getGabinete()
-        {
-            return obj.ConsultGabinete();
-        }//Fin del método
+        //public DataTable getGabinete()
+        //{
+        //    return obj.ConsultGabinete();
+        //}//Fin del método
 
-        public DataTable getCPU()
-        {
-            return obj.ConsultCPU();
-        }//Fin del método*/
+        //public DataTable getCPU()
+        //{
+        //    return obj.ConsultCPU();
+        //}//Fin del método
 
         public DataTable PCLDeterminado()
         {
-            return obj.EquiposLPredeterminado();
+            return obj.PCLPredeterminado();
+        }
+
+        public DataTable DDSolido()
+        {
+            return obj.EDDSolido();
         }
 
     }//Fin de la clase

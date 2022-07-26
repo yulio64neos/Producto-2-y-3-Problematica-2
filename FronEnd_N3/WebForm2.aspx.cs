@@ -20,7 +20,30 @@ namespace FronEnd_N3
         protected void Button1_Click(object sender, EventArgs e)
         {
             GridView1.DataSource = N2.PCLDeterminado();
-            GridView1.DataBind();
+            if (GridView1.DataSource != null)
+            {
+                Label2.Text = "";
+                GridView1.DataBind();
+            }
+            else
+            {
+                Label2.Text = "No se encontro ningun resultado de los equipos con laboratorios predeterminados";
+            }      
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            GridView1.DataSource = N2.DDSolido();
+
+            if (GridView1.DataSource != null)
+            {
+                Label2.Text = "";
+                GridView1.DataBind();
+            }
+            else
+            {
+                Label2.Text = "No se encontro ningun resultado de los discos con estado solido";
+            }
         }
     }
 }

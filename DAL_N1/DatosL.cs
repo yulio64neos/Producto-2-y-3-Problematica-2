@@ -224,7 +224,8 @@ namespace DAL_N1
             return (tabla);
         }//Fin del método
 
-        public DataTable EquiposLPredeterminado()
+        //Se consulta que equipos tiene laboratorio predeterminado
+        public DataTable PCLPredeterminado()
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -233,19 +234,43 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', CPU_Generico.Modelo as 'Modelo del CPU', "+
-                        "teclado.conector as 'Conector del teclado', " +
+                    Com.CommandText = "SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', CPU_Generico.Modelo as 'Modelo del CPU', " +
+                        "teclado.conector as 'Conector del teclado', "+
                         "monitor.conectores as 'Conector del monitor', " +
-                        "mouse.conector as 'Conector del mouse', " +
-                        "DiscoDuro.TipoDisco as 'Tipo de DD', " +
-                        "DiscoDuro.Capacidad as 'Capacidad de DD' FROM ubicacion " +
-                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) " +
-                        "INNER JOIN CPU_Generico ON(computadorafinal.id_cpug = CPU_Generico.id_CPU) " +
+                        "mouse.conector as 'Conector del mouse', "+
+                        "DiscoDuro.TipoDisco as 'Tipo de DD', "+
+                        "DiscoDuro.Capacidad as 'Capacidad de DD' FROM ubicacion "+
+                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) "+
+                        "INNER JOIN CPU_Generico ON(computadorafinal.id_cpug = CPU_Generico.id_CPU) "+
                         "INNER JOIN teclado ON(computadorafinal.id_tecladog = teclado.id_teclado) " +
                         "INNER JOIN monitor ON(computadorafinal.id_mong = monitor.id_monitor) " +
                         "INNER JOIN mouse ON(computadorafinal.id_mousg = mouse.id_mouse) " +
                         "INNER JOIN cantDisc ON(computadorafinal.num_inv = cantDisc.num_inv) " +
-                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco); ";
+                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco);";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        //Se hace una consulta de los equipos que contenga disco de estado solido
+        public DataTable EDDSolido()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', "+
+                        "DiscoDuro.TipoDisco as 'Equipos con Discos de estado Solido' "+
+                        "FROM ubicacion "+
+                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) "+
+                        "INNER JOIN cantDisc ON(computadorafinal.num_inv = cantDisc.num_inv) "+
+                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco = 'Estado Sólido'; ";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];

@@ -6,9 +6,8 @@
         <asp:Label ID="Label1" runat="server" Text="CPU"></asp:Label>
         <br />
         <asp:Label ID="Label6" runat="server" Text="Modelo: "></asp:Label>
-        <asp:DropDownList ID="DropDownList2" runat="server" Height="17px" Width="104px">
-        </asp:DropDownList>
-&nbsp;&nbsp;
+        &nbsp;<asp:TextBox ID="TextBox16" runat="server"></asp:TextBox>
+&nbsp;
         <asp:Label ID="Label7" runat="server" Text="Marca: "></asp:Label>
         <asp:DropDownList ID="DropDownList3" runat="server">
         </asp:DropDownList>
@@ -41,21 +40,29 @@
 &nbsp;
         <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
     </p>
-    <p>
         <asp:Label ID="Label12" runat="server" Text="GABINETE"></asp:Label>
-    </p>
-    <p>
+    <br />
         <asp:Label ID="Label13" runat="server" Text="Modelo: "></asp:Label>
         <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-&nbsp;
         <asp:Label ID="Label14" runat="server" Text="Tipo forma"></asp:Label>
-&nbsp;
         <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
-&nbsp;&nbsp;
         <asp:Label ID="Label15" runat="server" Text="Marca: "></asp:Label>
         <asp:DropDownList ID="DropDownList4" runat="server" Height="16px" Width="180px">
         </asp:DropDownList>
-    </p>
+    <br />
+    <br />
+    <asp:Label ID="Label35" runat="server" Text="CPU Generico"></asp:Label>
+    <br />
+    <asp:Label ID="Label36" runat="server" Text="Tipo CPU Generico"></asp:Label>
+&nbsp;<asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
+&nbsp;
+    <asp:Label ID="Label37" runat="server" Text="Modelo"></asp:Label>
+&nbsp;
+    <asp:TextBox ID="TextBox18" runat="server"></asp:TextBox>
+    <br />
+    <asp:Label ID="Label38" runat="server" Text="Descripcion"></asp:Label>
+    <asp:TextBox ID="TextBox19" runat="server" Height="68px" Width="381px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;
     <p>
         <asp:Label ID="Label16" runat="server" Text="MOUSE"></asp:Label>
     </p>
