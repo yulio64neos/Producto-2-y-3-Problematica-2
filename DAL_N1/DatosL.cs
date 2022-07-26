@@ -83,8 +83,8 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "select Marca, nom_Componente as 'Componente' from Marca inner join Marca_Componente" +
-                    "ON(Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes" +
+                    Com.CommandText = "select Marca, nom_Componente as 'Componente' from Marca inner join Marca_Componente " +
+                    "ON(Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes " +
                     "ON(Componentes.id_Componente = Marca_Componente.id_Compo);";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -104,9 +104,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT TipoDisco as 'Tipo del Disco', nom_Componente as 'Componente', Marca" +
-                    "FROM DiscoDuro inner join Marca ON(Marca.Id_Marca = DiscoDuro.Id_Marca)" +
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)" +
+                    Com.CommandText = "SELECT TipoDisco as 'Tipo del Disco', nom_Componente as 'Componente', Marca " +
+                    "FROM DiscoDuro inner join Marca ON(Marca.Id_Marca = DiscoDuro.Id_Marca) " +
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) " +
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente);";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -126,9 +126,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT conectores as 'Adaptador', nom_Componente as 'Componente', Marca" +
-                    "FROM monitor inner join Marca ON(Marca.Id_Marca = monitor.Id_Marca)"+
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    Com.CommandText = "SELECT conectores as 'Adaptador', nom_Componente as 'Componente', Marca " +
+                    "FROM monitor inner join Marca ON(Marca.Id_Marca = monitor.Id_Marca) "+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) "+
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente);";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -147,9 +147,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT conector as 'Adaptador', nom_Componente as 'Componente', Marca" +
-                    "FROM teclado inner join Marca ON(Marca.Id_Marca = teclado.Id_Marca)" +
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)" +
+                    Com.CommandText = "SELECT conector as 'Adaptador', nom_Componente as 'Componente', Marca " +
+                    "FROM teclado inner join Marca ON(Marca.Id_Marca = teclado.Id_Marca) " +
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) " +
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -160,7 +160,7 @@ namespace DAL_N1
         }//Fin del método
 
         //Consulta de la relación entre el teclado, marca y el componente
-        public DataTable ConsultMarcaMouse()
+        public DataTable ConsultMouse()
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -169,9 +169,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT conector, nom_Componente, Marca"+
-                    "FROM mouse inner join Marca ON(Marca.Id_Marca = mouse.Id_Marca)"+
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    Com.CommandText = "SELECT conector, nom_Componente, Marca "+
+                    "FROM mouse inner join Marca ON(Marca.Id_Marca = mouse.Id_Marca) "+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) "+
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -181,7 +181,7 @@ namespace DAL_N1
             return (tabla);
         }//Fin del método
         //Consulta de la relación entre el gabinete, marca y el componente
-        public DataTable ConsultMarcaGabinete()
+        public DataTable ConsultGabinete()
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -190,9 +190,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT TipoForma, nom_Componente, Marca"+
-                    "FROM Gabinete inner join Marca ON(Marca.Id_Marca = Gabinete.Id_Marca)"+
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    Com.CommandText = "SELECT TipoForma, nom_Componente, Marca "+
+                    "FROM Gabinete inner join Marca ON(Marca.Id_Marca = Gabinete.Id_Marca) "+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) "+
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -202,7 +202,7 @@ namespace DAL_N1
             return (tabla);
         }//Fin del método
         //Consulta de la relación entre el CPU, marca y el componente
-        public DataTable ConsultMarcaCPU()
+        public DataTable ConsultCPU()
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -211,9 +211,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT modeloCPU, nom_Componente, Marca"+
-                    "FROM ModeloCPU inner join Marca ON(Marca.Id_Marca = ModeloCPU.Id_Marca)"+
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    Com.CommandText = "SELECT modeloCPU, nom_Componente, Marca "+
+                    "FROM ModeloCPU inner join Marca ON(Marca.Id_Marca = ModeloCPU.Id_Marca) "+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) "+
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);

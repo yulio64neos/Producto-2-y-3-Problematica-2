@@ -164,6 +164,11 @@ select Marca.Id_Marca, Marca, nom_Componente from Marca inner join Marca_Compone
 ON (Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes
 ON (Componentes.id_Componente = Marca_Componente.id_Compo)
 
+select Marca.Id_Marca, Marca from Marca inner join Marca_Componente
+ON (Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes
+ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+where Componentes.nom_Componente = 'SSD'
+
 select Marca, nom_Componente as 'Componente' from Marca inner join Marca_Componente
 ON (Marca.Id_Marca = Marca_Componente.id_Marca) inner join Componentes
 ON (Componentes.id_Componente = Marca_Componente.id_Compo)
@@ -284,3 +289,83 @@ select * from computadorafinal
 sp_help computadorafinal
 
 select nom_Componente as 'Componente' from Componentes
+
+--//////////////////////////////////////////////////////////////////////
+
+select * from CPU_Generico
+select * from Tipo_CPU
+
+alter table CPU_Generico drop column Descripcion
+
+select * from ModeloCPU
+
+select nom_Componente as 'Componente', Marca, modeloCPU as 'CPU', Modelo, Familia, RAM.Velocidad as 'Velocidad de Reloj', Tipo
+from Componentes
+inner join Marca_Componente on (Componentes.id_Componente = Marca_Componente.id_Compo)
+inner join Marca on (Marca_Componente.id_Marca = Marca.Id_Marca)
+inner join ModeloCPU on (Marca.Id_Marca = ModeloCPU.Id_Marca)
+inner join Tipo_CPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
+inner join CPU_Generico on (Tipo_CPU.id_Tcpu = CPU_Generico.f_Tcpu)
+inner join RAM on (CPU_Generico.f_tipoRam = RAM.id_RAM)
+inner join TipoRAM on (RAM.F_TipoR = TipoRAM.id_tipoRam)
+
+select modeloCPU, Modelo, Familia, Velocidad from ModeloCPU
+inner join Tipo_CPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
+inner join CPU_Generico on (Tipo_CPU.id_Tcpu = CPU_Generico.f_Tcpu)
+
+select * from RAM
+select * from CPU_Generico
+sp_help RAM
+
+select * from Componentes
+
+select Modelo, Velocidad, Tipo from CPU_Generico inner join RAM
+on (CPU_Generico.f_tipoRam = RAM.id_RAM) inner join TipoRAM
+ON (RAM.F_TipoR = TipoRAM.id_tipoRam)
+
+update Componentes set Componentes.nom_componente = 'CPU'
+where Componentes.id_Componente = 7
+
+--Hacerlo por procedimiento almacenado
+select computadorafinal.num_inv as 'Número de Inventario', 
+nom_Componente as 'Componente', 
+Marca, 
+modeloCPU as 'CPU', 
+Modelo, 
+Familia, 
+Tipo as 'Tipo de Memoria RAM', 
+RAM.Velocidad as 'Velocidad de Reloj', 
+conectores as 'Adaptador del Monitor', 
+tamano as 'Resolución', 
+teclado.conector as 'Adaptador del Teclado', 
+mouse.conector as 'Adaptador del Mouse', 
+cantDisc.Cantidad as 'Cantidad de Discos'
+from Componentes
+inner join Marca_Componente on (Componentes.id_Componente = Marca_Componente.id_Compo)
+inner join Marca on (Marca_Componente.id_Marca = Marca.Id_Marca)
+inner join ModeloCPU on (Marca.Id_Marca = ModeloCPU.Id_Marca)
+inner join Tipo_CPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
+inner join CPU_Generico on (Tipo_CPU.id_Tcpu = CPU_Generico.f_Tcpu)
+inner join RAM on (CPU_Generico.f_tipoRam = RAM.id_RAM)
+inner join TipoRAM on (RAM.F_TipoR = TipoRAM.id_tipoRam)
+inner join computadorafinal on (CPU_Generico.id_CPU = computadorafinal.id_cpug)
+inner join monitor on (computadorafinal.id_mong = monitor.id_monitor)
+inner join teclado on (computadorafinal.id_tecladog = teclado.id_teclado)
+inner join mouse on (computadorafinal.id_mousg = mouse.id_mouse)
+inner join cantDisc on (computadorafinal.num_inv = cantDisc.num_inv)
+where computadorafinal.num_inv = '1234567890'
+
+select * from CPU_Generico
+select * from computadorafinal
+select * from cantDisc
+
+select * from Mouse
+select * from teclado
+sp_help computadorafinal
+
+sp_help cantDisc
+
+alter table cantDisc add Cantidad int
+
+update cantDisc set cantDisc.Cantidad = 3 where id_cant = 5
+update cantDisc set cantDisc.Cantidad = 5 where id_cant = 6
