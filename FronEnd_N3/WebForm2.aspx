@@ -6,7 +6,11 @@
         <br />
         <asp:Label ID="Label1" runat="server" Text="Mostrar: "></asp:Label>
 &nbsp;
-        <asp:Button ID="Button1" runat="server" Text="Equipos con laboratorio predeterminado" />
+        <asp:Button ID="Button1" runat="server" Text="Equipos con laboratorio predeterminado" OnClick="Button1_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="Equipos con laboratorio predeterminado y discos de estado solido" />
     </p>
+    <p>
+        &nbsp;</p>
+    <asp:GridView ID="GridView1" runat="server">
+    </asp:GridView>
 </asp:Content>

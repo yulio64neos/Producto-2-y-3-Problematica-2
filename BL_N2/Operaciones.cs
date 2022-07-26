@@ -45,6 +45,26 @@ namespace BL_N2
         public DataTable getTeclado()
         {
             return obj.ConsultTeclado();
+        }//Fin del método
+
+     /*   public DataTable getMouse()
+        {
+            return obj.ConsultMouse();
+        }//Fin del método
+
+        public DataTable getGabinete()
+        {
+            return obj.ConsultGabinete();
+        }//Fin del método
+
+        public DataTable getCPU()
+        {
+            return obj.ConsultCPU();
+        }//Fin del método*/
+
+        public DataTable PCLDeterminado()
+        {
+            return obj.EquiposLPredeterminado();
         }
 
     }//Fin de la clase

@@ -1,0 +1,6 @@
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\bin\Debug\Entidades_N0.dll
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\bin\Debug\Entidades_N0.pdb
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\obj\Debug\Entidades_N0.csproj.AssemblyReference.cache
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\obj\Debug\Entidades_N0.csproj.CoreCompileInputs.cache
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\obj\Debug\Entidades_N0.dll
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\obj\Debug\Entidades_N0.pdb
