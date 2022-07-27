@@ -15,7 +15,12 @@ namespace FronEnd_N3
         Operaciones N2 = new Operaciones();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!this.IsPostBack)
+            {
+                string[] list_num_int = N2.DevuelveNumInv();
+                foreach (var nv in list_num_int)
+                    DropDownList1.Items.Add(nv.ToString());
+            }
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -25,7 +30,9 @@ namespace FronEnd_N3
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+            string numInv = DropDownList1.SelectedValue;
+            GridView1.DataSource = N2.Lista_PCFINAL(numInv);
+            GridView1.DataBind();
         }
     }
 }

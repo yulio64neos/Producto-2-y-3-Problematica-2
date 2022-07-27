@@ -65,12 +65,16 @@ namespace BL_N2
 
         public DataTable Lista_PCFINAL(string numInv)
         {
+<<<<<<< HEAD
             return obj.ConsultaPC_NumInvent(numInv);
         }//Fin del método
 
         public DataTable UbicacionPC_Monitor(string adapt)
         {
             return obj.ConsultaUbicacion_PCMonitor(adapt);
+=======
+           return obj.ConsultaPC_NumInvent(numInv);
+>>>>>>> Sebastian
         }//Fin del método
 
         public DataTable PCLaboPredeterminado()

@@ -117,3 +117,33 @@ AS
 BEGIN 
 INSERT cantDisc VALUES(@num_inv,(SELECT id_Disco FROM DiscoDuro WHERE DiscoDuro.TipoDisco=@idDisco))
 END
+--ubicacion
+CREATE PROCEDURE InsertarUBICACION
+@num_inv varchar(10),
+@lap varchar(50)
+AS
+BEGIN 
+INSERT ubicacion VALUES(@num_inv,(SELECT nombre_laboratorio FROM laboratorio WHERE laboratorio.nombre_laboratorio=@lap))
+END
+--COMPUTADORA FINAL
+CREATE PROCEDURE InsertarPCFINAL
+@num_inv varchar(10), @num_cpu varchar(11), @idCpu varchar(20), @num_teclado varchar(11), @idteclado varchar(5), 
+@num_manitor varchar(11), @idmonitor varchar(64),@num_mouse varchar(11), @idmouse varchar(64), @estado varchar(64)
+AS
+BEGIN 
+INSERT computadorafinal VALUES ((SELECT num_inv FROM cantDisc WHERE cantDisc.num_inv=@num_inv),
+@num_cpu, (SELECT id_CPU FROM CPU_Generico WHERE CPU_Generico.Modelo=@idCpu),
+@num_teclado, (SELECT id_teclado FROM teclado WHERE teclado.conector =@idteclado),
+@num_manitor,(SELECT id_monitor FROM monitor WHERE monitor.conectores=@idmonitor),
+@num_mouse,(SELECT id_mouse FROM mouse WHERE mouse.conector=@idmouse), @estado)
+END
+--ACUTALIZCION 
+CREATE PROCEDURE InsertarActualizaciones
+@num_inv varchar(10),
+@num_serie varchar(11),
+@des varchar(64)
+AS
+BEGIN 
+INSERT actualizacion VALUES((SELECT num_inv FROM computadorafinal WHERE computadorafinal.num_inv=@num_inv),
+@num_serie, @des, GETDATE())
+END

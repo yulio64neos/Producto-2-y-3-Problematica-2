@@ -19,7 +19,7 @@ namespace FronEnd_N3
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = N2.PCLDeterminado();
+            GridView1.DataSource = N2.PCLaboPredeterminado();
             if (GridView1.DataSource != null)
             {
                 Label2.Text = "";
@@ -33,7 +33,7 @@ namespace FronEnd_N3
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = N2.DDSolido();
+            GridView1.DataSource = N2.LaboratorioPCSSD();
 
             if (GridView1.DataSource != null)
             {
