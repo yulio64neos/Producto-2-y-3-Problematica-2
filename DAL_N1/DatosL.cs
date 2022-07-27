@@ -243,11 +243,7 @@ namespace DAL_N1
                     com.Parameters.AddWithValue("@NumInventario", numInven);
                     com.CommandText = "LISTA_PcCOMPONENTES";
                     com.ExecuteNonQuery();
-<<<<<<< HEAD
-                    SqlDataAdapter DA = new SqlDataAdapter();
-=======
                     SqlDataAdapter DA = new SqlDataAdapter(com);
->>>>>>> Sebastian
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
                 }
@@ -255,7 +251,6 @@ namespace DAL_N1
                 con.Close();
             }
             return tabla;
-<<<<<<< HEAD
         }//Fin del método
 
         //Consultar la ubicación de la PC por tipo de adaptador del monitor
@@ -310,8 +305,6 @@ namespace DAL_N1
                 con.Close();
             }
             return tabla;
-=======
->>>>>>> Sebastian
         }//Fin del método
 
         public DataTable PCLPredeterminado()
