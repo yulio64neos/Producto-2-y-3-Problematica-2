@@ -83,7 +83,7 @@ namespace BL_N2
             string[] resp;
             List<computadorafinal> cpf = obj.GetListaInventario();
             resp = new string[cpf.Count];
-            for(int i = 0; i < cpf.Count; i++)
+            for (int i = 0; i < cpf.Count; i++)
             {
                 resp[i] = cpf[i].num_inv;
             }

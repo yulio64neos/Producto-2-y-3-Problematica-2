@@ -37,6 +37,7 @@ namespace DAL_N1
             return "La conexión se abríó y se cerró correctamente";
         }//Fin del método
 
+        //Tabla marcas
         public DataTable ConsultarMarca()
         {
             DataTable tabla = null;

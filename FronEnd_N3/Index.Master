@@ -4,14 +4,34 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link href="Styles/StyleMenu.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <div id="header">
+                   <ul class="menu">
+                   <li><a href="WebForm1.aspx">Mostrar inventario</a></li>
+                   <li><a href="WebForm2.aspx">Equipos con Laboratorio</a></li>
+                   <li><a href="WebForm3.aspx">Mostrar monitores</a></li>
+                   <li><a href="#">Operaciones Basicas</a>
+                       <ul>
+                           <li><a href="WebForm5.aspx">Agregar</a></li>
+                           <li><a href="WebForm6.aspx">Modificar</a></li>
+                           <li><a href="WebForm7.aspx">Eliminar</a></li>
+                           <li><a href="#">Consultar</a>
+                               <ul>
+                                   <li><a href="WebForm4.aspx">Todas las tablas</a></li>
+                                   <li><a href="WebForm8.aspx">Por secciones</a></li>
+                               </ul>
+                           </li>
+                       </ul>
+                   </li>
+               </ul>
+            </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
