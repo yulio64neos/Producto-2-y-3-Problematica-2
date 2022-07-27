@@ -443,7 +443,5 @@ namespace DAL_N1
                 con.Close();
             }
         }//Fin del método
-
-
     }//Fin de la clase
 }
