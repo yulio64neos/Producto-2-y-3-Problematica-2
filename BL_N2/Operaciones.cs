@@ -85,7 +85,7 @@ namespace BL_N2
 
         public DataTable PC_Actualizacion(string numInv)
         {
-            return obj.ConsultNumInventAct(numInv);
+            return obj.ActualizarPC(numInv);
         }//Fin del método
 
         public string[] DevuelveNumInv()
@@ -117,6 +117,10 @@ namespace BL_N2
             obj.InsertarMarca(Marca);
         }//Fin del método
 
+        public void InsertCompo(string Compo)
+        {
+            obj.InsertarCompo(Compo);
+        }//Fin del método
 
     }//Fin de la clase
 }

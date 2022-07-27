@@ -281,7 +281,7 @@ namespace DAL_N1
         }//Fin del método
 
         //Consultar la ubicación de la PC por tipo de adaptador del monitor
-        public DataTable ConsultNumInventAct(string numInven)
+        public DataTable ActualizarPC(string numInven)
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -295,9 +295,9 @@ namespace DAL_N1
                     com.CommandType = CommandType.StoredProcedure;
                     //Asignamos los parámetros
                     com.Parameters.AddWithValue("@NumInventario", numInven);
-                    com.CommandText = "NUM_INV_ACTUALIZACION";
+                    com.CommandText = "PC_ACTUALIZACION";
                     com.ExecuteNonQuery();
-                    SqlDataAdapter DA = new SqlDataAdapter();
+                    SqlDataAdapter DA = new SqlDataAdapter(com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
                 }
@@ -437,6 +437,26 @@ namespace DAL_N1
                     //Asignamos los parámetros
                     com.Parameters.AddWithValue("@Mar", marca);
                     com.CommandText = "INSERTA_MARCA";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void InsertarCompo(string compo)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    //Primero la variable com verifica la conexión con la variable con
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    //Asignamos los parámetros
+                    com.Parameters.AddWithValue("@nom_Compo", compo);
+                    com.CommandText = "INSERTAR_COMPONENTES";
                     com.ExecuteNonQuery();
                 }
                 //Cierras la cadena de conexión

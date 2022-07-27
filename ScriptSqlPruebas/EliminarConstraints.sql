@@ -471,7 +471,7 @@ inner join actualizacion on (computadorafinal.num_inv = actualizacion.num_inv)
 where computadorafinal.num_inv = 1234567890
 
 
-create procedure NUM_INV_ACTUALIZACION
+create procedure PC_ACTUALIZACION
 @NumInventario varchar(10)
 as
 begin
@@ -482,7 +482,7 @@ begin
 	where computadorafinal.num_inv = @NumInventario
 end
 
-exec NUM_INV_ACTUALIZACION 1234567890
+exec PC_ACTUALIZACION 1234567890
 
 
 

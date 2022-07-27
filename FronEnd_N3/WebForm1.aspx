@@ -15,7 +15,7 @@
     </asp:DropDownList>
 <asp:Button ID="Button1" runat="server" Text="Mostrar toda la información " OnClick="Button1_Click" />
 &nbsp;&nbsp;&nbsp;
-<asp:Button ID="Button2" runat="server" Text="Mostrar Detalles de Actualización" />
+<asp:Button ID="Button2" runat="server" Text="Mostrar Detalles de Actualización" OnClick="Button2_Click" />
 <br />
 <br />
 <br />
