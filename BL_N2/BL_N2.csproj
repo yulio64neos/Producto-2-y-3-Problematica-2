@@ -35,6 +35,9 @@
     <Reference Include="DAL_N1">
       <HintPath>..\DAL_N1\bin\Debug\DAL_N1.dll</HintPath>
     </Reference>
+    <Reference Include="Entidades_N0">
+      <HintPath>..\Entidades_N0\Entidades_N0\bin\Debug\Entidades_N0.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

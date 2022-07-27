@@ -151,7 +151,7 @@ namespace DAL_N1
                     Com.CommandText = "SELECT conector as 'Adaptador', nom_Componente as 'Componente', Marca " +
                     "FROM teclado inner join Marca ON(Marca.Id_Marca = teclado.Id_Marca) " +
                     "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) " +
-                    "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente);";
+                    "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
@@ -161,7 +161,7 @@ namespace DAL_N1
         }//Fin del método
 
         //Consulta de la relación entre el teclado, marca y el componente
-        public DataTable ConsultMarcaMouse()
+        public DataTable ConsultMouse()
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -170,9 +170,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT conector, nom_Componente, Marca"+
-                    "FROM mouse inner join Marca ON(Marca.Id_Marca = mouse.Id_Marca)"+
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    Com.CommandText = "SELECT conector, nom_Componente, Marca "+
+                    "FROM mouse inner join Marca ON(Marca.Id_Marca = mouse.Id_Marca) "+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) "+
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -182,7 +182,7 @@ namespace DAL_N1
             return (tabla);
         }//Fin del método
         //Consulta de la relación entre el gabinete, marca y el componente
-        public DataTable ConsultMarcaGabinete()
+        public DataTable ConsultGabinete()
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -191,9 +191,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT TipoForma, nom_Componente, Marca"+
-                    "FROM Gabinete inner join Marca ON(Marca.Id_Marca = Gabinete.Id_Marca)"+
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    Com.CommandText = "SELECT TipoForma, nom_Componente, Marca "+
+                    "FROM Gabinete inner join Marca ON(Marca.Id_Marca = Gabinete.Id_Marca) "+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) "+
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -203,7 +203,7 @@ namespace DAL_N1
             return (tabla);
         }//Fin del método
         //Consulta de la relación entre el CPU, marca y el componente
-        public DataTable ConsultMarcaCPU()
+        public DataTable ConsultCPU()
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -212,9 +212,9 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT modeloCPU, nom_Componente, Marca"+
-                    "FROM ModeloCPU inner join Marca ON(Marca.Id_Marca = ModeloCPU.Id_Marca)"+
-                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca)"+
+                    Com.CommandText = "SELECT modeloCPU, nom_Componente, Marca "+
+                    "FROM ModeloCPU inner join Marca ON(Marca.Id_Marca = ModeloCPU.Id_Marca) "+
+                    "inner join Marca_Componente ON(Marca.Id_Marca = Marca_Componente.id_Marca) "+
                     "inner join Componentes ON(Marca_Componente.id_Compo = Componentes.id_Componente)";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -224,7 +224,29 @@ namespace DAL_N1
             return (tabla);
         }//Fin del método
 
-        //Se consulta que equipos tiene laboratorio predeterminado
+        //----------------------------------------------------------------------------------------------------------
+
+        //Consultar PC por numero de inventario
+        public void ConsultaPC_NumInvent(string numInven)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    //Primero la variable com verifica la conexión con la variable con
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    //Asignamos los parámetros
+                    com.Parameters.AddWithValue("@NumInventario", numInven);
+                    com.CommandText = "LISTA_PcCOMPONENTES";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
         public DataTable PCLPredeterminado()
         {
             DataTable tabla = null;
@@ -235,13 +257,13 @@ namespace DAL_N1
                 {
                     Com.Connection = con;
                     Com.CommandText = "SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', CPU_Generico.Modelo as 'Modelo del CPU', " +
-                        "teclado.conector as 'Conector del teclado', "+
+                        "teclado.conector as 'Conector del teclado', " +
                         "monitor.conectores as 'Conector del monitor', " +
-                        "mouse.conector as 'Conector del mouse', "+
-                        "DiscoDuro.TipoDisco as 'Tipo de DD', "+
-                        "DiscoDuro.Capacidad as 'Capacidad de DD' FROM ubicacion "+
-                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) "+
-                        "INNER JOIN CPU_Generico ON(computadorafinal.id_cpug = CPU_Generico.id_CPU) "+
+                        "mouse.conector as 'Conector del mouse', " +
+                        "DiscoDuro.TipoDisco as 'Tipo de DD', " +
+                        "DiscoDuro.Capacidad as 'Capacidad de DD' FROM ubicacion " +
+                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) " +
+                        "INNER JOIN CPU_Generico ON(computadorafinal.id_cpug = CPU_Generico.id_CPU) " +
                         "INNER JOIN teclado ON(computadorafinal.id_tecladog = teclado.id_teclado) " +
                         "INNER JOIN monitor ON(computadorafinal.id_mong = monitor.id_monitor) " +
                         "INNER JOIN mouse ON(computadorafinal.id_mousg = mouse.id_mouse) " +
@@ -253,10 +275,12 @@ namespace DAL_N1
                 }
             }
             return (tabla);
-        }
+        }//Fin del método
 
         //Se hace una consulta de los equipos que contenga disco de estado solido
-        public DataTable EDDSolido()
+
+        //Consultar
+        public DataTable LABOSSD()
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -265,11 +289,11 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', "+
-                        "DiscoDuro.TipoDisco as 'Equipos con Discos de estado Solido' "+
-                        "FROM ubicacion "+
-                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) "+
-                        "INNER JOIN cantDisc ON(computadorafinal.num_inv = cantDisc.num_inv) "+
+                    Com.CommandText = "SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', " +
+                        "DiscoDuro.TipoDisco as 'Equipos con Discos de estado Solido' " +
+                        "FROM ubicacion " +
+                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) " +
+                        "INNER JOIN cantDisc ON(computadorafinal.num_inv = cantDisc.num_inv) " +
                         "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco = 'Estado Sólido'; ";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
@@ -277,7 +301,56 @@ namespace DAL_N1
                 }
             }
             return (tabla);
+        }//Fin del método
+
+        //Método para generar la lista del numero de inventario
+        public List<computadorafinal> GetListaInventario()
+        {
+            List<computadorafinal> Resp = new List<computadorafinal>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select num_inv from computadorafinal";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            computadorafinal objCPUFinal = new computadorafinal()
+                            {
+                                num_inv = Convert.ToString(lect["num_inv"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
         }
 
+        //Inserción
+        public void InsertarMarca(string marca)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    //Primero la variable com verifica la conexión con la variable con
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    //Asignamos los parámetros
+                    com.Parameters.AddWithValue("@Mar", marca);
+                    com.CommandText = "INSERTA_MARCA";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
     }//Fin de la clase
 }
