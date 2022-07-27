@@ -425,4 +425,10 @@ end
 
 exec LISTA_PcCOMPONENTES '1234567890'
 
+select * from monitor
+
+select conectores, computadorafinal.num_inv, nombre_laboratorio from monitor
+inner join computadorafinal on (computadorafinal.id_mong = monitor.id_monitor)
+inner join ubicacion on (computadorafinal.num_inv = ubicacion.num_inv) 
+where conectores = 'HDMI';
 

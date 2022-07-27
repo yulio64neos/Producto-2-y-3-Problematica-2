@@ -313,7 +313,7 @@ namespace DAL_N1
                 using (SqlCommand com = new SqlCommand())
                 {
                     com.Connection = con;
-                    com.CommandText = "select num_inv from computadorafinal";
+                    com.CommandText = "select num_inv from computadorafinal;";
                     SqlDataReader lect = com.ExecuteReader();
                     if (lect.HasRows)
                     {
@@ -331,6 +331,34 @@ namespace DAL_N1
             }
             return Resp;
         }
+        //Método para listar el tipo de conector que tiene el Monitor
+        public List<monitor> GetListaTipoConector()
+        {
+            List<monitor> Resp = new List<monitor>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select conectores from monitor;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            monitor objMonitor = new monitor()
+                            {
+                                conectores = Convert.ToString(lect["conectores"])
+                            };
+                            Resp.Add(objMonitor);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }//Fin del método
 
         //Inserción
         public void InsertarMarca(string marca)

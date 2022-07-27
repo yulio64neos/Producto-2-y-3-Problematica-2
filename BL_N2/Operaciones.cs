@@ -90,6 +90,18 @@ namespace BL_N2
             return resp;
         }//Fin del método
 
+        public string[] DevuelveTipoConectorMonitor()
+        {
+            string[] resp;
+            List<monitor> cpf = obj.GetListaTipoConectorMonitor();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].conectores;
+            }
+            return resp;
+        }
+
         public void InsertMarca(string Marca)
         {
             obj.InsertarMarca(Marca);
