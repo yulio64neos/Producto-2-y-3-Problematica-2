@@ -63,9 +63,14 @@ namespace BL_N2
             return obj.ConsultCPU();
         }//Fin del método
 
-        public void Lista_PCFINAL(string numInv)
+        public DataTable Lista_PCFINAL(string numInv)
         {
-            obj.ConsultaPC_NumInvent(numInv);
+            return obj.ConsultaPC_NumInvent(numInv);
+        }//Fin del método
+
+        public DataTable UbicacionPC_Monitor(string adapt)
+        {
+            return obj.ConsultaUbicacion_PCMonitor(adapt);
         }//Fin del método
 
         public DataTable PCLaboPredeterminado()
@@ -76,6 +81,11 @@ namespace BL_N2
         public DataTable LaboratorioPCSSD()
         {
             return obj.LABOSSD();
+        }//Fin del método
+
+        public DataTable PC_Actualizacion(string numInv)
+        {
+            return obj.ConsultNumInventAct(numInv);
         }//Fin del método
 
         public string[] DevuelveNumInv()
@@ -100,7 +110,7 @@ namespace BL_N2
                 resp[i] = cpf[i].conectores;
             }
             return resp;
-        }
+        }//Fin del método
 
         public void InsertMarca(string Marca)
         {

@@ -7,3 +7,7 @@ C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.Cor
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.CopyComplete
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.dll
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.pdb
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.AssemblyReference.cache
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.CoreCompileInputs.cache
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.dll
+C:\Users\julio\source\repos\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.pdb

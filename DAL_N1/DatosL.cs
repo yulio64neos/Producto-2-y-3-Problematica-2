@@ -227,8 +227,10 @@ namespace DAL_N1
         //----------------------------------------------------------------------------------------------------------
 
         //Consultar PC por numero de inventario
-        public void ConsultaPC_NumInvent(string numInven)
+        public DataTable ConsultaPC_NumInvent(string numInven)
         {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
                 con.Open();
@@ -241,10 +243,68 @@ namespace DAL_N1
                     com.Parameters.AddWithValue("@NumInventario", numInven);
                     com.CommandText = "LISTA_PcCOMPONENTES";
                     com.ExecuteNonQuery();
+                    SqlDataAdapter DA = new SqlDataAdapter();
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
                 }
                 //Cierras la cadena de conexión
                 con.Close();
             }
+            return tabla;
+        }//Fin del método
+
+        //Consultar la ubicación de la PC por tipo de adaptador del monitor
+        public DataTable ConsultaUbicacion_PCMonitor(string adaptador)
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    //Primero la variable com verifica la conexión con la variable con
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    //Asignamos los parámetros
+                    com.Parameters.AddWithValue("@ADAPTADOR", adaptador);
+                    com.CommandText = "MONITOR_PC_LABO";
+                    com.ExecuteNonQuery();
+                    SqlDataAdapter DA = new SqlDataAdapter();
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+            return tabla;
+        }//Fin del método
+
+        //Consultar la ubicación de la PC por tipo de adaptador del monitor
+        public DataTable ConsultNumInventAct(string numInven)
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    //Primero la variable com verifica la conexión con la variable con
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    //Asignamos los parámetros
+                    com.Parameters.AddWithValue("@NumInventario", numInven);
+                    com.CommandText = "NUM_INV_ACTUALIZACION";
+                    com.ExecuteNonQuery();
+                    SqlDataAdapter DA = new SqlDataAdapter();
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+            return tabla;
         }//Fin del método
 
         public DataTable PCLPredeterminado()
@@ -303,6 +363,9 @@ namespace DAL_N1
             return (tabla);
         }//Fin del método
 
+       
+
+
         //Método para generar la lista del numero de inventario
         public List<computadorafinal> GetListaInventario()
         {
@@ -332,7 +395,7 @@ namespace DAL_N1
             return Resp;
         }
         //Método para listar el tipo de conector que tiene el Monitor
-        public List<monitor> GetListaTipoConector()
+        public List<monitor> GetListaTipoConectorMonitor()
         {
             List<monitor> Resp = new List<monitor>();
             using (SqlConnection con = new SqlConnection(CadConnectSql))
@@ -380,5 +443,7 @@ namespace DAL_N1
                 con.Close();
             }
         }//Fin del método
+
+
     }//Fin de la clase
 }
