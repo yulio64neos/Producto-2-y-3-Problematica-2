@@ -58,5 +58,26 @@ namespace FronEnd_N3
             GridView1.DataSource = N2.getTeclado();
             GridView1.DataBind();
         }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            Label1.Text = "TABLA DEL MOUSE, MARCA Y SUS COMPONENTES";
+            GridView1.DataSource = N2.getMouse();
+            GridView1.DataBind();
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            Label1.Text = "TABLA DEL GABINETE, MARCA Y SUS COMPONENTES";
+            GridView1.DataSource = N2.getGabinete();
+            GridView1.DataBind();
+        }
+
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            Label1.Text = "TABLA DEL CPU, MARCA Y SUS COMPONENTES";
+            GridView1.DataSource = N2.getTeclado();
+            GridView1.DataBind();
+        }
     }
 }

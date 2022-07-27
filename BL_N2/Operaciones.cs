@@ -63,9 +63,9 @@ namespace BL_N2
             return obj.ConsultCPU();
         }//Fin del método
 
-        public void Lista_PCFINAL(string numInv)
+        public DataTable Lista_PCFINAL(string numInv)
         {
-            obj.ConsultaPC_NumInvent(numInv);
+           return obj.ConsultaPC_NumInvent(numInv);
         }//Fin del método
 
         public DataTable PCLaboPredeterminado()

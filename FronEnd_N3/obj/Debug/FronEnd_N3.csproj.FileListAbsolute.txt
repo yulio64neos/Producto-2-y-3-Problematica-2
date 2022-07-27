@@ -61,3 +61,5 @@ C:\producto 2 y 3\Producto-2-y-3-Problematica-2\FronEnd_N3\obj\Debug\FronEnd_N3.
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\FronEnd_N3\obj\Debug\FronEnd_N3.csproj.CopyComplete
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\FronEnd_N3\obj\Debug\FronEnd_N3.dll
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\FronEnd_N3\obj\Debug\FronEnd_N3.pdb
+C:\producto 2 y 3\Producto-2-y-3-Problematica-2\FronEnd_N3\bin\Entidades_N0.dll
+C:\producto 2 y 3\Producto-2-y-3-Problematica-2\FronEnd_N3\bin\Entidades_N0.pdb

@@ -227,8 +227,10 @@ namespace DAL_N1
         //----------------------------------------------------------------------------------------------------------
 
         //Consultar PC por numero de inventario
-        public void ConsultaPC_NumInvent(string numInven)
+        public DataTable ConsultaPC_NumInvent(string numInven)
         {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
                 con.Open();
@@ -241,10 +243,14 @@ namespace DAL_N1
                     com.Parameters.AddWithValue("@NumInventario", numInven);
                     com.CommandText = "LISTA_PcCOMPONENTES";
                     com.ExecuteNonQuery();
+                    SqlDataAdapter DA = new SqlDataAdapter(com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
                 }
                 //Cierras la cadena de conexión
                 con.Close();
             }
+            return tabla;
         }//Fin del método
 
         public DataTable PCLPredeterminado()

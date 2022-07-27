@@ -10,8 +10,9 @@
 <asp:Label ID="Label4" runat="server"></asp:Label>
 <br />
 <asp:Label ID="Label1" runat="server" Text="Coloque el numero del inventario: "></asp:Label>
-<asp:TextBox ID="TextBox1" runat="server" Width="233px"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;
+    <asp:DropDownList ID="DropDownList1" runat="server" Height="26px" Width="154px">
+    </asp:DropDownList>
 <asp:Button ID="Button1" runat="server" Text="Mostrar toda la información " OnClick="Button1_Click" />
 &nbsp;&nbsp;&nbsp;
 <asp:Button ID="Button2" runat="server" Text="Mostrar Detalles de Actualización" />
