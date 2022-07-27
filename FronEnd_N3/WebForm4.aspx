@@ -15,6 +15,11 @@
 &nbsp;<asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Consultar moTeclado, marca y el componente" />
 <br />
 <br />
-&nbsp;<asp:GridView ID="GridView1" runat="server">
+&nbsp;
+    <center>
+        <asp:Label ID="Label1" runat="server"></asp:Label>
+        <br />
+    <asp:GridView ID="GridView1" runat="server">
 </asp:GridView>
+        </center>
 </asp:Content>
