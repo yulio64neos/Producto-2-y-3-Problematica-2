@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_N1;
 using System.Data;
+using Entidades_N0;
 
 namespace BL_N2
 {
@@ -61,6 +62,39 @@ namespace BL_N2
         {
             return obj.ConsultCPU();
         }//Fin del método
+
+        public void Lista_PCFINAL(string numInv)
+        {
+            obj.ConsultaPC_NumInvent(numInv);
+        }//Fin del método
+
+        public DataTable PCLaboPredeterminado()
+        {
+            return obj.PCLPredeterminado();
+        }//Fin del método
+
+        public DataTable LaboratorioPCSSD()
+        {
+            return obj.LABOSSD();
+        }//Fin del método
+
+        public string[] DevuelveNumInv()
+        {
+            string[] resp;
+            List<computadorafinal> cpf = obj.GetListaInventario();
+            resp = new string[cpf.Count];
+            for(int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].num_inv;
+            }
+            return resp;
+        }//Fin del método
+
+        public void InsertMarca(string Marca)
+        {
+            obj.InsertarMarca(Marca);
+        }//Fin del método
+
 
     }//Fin de la clase
 }

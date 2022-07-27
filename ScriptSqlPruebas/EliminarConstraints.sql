@@ -369,3 +369,60 @@ alter table cantDisc add Cantidad int
 
 update cantDisc set cantDisc.Cantidad = 3 where id_cant = 5
 update cantDisc set cantDisc.Cantidad = 5 where id_cant = 6
+
+sp_help Marca
+
+/*Insetar Marca con procedimiento almacenado*/
+create procedure INSERTA_MARCA
+@Mar varchar(50)
+as
+begin
+	begin
+		insert into Marca values(@Mar)
+	end
+end
+
+exec INSERTA_MARCA 'BenQ'
+
+select * from Marca
+
+select num_inv from computadorafinal
+
+
+sp_help computadorafinal
+create procedure LISTA_PcCOMPONENTES
+@NumInventario varchar(10)
+as
+begin
+	select computadorafinal.num_inv as 'Número de Inventario', 
+	nom_Componente as 'Componente', 
+	Marca, 
+	modeloCPU as 'CPU', 
+	Modelo, 
+	Familia, 
+	Tipo as 'Tipo de Memoria RAM', 
+	RAM.Velocidad as 'Velocidad de Reloj', 
+	conectores as 'Adaptador del Monitor', 
+	tamano as 'Resolución', 
+	teclado.conector as 'Adaptador del Teclado', 
+	mouse.conector as 'Adaptador del Mouse', 
+	cantDisc.Cantidad as 'Cantidad de Discos'
+	from Componentes
+	inner join Marca_Componente on (Componentes.id_Componente = Marca_Componente.id_Compo)
+	inner join Marca on (Marca_Componente.id_Marca = Marca.Id_Marca)
+	inner join ModeloCPU on (Marca.Id_Marca = ModeloCPU.Id_Marca)
+	inner join Tipo_CPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
+	inner join CPU_Generico on (Tipo_CPU.id_Tcpu = CPU_Generico.f_Tcpu)
+	inner join RAM on (CPU_Generico.f_tipoRam = RAM.id_RAM)
+	inner join TipoRAM on (RAM.F_TipoR = TipoRAM.id_tipoRam)
+	inner join computadorafinal on (CPU_Generico.id_CPU = computadorafinal.id_cpug)
+	inner join monitor on (computadorafinal.id_mong = monitor.id_monitor)
+	inner join teclado on (computadorafinal.id_tecladog = teclado.id_teclado)
+	inner join mouse on (computadorafinal.id_mousg = mouse.id_mouse)
+	inner join cantDisc on (computadorafinal.num_inv = cantDisc.num_inv)
+	where computadorafinal.num_inv = @NumInventario
+end
+
+exec LISTA_PcCOMPONENTES '1234567890'
+
+
