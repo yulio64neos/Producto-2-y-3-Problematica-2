@@ -243,11 +243,7 @@ namespace DAL_N1
                     com.Parameters.AddWithValue("@NumInventario", numInven);
                     com.CommandText = "LISTA_PcCOMPONENTES";
                     com.ExecuteNonQuery();
-<<<<<<< HEAD
-                    SqlDataAdapter DA = new SqlDataAdapter();
-=======
                     SqlDataAdapter DA = new SqlDataAdapter(com);
->>>>>>> Sebastian
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
                 }
@@ -255,7 +251,7 @@ namespace DAL_N1
                 con.Close();
             }
             return tabla;
-<<<<<<< HEAD
+
         }//Fin del método
 
         //Consultar la ubicación de la PC por tipo de adaptador del monitor
@@ -286,7 +282,7 @@ namespace DAL_N1
         }//Fin del método
 
         //Consultar la ubicación de la PC por tipo de adaptador del monitor
-        public DataTable ConsultNumInventAct(string numInven)
+        public DataTable ActualizarPC(string numInven)
         {
             DataTable tabla = null;
             DataSet Contenedor = new DataSet();
@@ -300,9 +296,9 @@ namespace DAL_N1
                     com.CommandType = CommandType.StoredProcedure;
                     //Asignamos los parámetros
                     com.Parameters.AddWithValue("@NumInventario", numInven);
-                    com.CommandText = "NUM_INV_ACTUALIZACION";
+                    com.CommandText = "PC_ACTUALIZACION";
                     com.ExecuteNonQuery();
-                    SqlDataAdapter DA = new SqlDataAdapter();
+                    SqlDataAdapter DA = new SqlDataAdapter(com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
                 }
@@ -310,8 +306,6 @@ namespace DAL_N1
                 con.Close();
             }
             return tabla;
-=======
->>>>>>> Sebastian
         }//Fin del método
 
         public DataTable PCLPredeterminado()
@@ -369,9 +363,6 @@ namespace DAL_N1
             }
             return (tabla);
         }//Fin del método
-
-       
-
 
         //Método para generar la lista del numero de inventario
         public List<computadorafinal> GetListaInventario()

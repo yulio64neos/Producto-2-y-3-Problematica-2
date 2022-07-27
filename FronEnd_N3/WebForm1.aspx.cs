@@ -34,5 +34,12 @@ namespace FronEnd_N3
             GridView1.DataSource = N2.Lista_PCFINAL(numInv);
             GridView1.DataBind();
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string nuInv = DropDownList1.SelectedValue;
+            GridView2.DataSource = N2.PC_Actualizacion(nuInv);
+            GridView2.DataBind();
+        }
     }
 }
