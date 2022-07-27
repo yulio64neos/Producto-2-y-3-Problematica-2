@@ -432,3 +432,57 @@ inner join computadorafinal on (computadorafinal.id_mong = monitor.id_monitor)
 inner join ubicacion on (computadorafinal.num_inv = ubicacion.num_inv) 
 where conectores = 'HDMI';
 
+sp_help monitor
+
+create procedure MONITOR_PC_LABO
+@ADAPTADOR varchar(64)
+as
+begin
+	select conectores as 'Adaptador', computadorafinal.num_inv as 'Numero de Inventario', nombre_laboratorio as 'Laboratorio' from monitor
+	inner join computadorafinal on (computadorafinal.id_mong = monitor.id_monitor)
+	inner join ubicacion on (computadorafinal.num_inv = ubicacion.num_inv) 
+	where conectores = @ADAPTADOR;
+end
+
+exec MONITOR_PC_LABO 'HDMI'
+
+select computadorafinal.num_inv, nombre_laboratorio, descripcion from computadorafinal
+inner join ubicacion on (computadorafinal.num_inv = ubicacion.num_inv)
+inner join actualizacion on (computadorafinal.num_inv = actualizacion.num_inv)
+
+
+select * from computadorafinal
+
+select descripcion, fecha from actualizacion where num_inv = 1234567890
+
+sp_help actualizacion
+
+select * from actualizacion
+insert into actualizacion values ('1234567890', '1456880', 'DISCO RAYADO', '08-08-2022')
+insert into actualizacion values ('1234567892', '1456880', 'NO DA VIDEO', '08-08-2022')
+
+insert into actualizacion values ('1234567890', '1456850', 'FALLA DE ACTUALIZACION', '10-08-2022')
+insert into actualizacion values ('1234567892', '1456830', 'FALLAN PUERTOS USB', '10-08-2022')
+
+select ubicacion.nombre_laboratorio as 'Ubicación del Laboratorio', actualizacion.descripcion as 'Descripcion', actualizacion.fecha as 'Fecha'
+from computadorafinal
+inner join ubicacion on (computadorafinal.num_inv = ubicacion.num_inv)
+inner join actualizacion on (computadorafinal.num_inv = actualizacion.num_inv)
+where computadorafinal.num_inv = 1234567890
+
+
+create procedure NUM_INV_ACTUALIZACION
+@NumInventario varchar(10)
+as
+begin
+	select ubicacion.nombre_laboratorio as 'Ubicación del Laboratorio', actualizacion.descripcion as 'Descripcion', actualizacion.fecha as 'Fecha'
+	from computadorafinal
+	inner join ubicacion on (computadorafinal.num_inv = ubicacion.num_inv)
+	inner join actualizacion on (computadorafinal.num_inv = actualizacion.num_inv)
+	where computadorafinal.num_inv = @NumInventario
+end
+
+exec NUM_INV_ACTUALIZACION 1234567890
+
+
+
