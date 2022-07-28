@@ -99,9 +99,87 @@ namespace FronEnd_N3
                 string[] labor = N2.Devuelvelaboratorio();
                 foreach (var laborn in labor)
                 {
-                    DropDownList2.Items.Add(laborn.ToString());
+                    DropDownList22.Items.Add(laborn.ToString());
+                }
+                string[] tiRAm = N2.DevuelveTiRAM();
+                foreach (var tRa in tiRAm)
+                {
+                    DropDownList11.Items.Add(tRa.ToString());
                 }
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string ind = DropDownList1.SelectedValue;
+            string mMar = DropDownList2.SelectedValue;
+            msj1.Text = N2.ActModCPU(ind,TextBox1.Text,mMar);
+            TextBox1.Text = "";
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string fam = DropDownList3.SelectedValue;
+            string vel = DropDownList4.SelectedValue;
+            string mod = DropDownList5.SelectedValue;
+            msj2.Text = N2.ActTcCPU(fam,vel, TextBox2.Text, TextBox3.Text, mod);
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            string mod = DropDownList6.SelectedValue;
+            string forma = DropDownList7.SelectedValue;
+            string marca = DropDownList8.SelectedValue;
+            msj3.Text = N2.ActGabi(mod, forma, TextBox4.Text, TextBox5.Text, marca);
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            string cap = DropDownList9.SelectedValue;
+            string velo = DropDownList10.SelectedValue;
+            string tip = DropDownList11.SelectedValue;
+            msj4.Text = N2.ActRam(cap, velo, TextBox6.Text, TextBox7.Text, tip);
+            TextBox6.Text = "";
+            TextBox7.Text = "";
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            string con = DropDownList12.SelectedValue;
+            string mat = DropDownList13.SelectedValue;
+            string mar = DropDownList14.SelectedValue;
+            msj5.Text = N2.ActMoni(con, mat, TextBox8.Text, TextBox9.Text, mar);
+            TextBox8.Text = "";
+            TextBox9.Text = "";
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            string cone = DropDownList15.SelectedValue;
+            string mar = DropDownList16.SelectedValue;
+            string mar2 = DropDownList17.SelectedValue;
+            msj6.Text = N2.ActTec(cone, mar, TextBox10.Text, mar2);
+            TextBox10.Text = "";
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            string cone = DropDownList18.SelectedValue;
+            string mar = DropDownList19.SelectedValue;
+            string mar2 = DropDownList20.SelectedValue;
+            msj7.Text = N2.ActMous(cone, mar, TextBox11.Text, mar2);
+            TextBox11.Text = "";
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            string numIn = DropDownList21.SelectedValue;
+            string labo = DropDownList22.SelectedValue;
+            msj8.Text = N2.ActUbica(numIn, labo);
         }
     }
 }

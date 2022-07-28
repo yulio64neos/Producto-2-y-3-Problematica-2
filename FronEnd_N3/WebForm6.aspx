@@ -17,7 +17,7 @@
     <asp:Label ID="Label4" runat="server" Text="Seleccione la Marca: "></asp:Label>
     <asp:DropDownList ID="DropDownList2" runat="server" Height="19px" Width="123px">
     </asp:DropDownList>
-    <asp:Button ID="Button1" runat="server" Text="Actualizar Modelo CPU" Width="203px" />
+    <asp:Button ID="Button1" runat="server" Text="Actualizar Modelo CPU" Width="203px" OnClick="Button1_Click" />
     <br />
     <asp:Label ID="msj1" runat="server"></asp:Label>
     <br />
@@ -44,7 +44,7 @@
 &nbsp;<asp:DropDownList ID="DropDownList5" runat="server" Width="141px">
     </asp:DropDownList>
 &nbsp;
-    <asp:Button ID="Button2" runat="server" Text="Actializar el Tipo del CPU" />
+    <asp:Button ID="Button2" runat="server" Text="Actializar el Tipo del CPU" OnClick="Button2_Click" />
     &nbsp;<br />
     <asp:Label ID="msj2" runat="server"></asp:Label>
     <br />
@@ -68,7 +68,7 @@
     <asp:Label ID="Label14" runat="server" Text="Seleccione la Marca: "></asp:Label>
     <asp:DropDownList ID="DropDownList8" runat="server" Height="16px" Width="171px">
     </asp:DropDownList>
-    <asp:Button ID="Button3" runat="server" Text="Actualizar Gabinete" />
+    <asp:Button ID="Button3" runat="server" Text="Actualizar Gabinete" OnClick="Button3_Click" />
     <br />
     <asp:Label ID="msj3" runat="server"></asp:Label>
     <br />
@@ -92,7 +92,7 @@
     <asp:DropDownList ID="DropDownList11" runat="server" Height="20px" Width="124px">
     </asp:DropDownList>
 &nbsp;
-    <asp:Button ID="Button4" runat="server" Text="Actualizar RAM" />
+    <asp:Button ID="Button4" runat="server" Text="Actualizar RAM" OnClick="Button4_Click" />
     <br />
     <asp:Label ID="msj4" runat="server"></asp:Label>
     <br />
@@ -115,7 +115,7 @@
     <asp:DropDownList ID="DropDownList14" runat="server" Height="16px" Width="117px">
     </asp:DropDownList>
 &nbsp;
-    <asp:Button ID="Button5" runat="server" Text="Actualizar Monitor" />
+    <asp:Button ID="Button5" runat="server" Text="Actualizar Monitor" OnClick="Button5_Click" />
     <br />
     <br />
     <asp:Label ID="msj5" runat="server"></asp:Label>
@@ -140,7 +140,7 @@
     <asp:DropDownList ID="DropDownList17" runat="server" Height="16px" Width="114px">
     </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;
-    <asp:Button ID="Button6" runat="server" Text="Actualizar Teclado" />
+    <asp:Button ID="Button6" runat="server" Text="Actualizar Teclado" OnClick="Button6_Click" />
     <br />
     <asp:Label ID="msj6" runat="server"></asp:Label>
     <br />
@@ -162,7 +162,7 @@
     <asp:DropDownList ID="DropDownList20" runat="server" Height="16px" Width="131px">
     </asp:DropDownList>
 &nbsp;
-    <asp:Button ID="Button7" runat="server" Text="Actualizar Mouse" />
+    <asp:Button ID="Button7" runat="server" Text="Actualizar Mouse" OnClick="Button7_Click" />
 &nbsp;<br />
     <asp:Label ID="msj7" runat="server"></asp:Label>
     <br />
@@ -172,10 +172,10 @@
 &nbsp;<asp:DropDownList ID="DropDownList21" runat="server" Height="21px" Width="169px">
     </asp:DropDownList>
 &nbsp;<asp:Label ID="Label34" runat="server" Text="Seleccione la nueva ubicacion que se instalara : "></asp:Label>
-    <asp:DropDownList ID="DropDownList22" runat="server">
+    <asp:DropDownList ID="DropDownList22" runat="server" Height="20px" Width="120px">
     </asp:DropDownList>
     <br />
-    <asp:Button ID="Button8" runat="server" Text="Actualizar Ubicacion" />
+    <asp:Button ID="Button8" runat="server" Text="Actualizar Ubicacion" OnClick="Button8_Click" />
     <br />
     <asp:Label ID="msj8" runat="server"></asp:Label>
 </asp:Content>

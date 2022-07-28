@@ -497,7 +497,7 @@ namespace DAL_N1
                 con.Close();
             }
             return Resp;
-        }
+        }        
 
         public List<Tipo_CPU> GetListaFamCPU()
         {
@@ -796,7 +796,7 @@ namespace DAL_N1
                         {
                             laboratorio objCPUFinal = new laboratorio()
                             {
-                                nombre_laboratotio = Convert.ToString(lect["nombre_laboratotio"])
+                                nombre_laboratorio = Convert.ToString(lect["nombre_laboratorio"])
                             };
                             Resp.Add(objCPUFinal);
                         }
@@ -806,5 +806,202 @@ namespace DAL_N1
             }
             return Resp;
         }
+
+        public List<TipoRAM> GetListaTiRAM()
+        {
+            List<TipoRAM> Resp = new List<TipoRAM>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Tipo FROM TipoRAM;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            TipoRAM objCPUFinal = new TipoRAM()
+                            {
+                                Tipo = Convert.ToString(lect["Tipo"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public void ACT_MODCPU(string indica1,string camMod, string camMar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@in1", indica1);
+                    com.Parameters.AddWithValue("@cModelo", camMod);
+                    com.Parameters.AddWithValue("@cMar", camMar);
+                    com.CommandText = "Act_MODCPU ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_TCPU(string indica1, string indica2, string mFam, string mVel, string mMod)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@ind1", indica1);
+                    com.Parameters.AddWithValue("@ind2", indica2);
+                    com.Parameters.AddWithValue("@mfam", mFam);
+                    com.Parameters.AddWithValue("@mVelo", mVel);
+                    com.Parameters.AddWithValue("@mMod", mMod);
+                    com.CommandText = "Act_TCPU ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_GABI(string indica1, string indica2, string mMod, string mFor, string mMar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@indicar1", indica1);
+                    com.Parameters.AddWithValue("@indicar2", indica2);
+                    com.Parameters.AddWithValue("@caModelo", mMod);
+                    com.Parameters.AddWithValue("@tForma", mFor);
+                    com.Parameters.AddWithValue("@idMarca", mMar);
+                    com.CommandText = "Act_GABINETE ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_RAM(string indica1, string indica2, string mCap, string mVel, string mTR)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@indicar", indica1);
+                    com.Parameters.AddWithValue("@indicar2", indica2);
+                    com.Parameters.AddWithValue("@caCapacida", mCap);
+                    com.Parameters.AddWithValue("@camVelocida", mVel);
+                    com.Parameters.AddWithValue("@tipoR", mTR);
+                    com.CommandText = "Act_RAM ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_MONI(string indica1, string indica2, string mConec, string mTam, string mMar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@indicar", indica1);
+                    com.Parameters.AddWithValue("@indicar2", indica2);
+                    com.Parameters.AddWithValue("@camConec", mConec);
+                    com.Parameters.AddWithValue("@tamano", mTam);
+                    com.Parameters.AddWithValue("@camMarca", mMar);
+                    com.CommandText = "Act_MONITOR ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_TECL(string indica1, string indica2, string mConec, string mMar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@indicar", indica1);
+                    com.Parameters.AddWithValue("@indicar2", indica2);
+                    com.Parameters.AddWithValue("@camConec", mConec);
+                    com.Parameters.AddWithValue("@camMarca", mMar);
+                    com.CommandText = "Act_TECLADO ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_MOUS(string indica1, string indica2, string mConec, string mMar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@indica", indica1);
+                    com.Parameters.AddWithValue("@indca2", indica2);
+                    com.Parameters.AddWithValue("@camConec", mConec);
+                    com.Parameters.AddWithValue("@camMarca", mMar);
+                    com.CommandText = "Act_MOUSES ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_UBI(string indica1, string caml)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@elijo", indica1);
+                    com.Parameters.AddWithValue("@cam1", caml);
+                    com.CommandText = "Act_UBICACION ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
     }//Fin de la clase
 }

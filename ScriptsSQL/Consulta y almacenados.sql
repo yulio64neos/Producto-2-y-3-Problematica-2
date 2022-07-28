@@ -166,20 +166,20 @@ END
 ------------------------------------ACTUALIZACION------------------------------------------------------------------
 --ACTUALIZAR UBICACION
 ALTER PROCEDURE Act_UBICACION
-@cam1 varchar(65),@elijo varchar(65)
+@elijo varchar(65), @cam1 varchar(65)
 AS
 BEGIN 
 UPDATE ubicacion SET nombre_laboratorio=@cam1 WHERE num_inv=@elijo
 END
 
 SELECT * FROM ubicacion
-SELECT * FROM TipoRAM
+SELECT * FROM laboratorio
 sp_help laboratorio
-EXEC Act_UBICACION K1,1234567892
+EXEC Act_UBICACION 1234567892,K2
 
 
 --ACTUALIZAR MOUSE
-CREATE PROCEDURE Act_MOUSE
+CREATE PROCEDURE Act_MOUSES
 @indica varchar(64), @indca2 varchar(64),
 @camConec varchar(64), @camMarca varchar(50)
 AS
@@ -188,45 +188,53 @@ UPDATE mouse SET conector = @camConec, Id_Marca=(SELECT Id_Marca FROM Marca WHER
 WHERE conector=@indica AND Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@indca2)
 END
 
-SELECT * FROM ubicacion
+SELECT * FROM monitor
 SELECT * FROM Marca
-EXEC Act_MOUSE MICROSOFT,a,RJ47,XPG
+EXEC Act_MOUSES RJ47,XPG,HDMI,MSI
 
 --ACTUALIZAR TECLADO
 CREATE PROCEDURE Act_TECLADO
-@indicar varchar(64),
+@indicar varchar(64),@indicar2 varchar(64),
 @camConec varchar(64), @camMarca varchar(50)
 AS
 BEGIN 
 UPDATE teclado SET conector = @camConec, Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@camMarca)  
-WHERE conector=@indicar AND Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@indicar)
+WHERE conector=@indicar AND Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@indicar2)
 END
 
 SELECT * FROM teclado
 SELECT * FROM Marca
-EXEC Act_TECLADO HP,PS27, HP
+EXEC Act_TECLADO USB,VORAGO,GBA,WD
 
 --ACTUALIZAR MONITOR
 CREATE PROCEDURE Act_MONITOR
-@indicar varchar(64),
+@indicar varchar(64), @indicar2 varchar(64),
 @camConec varchar(64), @tamano varchar(64), @camMarca varchar(50)
 AS
 BEGIN 
 UPDATE monitor SET conectores = @camConec, tamano=@tamano,Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@camMarca)  
-WHERE conectores=@indicar AND Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@indicar)
+WHERE conectores=@indicar AND Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@indicar2)
 END
 
-SELECT * FROM computadorafinal
+SELECT * FROM monitor
+SELECT * FROM Marca
+EXEC Act_MONITOR VGA,ASUS,GVA,x, WD
+
+SELECT Marca FROM Marca WHERE Id_Marca!=(SELECT Id_Marca FROM monitor  WHERE Id_Marca=8)
+
 --ACTUALIZAR RAM
 CREATE PROCEDURE Act_RAM
 @indicar varchar(64), @indicar2 varchar(64),
 @caCapacida smallint, @camVelocida varchar(64), @tipoR varchar(64)
 AS
 BEGIN 
-UPDATE RAM SET Capacidad=@caCapacida, Velocidad =@camVelocida, id_RAM=(SELECT id_tipoRam FROM TipoRAM WHERE
+UPDATE RAM SET Capacidad=@caCapacida, Velocidad =@camVelocida, F_TipoR=(SELECT id_tipoRam FROM TipoRAM WHERE
 Tipo=@tipoR) WHERE Capacidad =@indicar AND Velocidad=@indicar2
 END
 SELECT * FROM RAM
+SELECT * FROM TipoRAM
+EXEC Act_RAM 8,700,12,900,DDR4
+
 --ACTUALIZAR GABINETE
 CREATE PROCEDURE Act_GABINETE
 @indicar1 varchar(64), @indicar2 varchar(64),
@@ -237,6 +245,7 @@ UPDATE Gabinete SET Modelo=@caModelo, TipoForma=@tForma, Id_Marca=(SELECT Id_Mar
 WHERE Modelo=@indicar1 AND TipoForma=@indicar2
 END
 SELECT * FROM Gabinete
+EXEC Act_GABINETE Generico,Torre, Hibrido,Cas,HP
 --ACTUALIZAR TIPO CPU
 CREATE PROCEDURE Act_TCPU
 @ind1 varchar(30), @ind2 varchar(50),
@@ -246,7 +255,8 @@ BEGIN
 UPDATE Tipo_CPU SET Familia=@mfam, Velocidad=@mVelo, id_modcpu=(SELECT id_modcpu FROM ModeloCPU WHERE modeloCPU=@mMod)
 WHERE Familia=@ind1 AND Velocidad =@ind2
 END
-
+SELECT * FROM Tipo_CPU
+EXEC Act_TCPU ongen,ghz,Gen,ghzx,Phenom
 --ACTUALIZAR MODELO
 CREATE PROCEDURE Act_MODCPU
 @in1 varchar(50),
@@ -259,4 +269,4 @@ END
 
 	SELECT * FROM ModeloCPU
 	SELECT * FROM Marca
-EXEC Act_MODCPU IntelR,Pentium, Intel
+EXEC Act_MODCPU 
