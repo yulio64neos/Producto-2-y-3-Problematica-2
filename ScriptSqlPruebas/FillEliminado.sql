@@ -1,4 +1,5 @@
 --ALTER TABLE DELETE ON CASCADE
+use InventarioPCsLabs
 
 alter table monitor drop constraint fk_marca_monitor
 alter table monitor drop column Id_Marca
@@ -259,7 +260,7 @@ sp_help computadorafinal
 
 
 insert into computadorafinal values
-('1234567890', '14651456125', '14651456137', 6 ,'14651456140', 5, '14651456139', 5, 'K1', 12)
+('9876543210', '14651456125', '14651456137', 6 ,'14651456140', 5, '14651456139', 5,  12, 'K1')
 
 
 insert into CPU_Generico values
