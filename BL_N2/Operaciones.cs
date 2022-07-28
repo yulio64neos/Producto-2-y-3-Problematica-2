@@ -119,5 +119,162 @@ namespace BL_N2
         }//Fin del método
 
 
+        /*----------------------------------------METODOS PARA LAS ACTUALIZACIONES---------------------------------------------*/
+        public string[] DevuelveModeloCPU()
+        {
+            string[] resp;
+            List<ModeloCPU> cpf = obj.GetListaMCP();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].modeloCPU;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveMarcas()
+        {
+            string[] resp;
+            List<Marca> cpf = obj.GetListaMarcas();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].marca;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveFamilia()
+        {
+            string[] resp;
+            List<Tipo_CPU> cpf = obj.GetListaFamCPU();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].Familia;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveVelCPU()
+        {
+            string[] resp;
+            List<Tipo_CPU> cpf = obj.GetListaVelCPU();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].Velicidad;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveModGab()
+        {
+            string[] resp;
+            List<Gabinete> cpf = obj.GetListaModGabi();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].Modelo;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveTipGabinete()
+        {
+            string[] resp;
+            List<Gabinete> cpf = obj.GetListaTipGabi();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].TipoForma;
+            }
+            return resp;
+        }//Fin del método
+
+        public int[] DevuelveCapRam()
+        {
+            int[] resp;
+            List<RAM> cpf = obj.GetListaCapRAM();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].Capacidad;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveVelRam()
+        {
+            string[] resp;
+            List<RAM> cpf = obj.GetListaVelRAM();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].Velocidad;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveConMon()
+        {
+            string[] resp;
+            List<monitor> cpf = obj.GetListaConMoni();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].conectores;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveConTec()
+        {
+            string[] resp;
+            List<teclado> cpf = obj.GetListaConTec();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].conector;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveConMus()
+        {
+            string[] resp;
+            List<mouse> cpf = obj.GetListaConMou();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].conector;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveUbicacion()
+        {
+            string[] resp;
+            List<ubicacion> cpf = obj.GetListaNumUbi();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].num_int;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] Devuelvelaboratorio()
+        {
+            string[] resp;
+            List<laboratorio> cpf = obj.GetListaLab();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].nombre_laboratotio;
+            }
+            return resp;
+        }//Fin del método
+
     }//Fin de la clase
 }

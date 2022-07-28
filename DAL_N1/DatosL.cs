@@ -441,5 +441,370 @@ namespace DAL_N1
                 con.Close();
             }
         }//Fin del método
+
+        /*--------------------------------------------------ACTUALIZACIONES--------------------------------------------------------------------*/
+        public List<ModeloCPU> GetListaMCP()
+        {
+            List<ModeloCPU> Resp = new List<ModeloCPU>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT modeloCPU FROM ModeloCPU;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            ModeloCPU objCPUFinal = new ModeloCPU()
+                            {
+                                modeloCPU = Convert.ToString(lect["modeloCPU"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Marca> GetListaMarcas()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Marca FROM Marca;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca objCPUFinal = new Marca()
+                            {
+                                marca = Convert.ToString(lect["Marca"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Tipo_CPU> GetListaFamCPU()
+        {
+            List<Tipo_CPU> Resp = new List<Tipo_CPU>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Familia FROM Tipo_CPU;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Tipo_CPU objCPUFinal = new Tipo_CPU()
+                            {
+                                Familia = Convert.ToString(lect["Familia"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Tipo_CPU> GetListaVelCPU()
+        {
+            List<Tipo_CPU> Resp = new List<Tipo_CPU>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Velocidad FROM Tipo_CPU;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Tipo_CPU objCPUFinal = new Tipo_CPU()
+                            {
+                                Velicidad = Convert.ToString(lect["Velocidad"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Gabinete> GetListaModGabi()
+        {
+            List<Gabinete> Resp = new List<Gabinete>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Modelo FROM Gabinete;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Gabinete objCPUFinal = new Gabinete()
+                            {
+                                Modelo = Convert.ToString(lect["Modelo"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Gabinete> GetListaTipGabi()
+        {
+            List<Gabinete> Resp = new List<Gabinete>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT TipoForma FROM Gabinete;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Gabinete objCPUFinal = new Gabinete()
+                            {
+                                TipoForma = Convert.ToString(lect["TipoForma"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<RAM> GetListaCapRAM()
+        {
+            List<RAM> Resp = new List<RAM>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Capacidad FROM RAM;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            RAM objCPUFinal = new RAM()
+                            {
+                                Capacidad = Convert.ToInt32(lect["Capacidad"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<RAM> GetListaVelRAM()
+        {
+            List<RAM> Resp = new List<RAM>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Velocidad FROM RAM;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            RAM objCPUFinal = new RAM()
+                            {
+                                Velocidad = Convert.ToString(lect["Velocidad"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<monitor> GetListaConMoni()
+        {
+            List<monitor> Resp = new List<monitor>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT conectores FROM monitor;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            monitor objCPUFinal = new monitor()
+                            {
+                               conectores = Convert.ToString(lect["conectores"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<teclado> GetListaConTec()
+        {
+            List<teclado> Resp = new List<teclado>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT conector FROM teclado;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            teclado objCPUFinal = new teclado()
+                            {
+                                conector = Convert.ToString(lect["conector"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<mouse> GetListaConMou()
+        {
+            List<mouse> Resp = new List<mouse>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT conector FROM mouse;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            mouse objCPUFinal = new mouse()
+                            {
+                                conector = Convert.ToString(lect["conector"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<ubicacion> GetListaNumUbi()
+        {
+            List<ubicacion> Resp = new List<ubicacion>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT num_inv FROM ubicacion;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            ubicacion objCPUFinal = new ubicacion()
+                            {
+                                num_int = Convert.ToString(lect["num_inv"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<laboratorio> GetListaLab()
+        {
+            List<laboratorio> Resp = new List<laboratorio>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT nombre_laboratorio FROM laboratorio;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            laboratorio objCPUFinal = new laboratorio()
+                            {
+                                nombre_laboratotio = Convert.ToString(lect["nombre_laboratotio"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
     }//Fin de la clase
 }

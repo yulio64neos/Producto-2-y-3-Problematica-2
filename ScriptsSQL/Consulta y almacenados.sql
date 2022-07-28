@@ -22,13 +22,17 @@ INNER JOIN DiscoDuro ON (cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
 --Modelo ¨CPU
-CREATE PROCEDURE InsertarModCpu
+CREATE PROCEDURE IntesertaMCPU
 @modeloCPU varchar(50),
 @idMarca varchar(50) 
 AS
 BEGIN 
 INSERT INTO ModeloCPU VALUES (@modeloCPU, (SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
 end
+
+SELECT * FROM ModeloCPU 
+SELECT * FROM Marca 
+EXEC IntesertaMCPU OptiPlex,WD  
 --TIPO CPU
 CREATE PROCEDURE InsertarTipoCPU
 @familia varchar(30),
@@ -36,16 +40,22 @@ CREATE PROCEDURE InsertarTipoCPU
 @idModeloCPU varchar(50)
 AS
 BEGIN 
-INSERT Tipo_CPU VALUES(@familia,@velocidad,(SELECT id_modcpu FROM ModeloCPU WHERE ModeloCPU.modeloCPU=@idModeloCPU))
+INSERT Tipo_CPU VALUES(@familia,@velocidad,(SELECT id_modcpu FROM ModeloCPU WHERE modeloCPU=@idModeloCPU))
 END
+
+SELECT * FROM Tipo_CPU
+EXEC InsertarTipoCPU ongen,ghz,Pentium
 --TIPO RAM
 CREATE PROCEDURE InsertarTipoRAM
-@tipo varchar(20),
-@extra varchar(30)
+@tipo varchar(20)
 AS
 BEGIN 
-INSERT TipoRAM VALUES(@tipo,@extra)
+INSERT TipoRAM VALUES(@tipo)
 END
+
+SELECT * FROM TipoRAM
+EXEC InsertarTipoRAM DDR4
+
 --RAM
 CREATE PROCEDURE InsertarRAM
 @capacidad smallint,
@@ -55,6 +65,10 @@ AS
 BEGIN 
 INSERT RAM VALUES(@capacidad, @velocidad,(SELECT id_tipoRam FROM TipoRAM WHERE TipoRAM.Tipo=@idTipo))
 END
+
+SELECT * FROM RAM
+EXEC InsertarRAM 8,700,DDR4
+
 --GABINETE
 CREATE PROCEDURE InsertarGabinete
 @modelo varchar(10),
@@ -147,3 +161,102 @@ BEGIN
 INSERT actualizacion VALUES((SELECT num_inv FROM computadorafinal WHERE computadorafinal.num_inv=@num_inv),
 @num_serie, @des, GETDATE())
 END
+
+--EXEC EliminarPCFINAL 1234567892
+------------------------------------ACTUALIZACION------------------------------------------------------------------
+--ACTUALIZAR UBICACION
+ALTER PROCEDURE Act_UBICACION
+@cam1 varchar(65),@elijo varchar(65)
+AS
+BEGIN 
+UPDATE ubicacion SET nombre_laboratorio=@cam1 WHERE num_inv=@elijo
+END
+
+SELECT * FROM ubicacion
+SELECT * FROM TipoRAM
+sp_help laboratorio
+EXEC Act_UBICACION K1,1234567892
+
+
+--ACTUALIZAR MOUSE
+CREATE PROCEDURE Act_MOUSE
+@indica varchar(64), @indca2 varchar(64),
+@camConec varchar(64), @camMarca varchar(50)
+AS
+BEGIN 
+UPDATE mouse SET conector = @camConec, Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@camMarca)  
+WHERE conector=@indica AND Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@indca2)
+END
+
+SELECT * FROM ubicacion
+SELECT * FROM Marca
+EXEC Act_MOUSE MICROSOFT,a,RJ47,XPG
+
+--ACTUALIZAR TECLADO
+CREATE PROCEDURE Act_TECLADO
+@indicar varchar(64),
+@camConec varchar(64), @camMarca varchar(50)
+AS
+BEGIN 
+UPDATE teclado SET conector = @camConec, Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@camMarca)  
+WHERE conector=@indicar AND Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@indicar)
+END
+
+SELECT * FROM teclado
+SELECT * FROM Marca
+EXEC Act_TECLADO HP,PS27, HP
+
+--ACTUALIZAR MONITOR
+CREATE PROCEDURE Act_MONITOR
+@indicar varchar(64),
+@camConec varchar(64), @tamano varchar(64), @camMarca varchar(50)
+AS
+BEGIN 
+UPDATE monitor SET conectores = @camConec, tamano=@tamano,Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@camMarca)  
+WHERE conectores=@indicar AND Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@indicar)
+END
+
+SELECT * FROM computadorafinal
+--ACTUALIZAR RAM
+CREATE PROCEDURE Act_RAM
+@indicar varchar(64), @indicar2 varchar(64),
+@caCapacida smallint, @camVelocida varchar(64), @tipoR varchar(64)
+AS
+BEGIN 
+UPDATE RAM SET Capacidad=@caCapacida, Velocidad =@camVelocida, id_RAM=(SELECT id_tipoRam FROM TipoRAM WHERE
+Tipo=@tipoR) WHERE Capacidad =@indicar AND Velocidad=@indicar2
+END
+SELECT * FROM RAM
+--ACTUALIZAR GABINETE
+CREATE PROCEDURE Act_GABINETE
+@indicar1 varchar(64), @indicar2 varchar(64),
+@caModelo varchar(10), @tForma varchar(30), @idMarca varchar(64) 
+AS
+BEGIN 
+UPDATE Gabinete SET Modelo=@caModelo, TipoForma=@tForma, Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca)
+WHERE Modelo=@indicar1 AND TipoForma=@indicar2
+END
+SELECT * FROM Gabinete
+--ACTUALIZAR TIPO CPU
+CREATE PROCEDURE Act_TCPU
+@ind1 varchar(30), @ind2 varchar(50),
+@mfam varchar(30), @mVelo varchar(50), @mMod varchar(64)
+AS
+BEGIN 
+UPDATE Tipo_CPU SET Familia=@mfam, Velocidad=@mVelo, id_modcpu=(SELECT id_modcpu FROM ModeloCPU WHERE modeloCPU=@mMod)
+WHERE Familia=@ind1 AND Velocidad =@ind2
+END
+
+--ACTUALIZAR MODELO
+CREATE PROCEDURE Act_MODCPU
+@in1 varchar(50),
+@cModelo varchar(50), @cMar varchar(64)
+AS
+BEGIN 
+UPDATE ModeloCPU SET modeloCPU=@cModelo, Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@cMar)
+WHERE modeloCPU =@in1
+END
+
+	SELECT * FROM ModeloCPU
+	SELECT * FROM Marca
+EXEC Act_MODCPU IntelR,Pentium, Intel
