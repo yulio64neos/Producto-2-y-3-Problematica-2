@@ -458,11 +458,11 @@ select descripcion, fecha from actualizacion where num_inv = 1234567890
 sp_help actualizacion
 
 select * from actualizacion
-insert into actualizacion values ('1234567890', '1456880', 'DISCO RAYADO', '08-08-2022')
-insert into actualizacion values ('1234567892', '1456880', 'NO DA VIDEO', '08-08-2022')
+insert into actualizacion values ('1456880', 'DISCO RAYADO', '08-08-2022', '1234567890')
+insert into actualizacion values ('1456880', 'NO DA VIDEO', '08-08-2022', '1234567892')
 
-insert into actualizacion values ('1234567890', '1456850', 'FALLA DE ACTUALIZACION', '10-08-2022')
-insert into actualizacion values ('1234567892', '1456830', 'FALLAN PUERTOS USB', '10-08-2022')
+insert into actualizacion values ('1456850', 'FALLA DE ACTUALIZACION', '10-08-2022', '1234567890')
+insert into actualizacion values ('1456830', 'FALLAN PUERTOS USB', '10-08-2022', '1234567892')
 
 select ubicacion.nombre_laboratorio as 'Ubicación del Laboratorio', actualizacion.descripcion as 'Descripcion', actualizacion.fecha as 'Fecha'
 from computadorafinal
