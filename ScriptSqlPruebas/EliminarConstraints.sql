@@ -434,14 +434,14 @@ where conectores = 'HDMI';
 
 sp_help monitor
 
-create procedure MONITOR_PC_LABO
+alter procedure MONITOR_PC_LABO
 @ADAPTADOR varchar(64)
 as
 begin
 	select conectores as 'Adaptador', computadorafinal.num_inv as 'Numero de Inventario', nombre_laboratorio as 'Laboratorio' from monitor
 	inner join computadorafinal on (computadorafinal.id_mong = monitor.id_monitor)
-	inner join ubicacion on (computadorafinal.num_inv = ubicacion.num_inv) 
-	where conectores = @ADAPTADOR;
+	inner join laboratorio on (computadorafinal.nom_labo = laboratorio.nombre_laboratorio)
+	where monitor.conectores = @ADAPTADOR;
 end
 
 exec MONITOR_PC_LABO 'HDMI'
@@ -471,13 +471,13 @@ inner join actualizacion on (computadorafinal.num_inv = actualizacion.num_inv)
 where computadorafinal.num_inv = 1234567890
 
 
-create procedure PC_ACTUALIZACION
+alter procedure PC_ACTUALIZACION
 @NumInventario varchar(10)
 as
 begin
-	select ubicacion.nombre_laboratorio as 'Ubicación del Laboratorio', actualizacion.descripcion as 'Descripcion', actualizacion.fecha as 'Fecha'
+	select laboratorio.nombre_laboratorio as 'Ubicación del Laboratorio', actualizacion.descripcion as 'Descripcion', actualizacion.fecha as 'Fecha'
 	from computadorafinal
-	inner join ubicacion on (computadorafinal.num_inv = ubicacion.num_inv)
+	inner join laboratorio on (computadorafinal.nom_labo = laboratorio.nombre_laboratorio)
 	inner join actualizacion on (computadorafinal.num_inv = actualizacion.num_inv)
 	where computadorafinal.num_inv = @NumInventario
 end

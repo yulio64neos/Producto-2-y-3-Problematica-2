@@ -290,3 +290,10 @@ select * from CPU_Generico
 select * from computadorafinal
 select * from actualizacion
 select * from ubicacion
+
+select * from computadorafinal
+select * from ubicacion
+
+update ubicacion set num_inv = 1234567890 where nombre_laboratorio = 'K1'
+
+sp_help computadorafinal

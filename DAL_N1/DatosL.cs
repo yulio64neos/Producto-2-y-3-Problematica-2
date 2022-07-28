@@ -280,7 +280,7 @@ namespace DAL_N1
             return tabla;
         }//Fin del método
 
-        //Consultar la ubicación de la PC por tipo de adaptador del monitor
+        //Consulta el numero de inventario obteniendo la ubicación y sus actualizaciones
         public DataTable ActualizarPC(string numInven)
         {
             DataTable tabla = null;
@@ -316,19 +316,23 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', CPU_Generico.Modelo as 'Modelo del CPU', " +
+                    Com.CommandText = "SELECT laboratorio.nombre_laboratorio as 'Laboratorio asignado', CPU_Generico.Modelo as 'Modelo del CPU', " +
                         "teclado.conector as 'Conector del teclado', " +
                         "monitor.conectores as 'Conector del monitor', " +
                         "mouse.conector as 'Conector del mouse', " +
                         "DiscoDuro.TipoDisco as 'Tipo de DD', " +
-                        "DiscoDuro.Capacidad as 'Capacidad de DD' FROM ubicacion " +
-                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) " +
+                        "DiscoDuro.Capacidad as 'Capacidad de DD', " +
+                        "TipoRAM.Tipo as 'Tipo de Memoria RAM', " +
+                        "RAM.Capacidad as 'Almacenamiento RAM' from laboratorio " +
+                        "INNER JOIN computadorafinal ON(computadorafinal.nom_labo = laboratorio.nombre_laboratorio) " +
                         "INNER JOIN CPU_Generico ON(computadorafinal.id_cpug = CPU_Generico.id_CPU) " +
                         "INNER JOIN teclado ON(computadorafinal.id_tecladog = teclado.id_teclado) " +
                         "INNER JOIN monitor ON(computadorafinal.id_mong = monitor.id_monitor) " +
                         "INNER JOIN mouse ON(computadorafinal.id_mousg = mouse.id_mouse) " +
                         "INNER JOIN cantDisc ON(computadorafinal.num_inv = cantDisc.num_inv) " +
-                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco);";
+                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) " +
+                        "INNER JOIN RAM on (RAM.id_RAM = CPU_Generico.f_tipoRam) " +
+                        "INNER JOIN TipoRAM on (RAM.F_TipoR = TipoRAM.id_tipoRam) ";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
@@ -349,12 +353,13 @@ namespace DAL_N1
                 using (SqlCommand Com = new SqlCommand())
                 {
                     Com.Connection = con;
-                    Com.CommandText = "SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', " +
-                        "DiscoDuro.TipoDisco as 'Equipos con Discos de estado Solido' " +
-                        "FROM ubicacion " +
-                        "INNER JOIN computadorafinal ON(ubicacion.num_inv = computadorafinal.num_inv) " +
+                    Com.CommandText = "SELECT computadorafinal.num_inv as 'Número del Equipo', " +
+                        "laboratorio.nombre_laboratorio as 'Laboratorio asignado', " +
+                        "DiscoDuro.TipoDisco as 'Tipo de Disco' " +
+                        "FROM laboratorio " +
+                        "INNER JOIN computadorafinal ON(laboratorio.nombre_laboratorio = computadorafinal.nom_labo) " +
                         "INNER JOIN cantDisc ON(computadorafinal.num_inv = cantDisc.num_inv) " +
-                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco = 'Estado Sólido'; ";
+                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco = 'SSD' ";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
