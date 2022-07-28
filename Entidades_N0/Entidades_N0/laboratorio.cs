@@ -8,6 +8,6 @@ namespace Entidades_N0
 {
     public class laboratorio
     {
-        public string nombre_laboratotio { set; get; }
+        public string nombre_laboratorio { set; get; }
     }
 }
