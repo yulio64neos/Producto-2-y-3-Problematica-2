@@ -471,6 +471,34 @@ namespace DAL_N1
             return Resp;
         }
 
+        public List<CPU_Generico> GetListaMCPUG()
+        {
+            List<CPU_Generico> Resp = new List<CPU_Generico>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Modelo FROM CPU_Generico;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            CPU_Generico objCPUFinal = new CPU_Generico()
+                            {
+                                Modelo = Convert.ToString(lect["Modelo"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
         public List<Marca> GetListaMarcas()
         {
             List<Marca> Resp = new List<Marca>();
@@ -695,6 +723,34 @@ namespace DAL_N1
             return Resp;
         }
 
+        public List<monitor> GetListaTamMoni()
+        {
+            List<monitor> Resp = new List<monitor>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT tamano FROM monitor;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            monitor objCPUFinal = new monitor()
+                            {
+                                tamano = Convert.ToString(lect["tamano"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
         public List<teclado> GetListaConTec()
         {
             List<teclado> Resp = new List<teclado>();
@@ -825,6 +881,34 @@ namespace DAL_N1
                             TipoRAM objCPUFinal = new TipoRAM()
                             {
                                 Tipo = Convert.ToString(lect["Tipo"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<DiscoDuro> GetListaDD()
+        {
+            List<DiscoDuro> Resp = new List<DiscoDuro>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT TipoDisco FROM DiscoDuro;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            DiscoDuro objCPUFinal = new DiscoDuro()
+                            {
+                                TipoDisco = Convert.ToString(lect["TipoDisco"])
                             };
                             Resp.Add(objCPUFinal);
                         }
@@ -997,6 +1081,269 @@ namespace DAL_N1
                     com.Parameters.AddWithValue("@elijo", indica1);
                     com.Parameters.AddWithValue("@cam1", caml);
                     com.CommandText = "Act_UBICACION ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        /*------------------------------------------------------METODOS DE AGREGADO------------------------------------------------------*/
+        public void AGR_TIRAM(string tipo)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@tipo", tipo);
+                    com.CommandText = "InsertarTipoRAM ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_RAM(string cap, string velo, string idT)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@capacidad", cap);
+                    com.Parameters.AddWithValue("@velocidad", velo);
+                    com.Parameters.AddWithValue("@idTipo", idT);
+                    com.CommandText = "InsertarRAM ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_GABI(string Mod, string TFo, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@modelo", Mod);
+                    com.Parameters.AddWithValue("@tipoFo", TFo);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "InsertarGabinete ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_MOCPU(string mod, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@modeloCPU", mod);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "IntesertaMCPU2 ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_TCPU(string fam, string vel, string idMC)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@familia", fam);
+                    com.Parameters.AddWithValue("@velocidad", vel);
+                    com.Parameters.AddWithValue("@idModeloCPU", idMC);
+                    com.CommandText = "InsertarTipoCPU1 ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_CPUG(string mod, string GM, string GT, string RC, string RV, string CF, string CV)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Modelo", mod);
+                    com.Parameters.AddWithValue("@idGabineteM", GM);
+                    com.Parameters.AddWithValue("@idGabineteT", GT);
+                    com.Parameters.AddWithValue("@tRamC", RC);
+                    com.Parameters.AddWithValue("@tRamV", RV);
+                    com.Parameters.AddWithValue("@tCPUf", CF);
+                    com.Parameters.AddWithValue("@tCPUv", CV);
+                    com.CommandText = "InsertarCPUGenerico ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_MOUSE(string cone, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@coenctor", cone);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "InsertarMouse ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_TECLADO(string cone, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@conector", cone);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "InsertarTeclado ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_MONIT(string conec, string tam, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@conectores", conec);
+                    com.Parameters.AddWithValue("@tamano", tam);
+                    com.Parameters.AddWithValue("@idMarca",mar);
+                    com.CommandText = "InsertarMonitor ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_DD(string TD, string cnec, string cap, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@TipoD", TD);
+                    com.Parameters.AddWithValue("@coenctor", cnec);
+                    com.Parameters.AddWithValue("@capacidad", cap);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "InsertarDD ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_CANDD(string idDD, int cant,string num)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idDisco", idDD);
+                    com.Parameters.AddWithValue("@cantidad", cant);
+                    com.Parameters.AddWithValue("@num_inv", num);
+                    com.CommandText = "InsertarCANTDISCO ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_LAB(string nom)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@num_inv", nom);
+                    com.CommandText = "InsertarLABORATORIO ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_PCFINAL(string num, string IT, string MOC, string MOT, string IM, string CG, string LB)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@num", num);
+                    com.Parameters.AddWithValue("@idtec", IT);
+                    com.Parameters.AddWithValue("@idMonC",MOC);
+                    com.Parameters.AddWithValue("@idMonT",MOT);
+                    com.Parameters.AddWithValue("@idMous",IM);
+                    com.Parameters.AddWithValue("@idCpu",CG);
+                    com.Parameters.AddWithValue("@idLab",LB);
+                    com.CommandText = "InsertarPCFINAL ";
                     com.ExecuteNonQuery();
                 }
                 //Cierras la cadena de conexión

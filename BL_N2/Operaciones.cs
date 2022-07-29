@@ -113,6 +113,18 @@ namespace BL_N2
             return resp;
         }//Fin del método
 
+        public string[] DevuelveDD()
+        {
+            string[] resp;
+            List<DiscoDuro> cpf = obj.GetListaDD();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].TipoDisco;
+            }
+            return resp;
+        }//Fin del método
+
         public void InsertMarca(string Marca)
         {
             obj.InsertarMarca(Marca);
@@ -128,6 +140,18 @@ namespace BL_N2
             for (int i = 0; i < cpf.Count; i++)
             {
                 resp[i] = cpf[i].modeloCPU;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveModeloCPUG()
+        {
+            string[] resp;
+            List<CPU_Generico> cpf = obj.GetListaMCPUG();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].Modelo;
             }
             return resp;
         }//Fin del método
@@ -228,6 +252,18 @@ namespace BL_N2
             return resp;
         }//Fin del método
 
+        public string[] DevuelveTamMon()
+        {
+            string[] resp;
+            List<monitor> cpf = obj.GetListaTamMoni();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].tamano;
+            }
+            return resp;
+        }//Fin del método
+
         public string[] DevuelveConTec()
         {
             string[] resp;
@@ -288,28 +324,12 @@ namespace BL_N2
             return resp;
         }//Fin del método
 
-        public string ActModCPU(string indi,string cMod, string cMar)
+        public string ActModCPU(string indi, string cMod, string cMar)
         {
             string msj = "";
             try
             {
                 obj.ACT_MODCPU(indi, cMod, cMar);
-                msj = "Los Cambios se han echo Correctamente";
-            }
-            catch(Exception e)
-            {
-                msj = "ERROR " + e.Message;
-                return msj;
-            }
-            return msj;            
-        }//Fin del método
-
-        public string ActTcCPU(string indi, string ind2, string cFam, string cVel, string mMod)
-        {
-            string msj = "";
-            try
-            {
-                obj.ACT_TCPU(indi,ind2,cFam,cVel,mMod);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -320,12 +340,28 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
-        public string ActGabi(string indi,string indi2, string cMod, string mFor, string cMar)
+        public string ActTcCPU(string indi, string ind2, string cFam, string cVel, string mMod)
         {
             string msj = "";
             try
             {
-                obj.ACT_GABI(indi,indi2,cMod,mFor,cMar);
+                obj.ACT_TCPU(indi, ind2, cFam, cVel, mMod);
+                msj = "Los Cambios se han echo Correctamente";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string ActGabi(string indi, string indi2, string cMod, string mFor, string cMar)
+        {
+            string msj = "";
+            try
+            {
+                obj.ACT_GABI(indi, indi2, cMod, mFor, cMar);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -341,7 +377,7 @@ namespace BL_N2
             string msj = "";
             try
             {
-                obj.ACT_RAM(indi, indi2,mCap,mVel,Tr);
+                obj.ACT_RAM(indi, indi2, mCap, mVel, Tr);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -357,7 +393,7 @@ namespace BL_N2
             string msj = "";
             try
             {
-                obj.ACT_MONI(indi, ind2,mCone,mTam,mMar);
+                obj.ACT_MONI(indi, ind2, mCone, mTam, mMar);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -373,7 +409,7 @@ namespace BL_N2
             string msj = "";
             try
             {
-                obj.ACT_TECL(indi, indi2, mCone,cMar);
+                obj.ACT_TECL(indi, indi2, mCone, cMar);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -407,6 +443,208 @@ namespace BL_N2
             {
                 obj.ACT_UBI(indi, caLA);
                 msj = "Los Cambios se han echo Correctamente";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+        /*-------------------------------------------------------METODOS DE AGREGADO------------------------------------------------*/
+        public string InTIRAM(string tipo)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_TIRAM(tipo);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string InRAM(string A1, string A2, string A3)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_RAM(A1, A2, A3);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string InGABI(string a1, string a2, string a3)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_GABI(a1, a2, a3);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string InMOCPU(string a1, string a2)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_MOCPU(a1, a2);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string InTCPU(string a1, string a2, string a3)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_TCPU(a1, a2, a3);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+        public string InCPUG(string a1, string a2, string a3, string a4, string a5, string a6, string a7)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_CPUG(a1,a2,a3,a4,a5,a6,a7);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+        public string InMOUS(string a1, string a2)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_MOUSE(a1,a2);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+        public string InTECLA(string a1, string a2)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_TECLADO(a1,a2);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+        public string InMONT(string a1, string a2, string a3)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_MONIT(a1,a2,a3);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+        public string InDD(string a1, string a2, string a3, string a4)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_DD(a1,a2,a3,a4);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+        public string InCANDD(string a1, int n1, string a2)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_CANDD(a1,n1,a2);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string InLABO(string nom)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_LAB(nom);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string InPCFIN(string a1, string a2, string a3, string a4, string a5, string a6,string a7)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_PCFINAL(a1,a2,a3,a4,a5,a6,a7);
+                msj = "EL REGISTRO FUE CORRECTO";
             }
             catch (Exception e)
             {
