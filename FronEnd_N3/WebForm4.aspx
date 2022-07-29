@@ -1,30 +1,31 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Index.Master" AutoEventWireup="true" CodeBehind="WebForm4.aspx.cs" Inherits="FronEnd_N3.WebForm4" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
-<br />
-<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Consultar Marcas" />
-&nbsp;
-<asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Consultar Componentes" />
-&nbsp;
-<asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Consultar Marcas con Componentes" />
-&nbsp;
-<asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Consultar Disco, la marca y el componente" />
-&nbsp;<asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Consultar Monitor, marca y componente" />
-&nbsp;<asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Consultar moTeclado, marca y el componente" />
-&nbsp;<asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Consultar Mouse, marca y componente" />
-&nbsp;
+    <br />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Consultar Marcas" />
+    &nbsp;
+    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Consultar Componentes" />
+    &nbsp;
+    <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Consultar Marcas con Componentes" />
+    &nbsp;
+    <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Consultar Disco, la marca y el componente" />
+    &nbsp;<asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Consultar Monitor, marca y componente" />
+    &nbsp;<asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Consultar moTeclado, marca y el componente" />
+    &nbsp;<asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Consultar Mouse, marca y componente" />
+    &nbsp;
     <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="Consultar Gabinete, marca y componente" />
-&nbsp;
+    &nbsp;
     <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Consultar CPU, marca y componente" />
-<br />
-<br />
-&nbsp;
+    <br />
+    <br />
+    &nbsp;
     <center>
         <asp:Label ID="Label1" runat="server"></asp:Label>
         <br />
-    <asp:GridView ID="GridView1" runat="server">
-</asp:GridView>
-        </center>
+        <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
+    </center>
 </asp:Content>

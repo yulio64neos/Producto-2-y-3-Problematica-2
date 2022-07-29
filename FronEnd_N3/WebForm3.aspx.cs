@@ -21,5 +21,12 @@ namespace FronEnd_N3
                     DropDownList1.Items.Add(nd.ToString());
             }
         }
+
+        protected void btnMostrarMonitor_Click(object sender, EventArgs e)
+        {
+            string adpMoni = DropDownList1.SelectedValue;
+            GridView1.DataSource = N2.UbicacionPC_Monitor(adpMoni);
+            GridView1.DataBind();
+        }
     }
 }

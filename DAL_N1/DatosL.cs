@@ -271,7 +271,7 @@ namespace DAL_N1
                     com.Parameters.AddWithValue("@ADAPTADOR", adaptador);
                     com.CommandText = "MONITOR_PC_LABO";
                     com.ExecuteNonQuery();
-                    SqlDataAdapter DA = new SqlDataAdapter();
+                    SqlDataAdapter DA = new SqlDataAdapter(com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
                 }
@@ -1030,5 +1030,80 @@ namespace DAL_N1
                 con.Close();
             }
         }//Fin del método
+
+        //-------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------ELIMINAR------------------------------------------------------------
+        public void ELIMINAR_COMPO(string componente)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Compo", componente);
+                    com.CommandText = "ELIMINA_COMPONENTE";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_MARCA(string marc)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Marca", marc);
+                    com.CommandText = "ELIMINA_MARCA";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_MONITOR(string moni)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Mon", moni);
+                    com.CommandText = "ELIMINA_MONITOR";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_DISCO(string TipoDisk)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@TIPODISCO", TipoDisk);
+                    com.CommandText = "ELIMINA_DISCO";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }
+
     }//Fin de la clase
 }

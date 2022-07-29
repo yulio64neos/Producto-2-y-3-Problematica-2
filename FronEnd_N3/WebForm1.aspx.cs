@@ -37,13 +37,11 @@ namespace FronEnd_N3
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            string numInv = DropDownList1.SelectedValue;
+
+             string numInv = DropDownList1.SelectedValue;
             GridView2.DataSource = N2.PC_Actualizacion(numInv);
-=======
             string nuInv = DropDownList1.SelectedValue;
             GridView2.DataSource = N2.PC_Actualizacion(nuInv);
->>>>>>> Sebastian
             GridView2.DataBind();
         }
     }
