@@ -860,7 +860,6 @@ namespace DAL_N1
             }
             return Resp;
         }
-
         public void ACT_MODCPU(string indica1,string camMod, string camMar)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
@@ -1033,7 +1032,7 @@ namespace DAL_N1
 
         //-------------------------------------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------ELIMINAR------------------------------------------------------------
-        public void ELIMINAR_COMPO(string componente)
+        public void ELIMINAR_COMPO(int idCompo)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1042,7 +1041,7 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@Compo", componente);
+                    com.Parameters.AddWithValue("@idComp", idCompo);
                     com.CommandText = "ELIMINA_COMPONENTE";
                     com.ExecuteNonQuery();
                 }
@@ -1051,7 +1050,7 @@ namespace DAL_N1
             }
         }//Fin del método
 
-        public void ELIMINAR_MARCA(string marc)
+        public void ELIMINAR_MARCA(int idMar)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1060,7 +1059,7 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@Marca", marc);
+                    com.Parameters.AddWithValue("@idMar", idMar);
                     com.CommandText = "ELIMINA_MARCA";
                     com.ExecuteNonQuery();
                 }
@@ -1069,7 +1068,7 @@ namespace DAL_N1
             }
         }//Fin del método
 
-        public void ELIMINAR_MONITOR(string moni)
+        public void ELIMINAR_MONITOR(int idMoni)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1078,7 +1077,7 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@Mon", moni);
+                    com.Parameters.AddWithValue("@Mon", idMoni);
                     com.CommandText = "ELIMINA_MONITOR";
                     com.ExecuteNonQuery();
                 }
@@ -1087,7 +1086,7 @@ namespace DAL_N1
             }
         }//Fin del método
 
-        public void ELIMINAR_DISCO(string TipoDisk)
+        public void ELIMINAR_DISCO(string idDisco)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1096,14 +1095,230 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@TIPODISCO", TipoDisk);
+                    com.Parameters.AddWithValue("@idDisco", idDisco);
                     com.CommandText = "ELIMINA_DISCO";
                     com.ExecuteNonQuery();
                 }
                 //Cierras la cadena de conexión
                 con.Close();
             }
-        }
+        }//Fin del método
+
+        public void ELIMINAR_TECLADO(int idTecla)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idTecla", idTecla);
+                    com.CommandText = "ELIMINA_TECLADO";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_MOUSE(int idMouse)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idMouse", idMouse);
+                    com.CommandText = "ELIMINA_MOUSE";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_CPU_GEN(int idCPU)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idCPUGEN", idCPU);
+                    com.CommandText = "ELIMINA_CPU_GEN";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_RAM(int idRAM)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idRAM", idRAM);
+                    com.CommandText = "ELIMINA_RAM";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_TIPORAM(int idTIPORAM)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idRAM", idTIPORAM);
+                    com.CommandText = "ELIMINA_RAM";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_GABINETE(int idGABI)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idGab", idGABI);
+                    com.CommandText = "ELIMINA_GABI";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_TIPOCPU(int idTCPU)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idTipo", idTCPU);
+                    com.CommandText = "ELIMINA_TIPOCPU";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_MODELOCPU(int idMCPU)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idModelo", idMCPU);
+                    com.CommandText = "ELIMINA_MODELOCPU";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_CANTDISCO(int id)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idModelo", id);
+                    com.CommandText = "ELIMINA_CANTDISK";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_CPUFINAL(string id)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idCPU", id);
+                    com.CommandText = "ELIMINAR_CPUFINAL";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_ACTUALIZACION(int id)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idACT", id);
+                    com.CommandText = "ELIMINAR_ACTUALIZACION";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ELIMINAR_LABORATORIO(string labo)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@nomLab", labo);
+                    com.CommandText = "ELIMINAR_LABO";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
 
     }//Fin de la clase
 }

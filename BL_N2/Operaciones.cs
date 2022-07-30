@@ -291,28 +291,12 @@ namespace BL_N2
             return resp;
         }//Fin del método
 
-        public string ActModCPU(string indi,string cMod, string cMar)
+        public string ActModCPU(string indi, string cMod, string cMar)
         {
             string msj = "";
             try
             {
                 obj.ACT_MODCPU(indi, cMod, cMar);
-                msj = "Los Cambios se han echo Correctamente";
-            }
-            catch(Exception e)
-            {
-                msj = "ERROR " + e.Message;
-                return msj;
-            }
-            return msj;            
-        }//Fin del método
-
-        public string ActTcCPU(string indi, string ind2, string cFam, string cVel, string mMod)
-        {
-            string msj = "";
-            try
-            {
-                obj.ACT_TCPU(indi,ind2,cFam,cVel,mMod);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -323,12 +307,28 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
-        public string ActGabi(string indi,string indi2, string cMod, string mFor, string cMar)
+        public string ActTcCPU(string indi, string ind2, string cFam, string cVel, string mMod)
         {
             string msj = "";
             try
             {
-                obj.ACT_GABI(indi,indi2,cMod,mFor,cMar);
+                obj.ACT_TCPU(indi, ind2, cFam, cVel, mMod);
+                msj = "Los Cambios se han echo Correctamente";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string ActGabi(string indi, string indi2, string cMod, string mFor, string cMar)
+        {
+            string msj = "";
+            try
+            {
+                obj.ACT_GABI(indi, indi2, cMod, mFor, cMar);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -344,7 +344,7 @@ namespace BL_N2
             string msj = "";
             try
             {
-                obj.ACT_RAM(indi, indi2,mCap,mVel,Tr);
+                obj.ACT_RAM(indi, indi2, mCap, mVel, Tr);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -360,7 +360,7 @@ namespace BL_N2
             string msj = "";
             try
             {
-                obj.ACT_MONI(indi, ind2,mCone,mTam,mMar);
+                obj.ACT_MONI(indi, ind2, mCone, mTam, mMar);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -376,7 +376,7 @@ namespace BL_N2
             string msj = "";
             try
             {
-                obj.ACT_TECL(indi, indi2, mCone,cMar);
+                obj.ACT_TECL(indi, indi2, mCone, cMar);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -422,13 +422,13 @@ namespace BL_N2
         //-------------------------------------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------ELIMINAR------------------------------------------------------------
 
-        public string Elimina_COMPO(string com)
+        public string Elimina_COMPO(int id)
         {
             string msj = "";
             try
             {
-                obj.ELIMINAR_COMPO(com);
-                msj = "Se ha eliminado el componente " + com + " de la manera correcta";
+                obj.ELIMINAR_COMPO(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
             }
             catch (Exception e)
             {
@@ -438,13 +438,13 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
-        public string Elimina_MARCA(string mar)
+        public string Elimina_MARCA(int id)
         {
             string msj = "";
             try
             {
-                obj.ELIMINAR_MARCA(mar);
-                msj = "Se ha eliminado el componente " + mar + " de la manera correcta";
+                obj.ELIMINAR_MARCA(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
             }
             catch (Exception e)
             {
@@ -454,13 +454,13 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
-        public string Elimina_MONITOR(string mon)
+        public string Elimina_MONITOR(int id)
         {
             string msj = "";
             try
             {
-                obj.ELIMINAR_MONITOR(mon);
-                msj = "Se ha eliminado el componente " + mon + " de la manera correcta";
+                obj.ELIMINAR_MONITOR(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
             }
             catch (Exception e)
             {
@@ -484,6 +484,184 @@ namespace BL_N2
                 return msj;
             }
             return msj;
-        }
+        }//Fin del método
+
+        public string Elimina_Teclado(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_TECLADO(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Elimina_mouse(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_MOUSE(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_CPU(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_CPU_GEN(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_RAM(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_RAM(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_GAB(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_GABINETE(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_TIPOCPU(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_TIPOCPU(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_MODELOPU(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_MODELOCPU(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_CANTDISCO(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_CANTDISCO(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_CPUFINAL(string id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_CPUFINAL(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_ACTUALIZACION(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_ACTUALIZACION(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+        public string Eliminar_LABORATORIO(string nom)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_LABORATORIO(nom);
+                msj = "Se ha eliminado el componente " + nom + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
+
     }//Fin de la clase
 }
