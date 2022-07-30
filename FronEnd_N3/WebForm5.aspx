@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h4>Seccio para Registra el Tipo de RAM</h4>
+    <h4>Sección para Registra el Tipo de RAM</h4>
     <p>
-        <asp:Label ID="Label1" runat="server" Text="Escria que tipo es=&gt;"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Escriba que tipo es=&gt;"></asp:Label>
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 &nbsp;&nbsp;
         <asp:Button ID="Button1" runat="server" Text="Agregar" OnClick="Button1_Click" />
@@ -12,7 +12,7 @@
         <asp:Label ID="msj1" runat="server"></asp:Label>
     </p>
     <br />
-    <h4>Seccion para Registrar la RAM</h4>
+    <h4>Sección para Registrar la RAM</h4>
     <p>
         <asp:Label ID="Label2" runat="server" Text="Escriba la Capacidad: "></asp:Label>
         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
@@ -29,7 +29,7 @@
         <asp:Label ID="msj2" runat="server"></asp:Label>
     </p>
     <br />
-    <h4>Seccion para Registrar el Gabinete</h4>
+    <h4>Sección para Registrar el Gabinete</h4>
     <p>
         <asp:Label ID="Label5" runat="server" Text="Escriba el Modelo: "></asp:Label>
         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
@@ -47,7 +47,7 @@
         <asp:Label ID="msj3" runat="server"></asp:Label>
     </p>
     <br />
-    <h4>Seccion para Registrar el Modelo del CPU</h4>
+    <h4>Sección para Registrar el Modelo del CPU</h4>
     <p>
         <asp:Label ID="Label8" runat="server" Text="Escriba el Modelo: "></asp:Label>
         <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
@@ -58,12 +58,12 @@
         </asp:DropDownList>
 &nbsp; </p>
     <p>
-        <asp:Button ID="Button4" runat="server" Text="Agregar" />
+        <asp:Button ID="Button4" runat="server" Text="Agregar" OnClick="Button4_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Label ID="msj4" runat="server"></asp:Label>
     </p>
     <br />
-    <h4>Seccion para Registrar el Tipo del CPU</h4>
+    <h4>Sección para Registrar el Tipo del CPU</h4>
     <p>
         <asp:Label ID="Label10" runat="server" Text="Escriba su Familia:  "></asp:Label>
         <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
@@ -76,12 +76,12 @@
         </asp:DropDownList>
     </p>
     <p>
-        <asp:Button ID="Button5" runat="server" Text="Agregar" />
+        <asp:Button ID="Button5" runat="server" Text="Agregar" OnClick="Button5_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Label ID="msj5" runat="server"></asp:Label>
     </p>
     <br />
-    <h4>Seccion para Registrar el CPU Generico</h4>
+    <h4>Sección para Registrar el CPU Generico</h4>
     <br />
     <asp:Label ID="Label13" runat="server" Text="Escriba el Modelo:   "></asp:Label>
     <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
@@ -112,11 +112,11 @@
     <asp:DropDownList ID="DropDownList20" runat="server" Height="18px" Width="101px">
     </asp:DropDownList>
     <br />
-    <asp:Button ID="Button6" runat="server" Text="Agregar" />
+    <asp:Button ID="Button6" runat="server" Text="Agregar" OnClick="Button6_Click" />
 &nbsp;&nbsp;
     <asp:Label ID="msj6" runat="server"></asp:Label>
     <br />
-    <h4>Seccion para Resgistrar el Mouse</h4>
+    <h4>Sección para Resgistrar el Mouse</h4>
     <br />
     <asp:Label ID="Label17" runat="server" Text="Escriba el Conector"></asp:Label>
     <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
@@ -125,11 +125,11 @@
     <asp:DropDownList ID="DropDownList8" runat="server" Height="16px" Width="114px">
     </asp:DropDownList>
 &nbsp;&nbsp;
-    <asp:Button ID="Button7" runat="server" Text="Agregar" />
+    <asp:Button ID="Button7" runat="server" Text="Agregar" OnClick="Button7_Click" />
 &nbsp;
     <asp:Label ID="msj7" runat="server"></asp:Label>
     <br />
-    <h4>Seccion para Registrar el Teclado</h4>
+    <h4>Sección para Registrar el Teclado</h4>
     <br />
     <asp:Label ID="Label19" runat="server" Text="Escriba el Conetor:  "></asp:Label>
     <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
@@ -138,11 +138,11 @@
     &nbsp;<asp:DropDownList ID="DropDownList9" runat="server" Height="16px" Width="114px">
     </asp:DropDownList>
 &nbsp;&nbsp;
-    <asp:Button ID="Button8" runat="server" Text="Agregar" />
+    <asp:Button ID="Button8" runat="server" Text="Agregar" OnClick="Button8_Click" />
 &nbsp;
     <asp:Label ID="msj8" runat="server"></asp:Label>
     <br />
-    <h4>Seccion para Registrar el Monitor</h4>
+    <h4>Sección para Registrar el Monitor</h4>
     <br />
     <asp:Label ID="Label21" runat="server" Text="Escriba el Conetor:  "></asp:Label>
     <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
@@ -154,11 +154,11 @@
     <asp:DropDownList ID="DropDownList10" runat="server" Height="16px" Width="114px">
     </asp:DropDownList>
 &nbsp;<br />
-    <asp:Button ID="Button9" runat="server" Text="Agregar" />
+    <asp:Button ID="Button9" runat="server" Text="Agregar" OnClick="Button9_Click" />
 &nbsp;
     <asp:Label ID="msj9" runat="server"></asp:Label>
     <br />
-    <h4>Seccion para Registrar el Disco Duro</h4>
+    <h4>Sección para Registrar el Disco Duro</h4>
     <asp:Label ID="Label24" runat="server" Text="Escriba el Tipo"></asp:Label>
 &nbsp;&nbsp;
     <asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
@@ -175,11 +175,11 @@
     &nbsp;<asp:DropDownList ID="DropDownList11" runat="server" Height="16px" Width="114px">
     </asp:DropDownList>
     <br />
-    <asp:Button ID="Button10" runat="server" Text="Agregar" />
+    <asp:Button ID="Button10" runat="server" Text="Agregar" OnClick="Button10_Click" />
 &nbsp;
     <asp:Label ID="msj10" runat="server"></asp:Label>
     <br />
-    <h4>Seccion para Resgitrar la Cantida de Disco Duro</h4>
+    <h4>Sección para Resgitrar la Cantida de Disco Duro</h4>
     <br />
     <asp:Label ID="Label28" runat="server" Text="Seleccione el Disco Duro:  "></asp:Label>
     <asp:DropDownList ID="DropDownList12" runat="server" Height="16px" Width="114px">
@@ -188,22 +188,23 @@
     <asp:Label ID="Label29" runat="server" Text="Escriba la Cantidad:  "></asp:Label>
     <asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
 &nbsp;&nbsp;
-    <asp:Label ID="Label30" runat="server" Text="Escriba el Numero de Inventario: "></asp:Label>
-&nbsp;<asp:TextBox ID="TextBox18" runat="server"></asp:TextBox>
+    <asp:Label ID="Label30" runat="server" Text="Seleccione el Numero de Inventario: "></asp:Label>
+&nbsp;<asp:DropDownList ID="DropDownList22" runat="server" Height="16px" Width="114px">
+    </asp:DropDownList>
     <br />
-    <asp:Button ID="Button11" runat="server" Text="Agregar" />
+    <asp:Button ID="Button11" runat="server" Text="Agregar" OnClick="Button11_Click" />
 &nbsp;
     <asp:Label ID="msj11" runat="server"></asp:Label>
     <br />
-    <h4>Seccion para Registra un Laboratorio</h4>
+    <h4>Sección para Registra un Laboratorio</h4>
     <asp:Label ID="Label31" runat="server" Text="Escriba el Nombre del Laboratorio: "></asp:Label>
     <asp:TextBox ID="TextBox19" runat="server"></asp:TextBox>
 &nbsp;
-    <asp:Button ID="Button12" runat="server" Text="Agregar" />
+    <asp:Button ID="Button12" runat="server" Text="Agregar" OnClick="Button12_Click" />
 &nbsp;
     <asp:Label ID="msj12" runat="server"></asp:Label>
     <br />
-    <h4>Seccion para Registrar la Computadora Final</h4>
+    <h4>Sección para Registrar la Computadora Final</h4>
     <asp:Label ID="Label41" runat="server" Text="Escriba el Número de Serie: "></asp:Label>
     <asp:TextBox ID="TextBox20" runat="server" Width="212px"></asp:TextBox>
     <br />
@@ -234,7 +235,7 @@
     </asp:DropDownList>
     <br />
     <br />
-    <asp:Button ID="Button13" runat="server" Text="Agregar" />
+    <asp:Button ID="Button13" runat="server" Text="Agregar" OnClick="Button13_Click" />
 &nbsp;
     <asp:Label ID="msj13" runat="server"></asp:Label>
     

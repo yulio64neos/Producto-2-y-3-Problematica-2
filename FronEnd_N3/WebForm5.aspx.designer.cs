@@ -780,13 +780,13 @@ namespace FronEnd_N3
         protected global::System.Web.UI.WebControls.Label Label30;
 
         /// <summary>
-        /// Control TextBox18.
+        /// Control DropDownList22.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox18;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList22;
 
         /// <summary>
         /// Control Button11.

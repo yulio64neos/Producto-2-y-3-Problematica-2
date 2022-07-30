@@ -166,16 +166,63 @@
 &nbsp;<br />
     <asp:Label ID="msj7" runat="server"></asp:Label>
     <br />
-    <h4>Actualizar Ubicación</h4>
-    <br />
-    <asp:Label ID="Label33" runat="server" Text="Seleccione el Numero de Inventario"></asp:Label>
-&nbsp;<asp:DropDownList ID="DropDownList21" runat="server" Height="21px" Width="169px">
-    </asp:DropDownList>
-&nbsp;<asp:Label ID="Label34" runat="server" Text="Seleccione la nueva ubicacion que se instalara : "></asp:Label>
-    <asp:DropDownList ID="DropDownList22" runat="server" Height="20px" Width="120px">
+    <h4>Actualizar Computadora Final</h4>
+        <asp:Label ID="Label33" runat="server" Text="Seleccione el Numero de Inventario que desee Actualizar=&gt;"></asp:Label>
+        &nbsp;&nbsp;
+    <asp:DropDownList ID="DropDownList21" runat="server" Height="16px" Width="212px">
     </asp:DropDownList>
     <br />
-    <asp:Button ID="Button8" runat="server" Text="Actualizar Ubicacion" OnClick="Button8_Click" />
+    <h5>Inidique los cambios que se aplicaran</h5>
+        <asp:Label ID="Label34" runat="server" Text="Seleccione los Conectores del Monitor=&gt;"></asp:Label>
+        &nbsp;
+    <asp:DropDownList ID="DropDownList22" runat="server" Height="16px" Width="212px">
+    </asp:DropDownList>
+&nbsp;
+        <asp:Label ID="Label35" runat="server" Text="Seleccione el tamaño del Monitor=&gt;"></asp:Label>
+        &nbsp;
+    <asp:DropDownList ID="DropDownList23" runat="server" Height="16px" Width="212px">
+    </asp:DropDownList>
+    <br />
+    <asp:Label ID="Label36" runat="server" Text="Seleccione los Conectores del Mouse=&gt;"></asp:Label>
+&nbsp;
+    <asp:DropDownList ID="DropDownList24" runat="server" Height="16px" Width="149px">
+    </asp:DropDownList>
+&nbsp;
+    <asp:Label ID="Label37" runat="server" Text="Seleccione los Conectores del Teclado=&gt;"></asp:Label>
+&nbsp;
+    <asp:DropDownList ID="DropDownList25" runat="server" Height="16px" Width="156px">
+    </asp:DropDownList>
+    <br />
+    <asp:Label ID="Label38" runat="server" Text="Seleccione el Modelo del CPU Generico=&gt;"></asp:Label>
+&nbsp;
+    <asp:DropDownList ID="DropDownList26" runat="server" Height="18px" Width="192px">
+    </asp:DropDownList>
+&nbsp;<br />
+    <asp:Label ID="Label39" runat="server" Text="Seleccione en que Laboratorio se rubicara=&gt;"></asp:Label>
+&nbsp;&nbsp;
+    <asp:DropDownList ID="DropDownList27" runat="server" Height="16px" Width="212px">
+    </asp:DropDownList>
+    <br />
+    <br />
+    <asp:Label ID="Label40" runat="server" Text="Escriba el numero de Serie: "></asp:Label>
+    <asp:TextBox ID="TextBox12" runat="server" Height="20px" Width="180px"></asp:TextBox>
+    <br />
+    <br />
+    <asp:Label ID="Label41" runat="server" Text="Decriba el porque de los cambios"></asp:Label>
+    <br />
+    <asp:TextBox ID="TextBox13" runat="server" Height="115px" Width="590px"></asp:TextBox>
+    <br />
+    <br />
+    <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="Actualizar PC Final" />
+    <br />
     <br />
     <asp:Label ID="msj8" runat="server"></asp:Label>
-</asp:Content>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    </asp:Content>

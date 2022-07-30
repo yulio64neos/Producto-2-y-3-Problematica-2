@@ -129,7 +129,78 @@ namespace BL_N2
         {
             obj.InsertarMarca(Marca);
         }//Fin del método
+        /*----------------------------------------Marcas y sus componentes-----------------------------------------------------*/
+        public string[] FilDD()
+        {
+            string[] resp;
+            List<Marca> cpf = obj.GetFilDD();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].marca;
+            }
+            return resp;
+        }//Fin del método
 
+        public string[] FilMoni()
+        {
+            string[] resp;
+            List<Marca> cpf = obj.GetFilMoni();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].marca;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] FilTecla()
+        {
+            string[] resp;
+            List<Marca> cpf = obj.GetFilTecla();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].marca;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] FilMous()
+        {
+            string[] resp;
+            List<Marca> cpf = obj.GetFilMous();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].marca;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] FilGab()
+        {
+            string[] resp;
+            List<Marca> cpf = obj.GetFilGabi();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].marca;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] FilCPU()
+        {
+            string[] resp;
+            List<Marca> cpf = obj.GetFilCPU();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].marca;
+            }
+            return resp;
+        }//Fin del método
 
         /*----------------------------------------METODOS PARA LAS ACTUALIZACIONES---------------------------------------------*/
         public string[] DevuelveModeloCPU()
@@ -152,18 +223,6 @@ namespace BL_N2
             for (int i = 0; i < cpf.Count; i++)
             {
                 resp[i] = cpf[i].Modelo;
-            }
-            return resp;
-        }//Fin del método
-
-        public string[] DevuelveMarcas()
-        {
-            string[] resp;
-            List<Marca> cpf = obj.GetListaMarcas();
-            resp = new string[cpf.Count];
-            for (int i = 0; i < cpf.Count; i++)
-            {
-                resp[i] = cpf[i].marca;
             }
             return resp;
         }//Fin del método
@@ -284,18 +343,6 @@ namespace BL_N2
             for (int i = 0; i < cpf.Count; i++)
             {
                 resp[i] = cpf[i].conector;
-            }
-            return resp;
-        }//Fin del método
-
-        public string[] DevuelveUbicacion()
-        {
-            string[] resp;
-            List<ubicacion> cpf = obj.GetListaNumUbi();
-            resp = new string[cpf.Count];
-            for (int i = 0; i < cpf.Count; i++)
-            {
-                resp[i] = cpf[i].num_int;
             }
             return resp;
         }//Fin del método
@@ -442,6 +489,23 @@ namespace BL_N2
             try
             {
                 obj.ACT_UBI(indi, caLA);
+                msj = "Los Cambios se han echo Correctamente";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+        public string ActPCF(string indica, string MC, string MT, string MU, string CP, string LB, string TC,
+            string numS, string des, string numI)
+        {
+            string msj = "";
+            try
+            {
+                obj.ACT_PCFINAL(indica,MC,MT,MU,CP,LB,TC);
+                obj.RG_ACT(numS, des, numI);
                 msj = "Los Cambios se han echo Correctamente";
             }
             catch (Exception e)
@@ -606,12 +670,12 @@ namespace BL_N2
             }
             return msj;
         }//Fin del método
-        public string InCANDD(string a1, int n1, string a2)
+        public string InCANDD( int n1, string a2, string a1)
         {
             string msj = "";
             try
             {
-                obj.AGR_CANDD(a1,n1,a2);
+                obj.AGR_CANDD(n1,a2,a1);
                 msj = "EL REGISTRO FUE CORRECTO";
             }
             catch (Exception e)

@@ -107,8 +107,8 @@ BEGIN
 INSERT teclado VALUES(@conector,(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
 END
 
+SELECT * FROM computadorafinal
 SELECT * FROM teclado
-SELECT * FROM Marca
 EXEC InsertarTeclado HMI, ADATA
 
 --MONITOR
@@ -142,14 +142,19 @@ EXEC InsertarDD Solido,SATA,'1 tb',SAMSUNG
 
 --CANT DISCO
 CREATE PROCEDURE InsertarCANTDISCO
-@idDisco varchar(20),
 @cantidad int,
-@num_inv varchar(10)
+@num_inv varchar(10),
+@idDisco varchar(20)
 AS
 BEGIN 
-INSERT cantDisc VALUES((SELECT id_Disco FROM DiscoDuro WHERE TipoDisco=@idDisco),@cantidad,@num_inv)
+INSERT cantDisc VALUES(12,'9876543210',8)
 END
 
+SELECT * FROM cantDisc
+SELECT * FROM DiscoDuro
+SELECT *FROM computadorafinal
+sp_help cantDisc
+EXEC InsertarCANTDISCO 12,64856824,Solido
 --laboratorio
 CREATE PROCEDURE InsertarLABORATORIO
 @num_inv varchar(64)
@@ -157,29 +162,32 @@ AS
 BEGIN 
 INSERT laboratorio VALUES(@num_inv)
 END
-SELECT * FROM laboratorio
+
+SELECT * FROM cantDisc
 EXEC InsertarLABORATORIO K5
 
 --COMPUTADORA FINAL
 CREATE PROCEDURE InsertarPCFINAL
 @num varchar(10),
-@idtec varchar(64), 
 @idMonC varchar(64), @idMonT varchar(64),
 @idMous varchar(64),
-@idCpu varchar(64),@idLab varchar(64)
+@idCpu varchar(64),
+@idLab varchar(64),
+@idtec varchar(64)
 AS
 BEGIN 
 INSERT computadorafinal VALUES (@num,
-(SELECT id_teclado FROM teclado WHERE conector=@idtec),
 (SELECT id_monitor FROM monitor WHERE conectores=@idMonC AND tamano=@idMonT),
 (SELECT id_mouse FROM mouse WHERE conector=@idMous),
 (SELECT id_CPU FROM CPU_Generico WHERE Modelo=@idCpu),
-(SELECT nombre_laboratorio FROM laboratorio WHERE nombre_laboratorio=@idLab))
+(SELECT nombre_laboratorio FROM laboratorio WHERE nombre_laboratorio=@idLab),
+(SELECT id_teclado FROM teclado WHERE conector=@idtec))
 END
+
 SELECT * FROM computadorafinal
-SELECT * FROM laboratorio
-EXEC InsertarPCFINAL 8524567391,USB,VGA,'480x250',RJ45,CRJ,K5
-sp_help monitor
+SELECT * FROM monitor
+EXEC InsertarPCFINAL 8524567391,CJK,'180x180',USB,CRJ,K5,PS27
+sp_help computadorafinal
 --ACUTALIZCION 
 CREATE PROCEDURE InsertarActualizaciones
 @num_inv varchar(10),
@@ -193,19 +201,6 @@ END
 
 --EXEC EliminarPCFINAL 1234567892
 ------------------------------------ACTUALIZACION------------------------------------------------------------------
---ACTUALIZAR UBICACION
-ALTER PROCEDURE Act_UBICACION
-@elijo varchar(65), @cam1 varchar(65)
-AS
-BEGIN 
-UPDATE ubicacion SET nombre_laboratorio=@cam1 WHERE num_inv=@elijo
-END
-
-SELECT * FROM ubicacion
-SELECT * FROM laboratorio
-sp_help computadorafinal
-EXEC Act_UBICACION 1234567892,K2
-
 
 --ACTUALIZAR MOUSE
 CREATE PROCEDURE Act_MOUSES
@@ -296,6 +291,116 @@ UPDATE ModeloCPU SET modeloCPU=@cModelo, Id_Marca=(SELECT Id_Marca FROM Marca WH
 WHERE modeloCPU =@in1
 END
 
-	SELECT * FROM ModeloCPU
+	SELECT * FROM RAM
 	SELECT * FROM Marca
 EXEC Act_MODCPU 
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.id_Componente BETWEEN 1 AND 2
+
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'Monito'
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'Teclado'
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'Mouse'
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'Gabinete'
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'CPU'
+
+SELECT * FROM Marca_Componente
+SELECT * FROM Marca
+SELECT nom_Componente FROM Componentes WHERE id_Componente BETWEEN 1 AND 2
+
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE Act_PCFINAL
+@indica varchar(10),
+@idMonC varchar(64), @idMonT varchar(64),
+@idMous varchar(64),
+@idCpu varchar(64),
+@idLab varchar(64),
+@idtec varchar(64)
+AS
+BEGIN 
+UPDATE computadorafinal SET id_mong=(SELECT id_monitor FROM monitor WHERE conectores=@idMonC AND tamano=@idMonT),
+id_mousg=(SELECT id_mouse FROM mouse WHERE conector=@idMous),
+id_cpug=(SELECT id_CPU FROM CPU_Generico WHERE Modelo=@idCpu),
+nom_labo=(SELECT nombre_laboratorio FROM laboratorio WHERE nombre_laboratorio=@idLab),
+id_tecladog=(SELECT id_teclado FROM teclado WHERE conector=@idtec)
+WHERE num_inv=@indica
+END
+
+EXEC Act_PCFINAL 1234567890,CJK,'180x180',USB,CRJ,K2,PS27
+
+
+
+CREATE PROCEDURE RegisDAct
+@numS varchar(11),
+@des varchar(64),
+@numinv varchar(64)
+AS
+BEGIN 
+INSERT INTO actualizacion VALUES (@numS,@des,GETDATE(),
+(SELECT num_inv FROM computadorafinal WHERE num_inv=@numinv))
+end
+
+EXEC RegisDAct 1452369,prueba,1234567890
+
+SELECT * FROM computadorafinal 
+SELECT * FROM monitor
+select * from RAM
+EXEC IntesertaMCPU2 i4, XPG
+
+EXEC LISTA_PcCOMPONENTES '8524567391'
+
+select computadorafinal.num_inv as 'Número de Inventario', 
+	nom_Componente as 'Componente', 
+	Marca, 
+	modeloCPU as 'CPU', 
+	Modelo, 
+	Familia, 
+	Tipo as 'Tipo de Memoria RAM', 
+	RAM.Velocidad as 'Velocidad de Reloj', 
+	conectores as 'Adaptador del Monitor', 
+	tamano as 'Resolución', 
+	teclado.conector as 'Adaptador del Teclado', 
+	mouse.conector as 'Adaptador del Mouse', 
+	cantDisc.Cantidad as 'Cantidad de Discos'
+	from Componentes
+	inner join Marca_Componente on (Componentes.id_Componente = Marca_Componente.id_Compo)
+	inner join Marca on (Marca_Componente.id_Marca =  Marca.Id_Marca)
+	inner join ModeloCPU on (Marca.Id_Marca = ModeloCPU.Id_Marca)
+	inner join Tipo_CPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
+	inner join CPU_Generico on (Tipo_CPU.id_Tcpu = CPU_Generico.f_Tcpu)
+	inner join RAM on (CPU_Generico.f_tipoRam = RAM.id_RAM)
+	inner join TipoRAM on (RAM.F_TipoR = TipoRAM.id_tipoRam)
+	inner join computadorafinal on (CPU_Generico.id_CPU = computadorafinal.id_cpug)
+	inner join monitor on (computadorafinal.id_mong = monitor.id_monitor)
+	inner join teclado on (computadorafinal.id_tecladog = teclado.id_teclado)
+	inner join mouse on (computadorafinal.id_mousg = mouse.id_mouse)
+	inner join cantDisc on (computadorafinal.num_inv = cantDisc.num_inv)
+	where computadorafinal.num_inv = '3598758681'
+
+INSERT computadorafinal VALUES (3598758681,5,6,12,'K5',7);
