@@ -1,50 +1,4 @@
-SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado', CPU_Generico.Modelo as 'Modelo del CPU',
-teclado.conector as 'Conector del teclado',
-monitor.conectores as 'Conector del monitor',
-mouse.conector as 'Conector del mouse',
-DiscoDuro.TipoDisco as 'Tipo de DD',
-DiscoDuro.Capacidad as 'Capacidad de DD' FROM ubicacion 
-INNER JOIN computadorafinal ON (ubicacion.num_inv = computadorafinal.num_inv)
-INNER JOIN CPU_Generico ON (computadorafinal.id_cpug = CPU_Generico.id_CPU)
-INNER JOIN teclado ON (computadorafinal.id_tecladog = teclado.id_teclado)
-INNER JOIN monitor ON (computadorafinal.id_mong = monitor.id_monitor)
-INNER JOIN mouse ON (computadorafinal.id_mousg = mouse.id_mouse)
-INNER JOIN cantDisc ON (computadorafinal.num_inv = cantDisc.num_inv)
-INNER JOIN DiscoDuro ON (cantDisc.id_Disco = DiscoDuro.id_Disco);
-
-SELECT ubicacion.nombre_laboratorio as 'Laboratorio asignado' ,
-DiscoDuro.TipoDisco as 'Equipos con Discos de estado Solido' 
-FROM ubicacion 
-INNER JOIN computadorafinal ON (ubicacion.num_inv = computadorafinal.num_inv)
-INNER JOIN cantDisc ON (computadorafinal.num_inv = cantDisc.num_inv)
-INNER JOIN DiscoDuro ON (cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco='Estado Sólido';
-
----------------------------------------------------------------------------------------------------------------------------------------------
-
---Modelo ¨CPU
-CREATE PROCEDURE IntesertaMCPU
-@modeloCPU varchar(50),
-@idMarca varchar(50) 
-AS
-BEGIN 
-INSERT INTO ModeloCPU VALUES (@modeloCPU, (SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
-end
-
-SELECT * FROM ModeloCPU 
-SELECT * FROM Marca 
-EXEC IntesertaMCPU OptiPlex,WD  
---TIPO CPU
-CREATE PROCEDURE InsertarTipoCPU
-@familia varchar(30),
-@velocidad varchar(50),
-@idModeloCPU varchar(50)
-AS
-BEGIN 
-INSERT Tipo_CPU VALUES(@familia,@velocidad,(SELECT id_modcpu FROM ModeloCPU WHERE modeloCPU=@idModeloCPU))
-END
-
-SELECT * FROM Tipo_CPU
-EXEC InsertarTipoCPU ongen,ghz,Pentium
+---------------------------------------------AGREGADO------------------------------------------------------------------------------------------------
 --TIPO RAM
 CREATE PROCEDURE InsertarTipoRAM
 @tipo varchar(20)
@@ -67,7 +21,9 @@ INSERT RAM VALUES(@capacidad, @velocidad,(SELECT id_tipoRam FROM TipoRAM WHERE T
 END
 
 SELECT * FROM RAM
-EXEC InsertarRAM 8,700,DDR4
+SELECT * FROM TipoRAM
+EXEC InsertarRAM 12,700,DDR4
+
 
 --GABINETE
 CREATE PROCEDURE InsertarGabinete
@@ -76,18 +32,85 @@ CREATE PROCEDURE InsertarGabinete
 @idMarca varchar(50)
 AS
 BEGIN 
-INSERT Gabinete VALUES(@modelo,@tipoFo,(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
+INSERT Gabinete VALUES(@modelo,@tipoFo,
+(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
 END
+
+SELECT * FROM RAM
+SELECT * FROM Gabinete
+EXEC InsertarGabinete Hibrido,Cascada,HP
+
+--Modelo ¨CPU
+CREATE PROCEDURE IntesertaMCPU2
+@modeloCPU varchar(50),
+@idMarca varchar(50) 
+AS
+BEGIN 
+INSERT INTO ModeloCPU VALUES (@modeloCPU, (SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
+end
+
+SELECT * FROM ModeloCPU 
+SELECT * FROM Marca 
+EXEC IntesertaMCPU2 i4, XPG
+
+--TIPO CPU
+CREATE PROCEDURE InsertarTipoCPU1
+@familia varchar(30),
+@velocidad varchar(50),
+@idModeloCPU varchar(50)
+AS
+BEGIN 
+INSERT Tipo_CPU VALUES(@familia,@velocidad,(SELECT id_modcpu FROM ModeloCPU WHERE modeloCPU=@idModeloCPU))
+END
+
+SELECT * FROM Tipo_CPU
+SELECT * FROM ModeloCPU
+EXEC InsertarTipoCPU1 ongen,ghz,Pentium
+
 --CPU GENERICO
 CREATE PROCEDURE InsertarCPUGenerico
 @Modelo varchar(20),
-@descripcion varchar(40),
-@idGabinete varchar(10)
+@idGabineteM varchar(10), @idGabineteT varchar(30),
+@tRamC smallint, @tRamV varchar(15),
+@tCPUf varchar(30), @tCPUv varchar(50)
 AS
 BEGIN 
-INSERT CPU_Generico VALUES((SELECT MAX(id_Tcpu) FROM Tipo_CPU), @Modelo, @descripcion, 
-(SELECT MAX(id_RAM) FROM RAM), (SELECT id_Gabinete FROM Gabinete WHERE Gabinete.Modelo=@idGabinete))
+INSERT CPU_Generico VALUES(@Modelo,
+(SELECT id_Gabinete FROM Gabinete WHERE Modelo=@idGabineteM AND TipoForma=@idGabineteT),
+(SELECT id_RAM FROM RAM WHERE Capacidad=@tRamC AND Velocidad=@tRamV),
+(SELECT id_Tcpu FROM Tipo_CPU WHERE Familia=@tCPUf AND Velocidad=@tCPUv))
 END
+
+SELECT * FROM CPU_Generico
+EXEC InsertarCPUGenerico CRJ,Generico,Torre,4,500,ongen,ghz
+sp_help Tipo_CPU
+
+--MOUSE
+CREATE PROCEDURE InsertarMouse
+@coenctor varchar(64),
+@idMarca varchar(50)
+AS
+BEGIN 
+INSERT mouse VALUES(@coenctor,(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
+END
+
+SELECT * FROM mouse
+SELECT * FROM Marca
+EXEC InsertarMouse RJ45,Intel
+
+--Teclado
+CREATE PROCEDURE InsertarTeclado
+@conector varchar(5),
+@idMarca varchar(50)
+AS
+BEGIN 
+INSERT teclado VALUES(@conector,(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
+END
+
+SELECT * FROM computadorafinal
+SELECT * FROM teclado
+EXEC InsertarTeclado HMI, ADATA
+
 --MONITOR
 CREATE PROCEDURE InsertarMonitor
 @conectores varchar(64),
@@ -97,22 +120,11 @@ AS
 BEGIN 
 INSERT monitor VALUES(@conectores,@tamano,(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
 END
---MOUSE
-CREATE PROCEDURE InsertarMouse
-@coenctor varchar(64),
-@idMarca varchar(50)
-AS
-BEGIN 
-INSERT mouse VALUES(@coenctor,(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
-END
---Teclado
-CREATE PROCEDURE InsertarTeclado
-@conector varchar(5),
-@idMarca varchar(50)
-AS
-BEGIN 
-INSERT teclado VALUES(@conector,(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
-END
+
+SELECT * FROM monitor
+SELECT * FROM Marca
+EXEC InsertarMonitor CJK,'180x180',HP
+sp_help DiscoDuro
 --DISCO DURO 
 CREATE PROCEDURE InsertarDD
 @TipoD varchar(20),
@@ -121,36 +133,61 @@ CREATE PROCEDURE InsertarDD
 @idMarca varchar(50)
 AS
 BEGIN 
-INSERT DiscoDuro VALUES(@TipoD,@coenctor,@capacidad,(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
+INSERT DiscoDuro VALUES(@TipoD,@coenctor,@capacidad,
+(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
 END
+SELECT * FROM DiscoDuro
+SELECT * FROM Marca
+EXEC InsertarDD Solido,SATA,'1 tb',SAMSUNG
+
 --CANT DISCO
 CREATE PROCEDURE InsertarCANTDISCO
+@cantidad int,
 @num_inv varchar(10),
 @idDisco varchar(20)
 AS
 BEGIN 
-INSERT cantDisc VALUES(@num_inv,(SELECT id_Disco FROM DiscoDuro WHERE DiscoDuro.TipoDisco=@idDisco))
+INSERT cantDisc VALUES(12,'9876543210',8)
 END
---ubicacion
-CREATE PROCEDURE InsertarUBICACION
-@num_inv varchar(10),
-@lap varchar(50)
+
+SELECT * FROM cantDisc
+SELECT * FROM DiscoDuro
+SELECT *FROM computadorafinal
+sp_help cantDisc
+EXEC InsertarCANTDISCO 12,64856824,Solido
+--laboratorio
+CREATE PROCEDURE InsertarLABORATORIO
+@num_inv varchar(64)
 AS
 BEGIN 
-INSERT ubicacion VALUES(@num_inv,(SELECT nombre_laboratorio FROM laboratorio WHERE laboratorio.nombre_laboratorio=@lap))
+INSERT laboratorio VALUES(@num_inv)
 END
+
+SELECT * FROM cantDisc
+EXEC InsertarLABORATORIO K5
+
 --COMPUTADORA FINAL
 CREATE PROCEDURE InsertarPCFINAL
-@num_inv varchar(10), @num_cpu varchar(11), @idCpu varchar(20), @num_teclado varchar(11), @idteclado varchar(5), 
-@num_manitor varchar(11), @idmonitor varchar(64),@num_mouse varchar(11), @idmouse varchar(64), @estado varchar(64)
+@num varchar(10),
+@idMonC varchar(64), @idMonT varchar(64),
+@idMous varchar(64),
+@idCpu varchar(64),
+@idLab varchar(64),
+@idtec varchar(64)
 AS
 BEGIN 
-INSERT computadorafinal VALUES ((SELECT num_inv FROM cantDisc WHERE cantDisc.num_inv=@num_inv),
-@num_cpu, (SELECT id_CPU FROM CPU_Generico WHERE CPU_Generico.Modelo=@idCpu),
-@num_teclado, (SELECT id_teclado FROM teclado WHERE teclado.conector =@idteclado),
-@num_manitor,(SELECT id_monitor FROM monitor WHERE monitor.conectores=@idmonitor),
-@num_mouse,(SELECT id_mouse FROM mouse WHERE mouse.conector=@idmouse), @estado)
+INSERT computadorafinal VALUES (@num,
+(SELECT id_monitor FROM monitor WHERE conectores=@idMonC AND tamano=@idMonT),
+(SELECT id_mouse FROM mouse WHERE conector=@idMous),
+(SELECT id_CPU FROM CPU_Generico WHERE Modelo=@idCpu),
+(SELECT nombre_laboratorio FROM laboratorio WHERE nombre_laboratorio=@idLab),
+(SELECT id_teclado FROM teclado WHERE conector=@idtec))
 END
+
+SELECT * FROM computadorafinal
+SELECT * FROM monitor
+EXEC InsertarPCFINAL 8524567391,CJK,'180x180',USB,CRJ,K5,PS27
+sp_help computadorafinal
 --ACUTALIZCION 
 CREATE PROCEDURE InsertarActualizaciones
 @num_inv varchar(10),
@@ -164,19 +201,6 @@ END
 
 --EXEC EliminarPCFINAL 1234567892
 ------------------------------------ACTUALIZACION------------------------------------------------------------------
---ACTUALIZAR UBICACION
-ALTER PROCEDURE Act_UBICACION
-@elijo varchar(65), @cam1 varchar(65)
-AS
-BEGIN 
-UPDATE ubicacion SET nombre_laboratorio=@cam1 WHERE num_inv=@elijo
-END
-
-SELECT * FROM ubicacion
-SELECT * FROM laboratorio
-sp_help laboratorio
-EXEC Act_UBICACION 1234567892,K2
-
 
 --ACTUALIZAR MOUSE
 CREATE PROCEDURE Act_MOUSES
@@ -267,6 +291,116 @@ UPDATE ModeloCPU SET modeloCPU=@cModelo, Id_Marca=(SELECT Id_Marca FROM Marca WH
 WHERE modeloCPU =@in1
 END
 
-	SELECT * FROM ModeloCPU
+	SELECT * FROM RAM
 	SELECT * FROM Marca
 EXEC Act_MODCPU 
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.id_Componente BETWEEN 1 AND 2
+
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'Monito'
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'Teclado'
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'Mouse'
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'Gabinete'
+
+SELECT Marca.Marca FROM Marca 
+INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca)
+INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo)
+WHERE Componentes.nom_Componente = 'CPU'
+
+SELECT * FROM Marca_Componente
+SELECT * FROM Marca
+SELECT nom_Componente FROM Componentes WHERE id_Componente BETWEEN 1 AND 2
+
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+
+CREATE PROCEDURE Act_PCFINAL
+@indica varchar(10),
+@idMonC varchar(64), @idMonT varchar(64),
+@idMous varchar(64),
+@idCpu varchar(64),
+@idLab varchar(64),
+@idtec varchar(64)
+AS
+BEGIN 
+UPDATE computadorafinal SET id_mong=(SELECT id_monitor FROM monitor WHERE conectores=@idMonC AND tamano=@idMonT),
+id_mousg=(SELECT id_mouse FROM mouse WHERE conector=@idMous),
+id_cpug=(SELECT id_CPU FROM CPU_Generico WHERE Modelo=@idCpu),
+nom_labo=(SELECT nombre_laboratorio FROM laboratorio WHERE nombre_laboratorio=@idLab),
+id_tecladog=(SELECT id_teclado FROM teclado WHERE conector=@idtec)
+WHERE num_inv=@indica
+END
+
+EXEC Act_PCFINAL 1234567890,CJK,'180x180',USB,CRJ,K2,PS27
+
+
+
+CREATE PROCEDURE RegisDAct
+@numS varchar(11),
+@des varchar(64),
+@numinv varchar(64)
+AS
+BEGIN 
+INSERT INTO actualizacion VALUES (@numS,@des,GETDATE(),
+(SELECT num_inv FROM computadorafinal WHERE num_inv=@numinv))
+end
+
+EXEC RegisDAct 1452369,prueba,1234567890
+
+SELECT * FROM computadorafinal 
+SELECT * FROM monitor
+select * from RAM
+EXEC IntesertaMCPU2 i4, XPG
+
+EXEC LISTA_PcCOMPONENTES '8524567391'
+
+select computadorafinal.num_inv as 'Número de Inventario', 
+	nom_Componente as 'Componente', 
+	Marca, 
+	modeloCPU as 'CPU', 
+	Modelo, 
+	Familia, 
+	Tipo as 'Tipo de Memoria RAM', 
+	RAM.Velocidad as 'Velocidad de Reloj', 
+	conectores as 'Adaptador del Monitor', 
+	tamano as 'Resolución', 
+	teclado.conector as 'Adaptador del Teclado', 
+	mouse.conector as 'Adaptador del Mouse', 
+	cantDisc.Cantidad as 'Cantidad de Discos'
+	from Componentes
+	inner join Marca_Componente on (Componentes.id_Componente = Marca_Componente.id_Compo)
+	inner join Marca on (Marca_Componente.id_Marca =  Marca.Id_Marca)
+	inner join ModeloCPU on (Marca.Id_Marca = ModeloCPU.Id_Marca)
+	inner join Tipo_CPU on (ModeloCPU.id_modcpu = Tipo_CPU.id_modcpu)
+	inner join CPU_Generico on (Tipo_CPU.id_Tcpu = CPU_Generico.f_Tcpu)
+	inner join RAM on (CPU_Generico.f_tipoRam = RAM.id_RAM)
+	inner join TipoRAM on (RAM.F_TipoR = TipoRAM.id_tipoRam)
+	inner join computadorafinal on (CPU_Generico.id_CPU = computadorafinal.id_cpug)
+	inner join monitor on (computadorafinal.id_mong = monitor.id_monitor)
+	inner join teclado on (computadorafinal.id_tecladog = teclado.id_teclado)
+	inner join mouse on (computadorafinal.id_mousg = mouse.id_mouse)
+	inner join cantDisc on (computadorafinal.num_inv = cantDisc.num_inv)
+	where computadorafinal.num_inv = '3598758681'
+
+INSERT computadorafinal VALUES (3598758681,5,6,12,'K5',7);

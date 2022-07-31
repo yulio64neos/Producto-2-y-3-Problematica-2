@@ -21,21 +21,7 @@ namespace FronEnd_N3
                 {
                     DropDownList1.Items.Add(mdcpu.ToString());
                     DropDownList5.Items.Add(mdcpu.ToString());
-                }
-
-                string[] lisMarca = N2.DevuelveMarcas();
-                foreach (var mar in lisMarca)
-                {
-                    DropDownList2.Items.Add(mar.ToString());
-                    DropDownList8.Items.Add(mar.ToString());
-                    DropDownList13.Items.Add(mar.ToString());
-                    DropDownList14.Items.Add(mar.ToString());
-                    DropDownList16.Items.Add(mar.ToString());
-                    DropDownList17.Items.Add(mar.ToString());
-                    DropDownList18.Items.Add(mar.ToString());
-                    DropDownList20.Items.Add(mar.ToString());
-                }
-
+                }             
                 string[] familia = N2.DevuelveFamilia();
                 foreach (var mar in familia)
                 {
@@ -76,36 +62,69 @@ namespace FronEnd_N3
                 foreach (var cM in conMon)
                 {
                     DropDownList12.Items.Add(cM.ToString());
+                    DropDownList22.Items.Add(cM.ToString());
                 }
+                string[] conMonT = N2.DevuelveTamMon();
+                foreach (var cTMo in conMonT)
+                {DropDownList23.Items.Add(cTMo.ToString());}
 
                 string[] conTec = N2.DevuelveConTec();
                 foreach (var cT in conTec)
                 {
                     DropDownList15.Items.Add(cT.ToString());
+                    DropDownList25.Items.Add(cT.ToString());
                 }
 
                 string[] conMus = N2.DevuelveConMus();
                 foreach (var cMus in conMus)
                 {
                     DropDownList18.Items.Add(cMus.ToString());
+                    DropDownList24.Items.Add(cMus.ToString());
                 }
 
-                string[] ubic = N2.DevuelveUbicacion();
-                foreach (var ubi in ubic)
-                {
-                    DropDownList21.Items.Add(ubi.ToString());
-                }
-
-                string[] labor = N2.Devuelvelaboratorio();
-                foreach (var laborn in labor)
-                {
-                    DropDownList22.Items.Add(laborn.ToString());
-                }
                 string[] tiRAm = N2.DevuelveTiRAM();
                 foreach (var tRa in tiRAm)
                 {
                     DropDownList11.Items.Add(tRa.ToString());
                 }
+                string[] filtCP = N2.FilCPU();
+                foreach (var Filcpu2 in filtCP)
+                {
+                    DropDownList2.Items.Add(Filcpu2.ToString());
+                }
+                string[] filtgab = N2.FilGab();
+                foreach (var FilGABI in filtgab)
+                {
+                    DropDownList8.Items.Add(FilGABI.ToString());
+                }
+                string[] filtMon = N2.FilMoni();
+                foreach (var Filtor in filtMon)
+                {
+                    DropDownList13.Items.Add(Filtor.ToString());
+                    DropDownList14.Items.Add(Filtor.ToString());
+                }
+                string[] filtTec = N2.FilTecla();
+                foreach (var Filclado in filtTec)
+                {
+                    DropDownList16.Items.Add(Filclado.ToString());
+                    DropDownList17.Items.Add(Filclado.ToString());
+                }
+                string[] filtmo = N2.FilMous();
+                foreach (var Filmous1
+                    in filtmo)
+                {
+                    DropDownList19.Items.Add(Filmous1.ToString());
+                    DropDownList20.Items.Add(Filmous1.ToString());
+                }
+                string[] list_num_int = N2.DevuelveNumInv();
+                foreach (var nv in list_num_int)
+                {DropDownList21.Items.Add(nv.ToString());}
+                string[] listMCG = N2.DevuelveModeloCPUG();
+                foreach (var mcg in listMCG)
+                { DropDownList26.Items.Add(mcg.ToString()); }
+                string[] listLab = N2.Devuelvelaboratorio();
+                foreach (var labor in listLab)
+                { DropDownList27.Items.Add(labor.ToString()); }
             }
         }
 
@@ -177,9 +196,16 @@ namespace FronEnd_N3
 
         protected void Button8_Click(object sender, EventArgs e)
         {
-            string numIn = DropDownList21.SelectedValue;
-            string labo = DropDownList22.SelectedValue;
-            msj8.Text = N2.ActUbica(numIn, labo);
+            string numI = DropDownList21.SelectedValue;
+            string MC = DropDownList22.SelectedValue;
+            string MT = DropDownList23.SelectedValue;
+            string MU = DropDownList24.SelectedValue;
+            string CP = DropDownList26.SelectedValue;
+            string LB = DropDownList27.SelectedValue;
+            string TC = DropDownList25.SelectedValue;
+            msj8.Text = N2.ActPCF(numI, MC, MT, MU, CP, LB, TC, TextBox12.Text, TextBox13.Text, numI);
+            TextBox12.Text = "";
+            TextBox13.Text = "";
         }
     }
 }

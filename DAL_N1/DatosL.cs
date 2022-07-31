@@ -372,6 +372,192 @@ namespace DAL_N1
             return (tabla);
         }//Fin del método
 
+        /*--------------------------------------------------------Marcas y sus componentes-------------------------------------------------------------------------*/
+        public List<Marca> GetFilDD()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Marca.Marca FROM Marca "+
+                        "INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca) "+
+                        "INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo) "+
+                        "WHERE Componentes.id_Componente BETWEEN 1 AND 2";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca objCPUFinal = new Marca()
+                            {
+                                marca = Convert.ToString(lect["Marca"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Marca> GetFilMoni()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Marca.Marca FROM Marca " +
+                        "INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca) " +
+                        "INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo) " +
+                        "WHERE Componentes.nom_Componente = 'Monitor'";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca objCPUFinal = new Marca()
+                            {
+                                marca = Convert.ToString(lect["Marca"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Marca> GetFilTecla()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Marca.Marca FROM Marca " +
+                        "INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca) " +
+                        "INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo) " +
+                        "WHERE Componentes.nom_Componente = 'Teclado'";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca objCPUFinal = new Marca()
+                            {
+                                marca = Convert.ToString(lect["Marca"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Marca> GetFilMous()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Marca.Marca FROM Marca " +
+                        "INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca) " +
+                        "INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo) " +
+                        "WHERE Componentes.nom_Componente = 'Mouse'";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca objCPUFinal = new Marca()
+                            {
+                                marca = Convert.ToString(lect["Marca"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Marca> GetFilGabi()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Marca.Marca FROM Marca " +
+                        "INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca) " +
+                        "INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo) " +
+                        "WHERE Componentes.nom_Componente = 'Gabinete'";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca objCPUFinal = new Marca()
+                            {
+                                marca = Convert.ToString(lect["Marca"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<Marca> GetFilCPU()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT Marca.Marca FROM Marca " +
+                        "INNER JOIN Marca_Componente ON (Marca.Id_Marca = Marca_Componente.id_Marca) " +
+                        "INNER JOIN Componentes ON (Componentes.id_Componente = Marca_Componente.id_Compo) " +
+                        "WHERE Componentes.nom_Componente = 'CPU'";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca objCPUFinal = new Marca()
+                            {
+                                marca = Convert.ToString(lect["Marca"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
         //Método para generar la lista del numero de inventario
         public List<computadorafinal> GetListaInventario()
         {
@@ -497,24 +683,24 @@ namespace DAL_N1
             return Resp;
         }
 
-        public List<Marca> GetListaMarcas()
+        public List<CPU_Generico> GetListaMCPUG()
         {
-            List<Marca> Resp = new List<Marca>();
+            List<CPU_Generico> Resp = new List<CPU_Generico>();
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
                 con.Open();
                 using (SqlCommand com = new SqlCommand())
                 {
                     com.Connection = con;
-                    com.CommandText = "SELECT Marca FROM Marca;";
+                    com.CommandText = "SELECT Modelo FROM CPU_Generico;";
                     SqlDataReader lect = com.ExecuteReader();
                     if (lect.HasRows)
                     {
                         while (lect.Read())
                         {
-                            Marca objCPUFinal = new Marca()
+                            CPU_Generico objCPUFinal = new CPU_Generico()
                             {
-                                marca = Convert.ToString(lect["Marca"])
+                                Modelo = Convert.ToString(lect["Modelo"])
                             };
                             Resp.Add(objCPUFinal);
                         }
@@ -523,7 +709,7 @@ namespace DAL_N1
                 con.Close();
             }
             return Resp;
-        }        
+        }
 
         public List<Tipo_CPU> GetListaFamCPU()
         {
@@ -721,6 +907,34 @@ namespace DAL_N1
             return Resp;
         }
 
+        public List<monitor> GetListaTamMoni()
+        {
+            List<monitor> Resp = new List<monitor>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT tamano FROM monitor;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            monitor objCPUFinal = new monitor()
+                            {
+                                tamano = Convert.ToString(lect["tamano"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
         public List<teclado> GetListaConTec()
         {
             List<teclado> Resp = new List<teclado>();
@@ -767,34 +981,6 @@ namespace DAL_N1
                             mouse objCPUFinal = new mouse()
                             {
                                 conector = Convert.ToString(lect["conector"])
-                            };
-                            Resp.Add(objCPUFinal);
-                        }
-                    }
-                }
-                con.Close();
-            }
-            return Resp;
-        }
-
-        public List<ubicacion> GetListaNumUbi()
-        {
-            List<ubicacion> Resp = new List<ubicacion>();
-            using (SqlConnection con = new SqlConnection(CadConnectSql))
-            {
-                con.Open();
-                using (SqlCommand com = new SqlCommand())
-                {
-                    com.Connection = con;
-                    com.CommandText = "SELECT num_inv FROM ubicacion;";
-                    SqlDataReader lect = com.ExecuteReader();
-                    if (lect.HasRows)
-                    {
-                        while (lect.Read())
-                        {
-                            ubicacion objCPUFinal = new ubicacion()
-                            {
-                                num_int = Convert.ToString(lect["num_inv"])
                             };
                             Resp.Add(objCPUFinal);
                         }
@@ -859,7 +1045,36 @@ namespace DAL_N1
                 con.Close();
             }
             return Resp;
-        }
+        }//Fin del método
+
+        public List<DiscoDuro> GetListaDD()
+        {
+            List<DiscoDuro> Resp = new List<DiscoDuro>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT TipoDisco FROM DiscoDuro;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            DiscoDuro objCPUFinal = new DiscoDuro()
+                            {
+                                TipoDisco = Convert.ToString(lect["TipoDisco"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }//Fin del método
+
         public void ACT_MODCPU(string indica1,string camMod, string camMar)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
@@ -1023,6 +1238,312 @@ namespace DAL_N1
                     com.Parameters.AddWithValue("@elijo", indica1);
                     com.Parameters.AddWithValue("@cam1", caml);
                     com.CommandText = "Act_UBICACION ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_PCFINAL(string indica, string MC, string MT, string MU, string CP, string LB, string TC)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@indica", indica);
+                    com.Parameters.AddWithValue("@idMonC", MC);
+                    com.Parameters.AddWithValue("@idMonT", MT);
+                    com.Parameters.AddWithValue("@idMous", MU);
+                    com.Parameters.AddWithValue("@idCpu", CP);
+                    com.Parameters.AddWithValue("@idLab",LB);
+                    com.Parameters.AddWithValue("@idtec",TC);
+                    com.CommandText = "Act_PCFINAL ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        /*------------------------------------------------------METODOS DE AGREGADO------------------------------------------------------*/
+        public void RG_ACT(string numS, string des, string numI)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@numS", numS);
+                    com.Parameters.AddWithValue("@des",des);
+                    com.Parameters.AddWithValue("@numinv",numI);
+                    com.CommandText = "RegisDAct ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+        public void AGR_TIRAM(string tipo)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@tipo", tipo);
+                    com.CommandText = "InsertarTipoRAM ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_RAM(string cap, string velo, string idT)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@capacidad", cap);
+                    com.Parameters.AddWithValue("@velocidad", velo);
+                    com.Parameters.AddWithValue("@idTipo", idT);
+                    com.CommandText = "InsertarRAM ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_GABI(string Mod, string TFo, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@modelo", Mod);
+                    com.Parameters.AddWithValue("@tipoFo", TFo);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "InsertarGabinete ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_MOCPU(string mod, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@modeloCPU", mod);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "IntesertaMCPU2 ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_TCPU(string fam, string vel, string idMC)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@familia", fam);
+                    com.Parameters.AddWithValue("@velocidad", vel);
+                    com.Parameters.AddWithValue("@idModeloCPU", idMC);
+                    com.CommandText = "InsertarTipoCPU1 ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_CPUG(string mod, string GM, string GT, string RC, string RV, string CF, string CV)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@Modelo", mod);
+                    com.Parameters.AddWithValue("@idGabineteM", GM);
+                    com.Parameters.AddWithValue("@idGabineteT", GT);
+                    com.Parameters.AddWithValue("@tRamC", RC);
+                    com.Parameters.AddWithValue("@tRamV", RV);
+                    com.Parameters.AddWithValue("@tCPUf", CF);
+                    com.Parameters.AddWithValue("@tCPUv", CV);
+                    com.CommandText = "InsertarCPUGenerico ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_MOUSE(string cone, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@coenctor", cone);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "InsertarMouse ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_TECLADO(string cone, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@conector", cone);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "InsertarTeclado ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_MONIT(string conec, string tam, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@conectores", conec);
+                    com.Parameters.AddWithValue("@tamano", tam);
+                    com.Parameters.AddWithValue("@idMarca",mar);
+                    com.CommandText = "InsertarMonitor ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_DD(string TD, string cnec, string cap, string mar)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@TipoD", TD);
+                    com.Parameters.AddWithValue("@coenctor", cnec);
+                    com.Parameters.AddWithValue("@capacidad", cap);
+                    com.Parameters.AddWithValue("@idMarca", mar);
+                    com.CommandText = "InsertarDD ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_CANDD(int cant, string num, string idDD )
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;                    
+                    com.Parameters.AddWithValue("@cantidad", cant);
+                    com.Parameters.AddWithValue("@num_inv", num);
+                    com.Parameters.AddWithValue("@idDisco", idDD);
+                    com.CommandText = "InsertarCANTDISCO ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_LAB(string nom)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@num_inv", nom);
+                    com.CommandText = "InsertarLABORATORIO ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void AGR_PCFINAL(string num, string IT, string MOC, string MOT, string IM, string CG, string LB)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@num", num);
+                    com.Parameters.AddWithValue("@idMonC", MOC);
+                    com.Parameters.AddWithValue("@idMonT", MOT);
+                    com.Parameters.AddWithValue("@idMous", IM);
+                    com.Parameters.AddWithValue("@idCpu", CG);
+                    com.Parameters.AddWithValue("@idLab", LB);
+                    com.Parameters.AddWithValue("@idtec", IT);                                                 
+                    com.CommandText = "InsertarPCFINAL ";
                     com.ExecuteNonQuery();
                 }
                 //Cierras la cadena de conexión
