@@ -196,6 +196,49 @@ namespace FronEnd_N3
 
         protected void Button8_Click(object sender, EventArgs e)
         {
+            string r1 = "";
+            string r2 = "";
+            string r3 = "";
+            if (FileUpload1.HasFiles)
+            {
+                string FU1 = FileUpload1.FileName;
+                r1 = "Imagenes/" + FU1;
+                int tamaño = FileUpload1.PostedFile.ContentLength;
+                if (tamaño > 5242880)
+                { Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true); }
+                else
+                {
+                    FileUpload1.SaveAs(Server.MapPath(r1));
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
+                }
+            }
+            if (FileUpload2.HasFiles)
+            {
+                string FU1 = FileUpload1.FileName;
+                r2 = "Imagenes/" + FU1;
+                int tamaño = FileUpload1.PostedFile.ContentLength;
+                if (tamaño > 5242880)
+                { Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true); }
+                else
+                {
+                    FileUpload1.SaveAs(Server.MapPath(r2));
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
+                }
+            }
+            if (FileUpload3.HasFiles)
+            {
+                string FU1 = FileUpload1.FileName;
+                r3 = "Imagenes/" + FU1;
+                int tamaño = FileUpload1.PostedFile.ContentLength;
+                if (tamaño > 5242880)
+                { Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true); }
+                else
+                {
+                    FileUpload1.SaveAs(Server.MapPath(r3));
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
+                }
+            }
+
             string numI = DropDownList21.SelectedValue;
             string MC = DropDownList22.SelectedValue;
             string MT = DropDownList23.SelectedValue;
@@ -203,7 +246,8 @@ namespace FronEnd_N3
             string CP = DropDownList26.SelectedValue;
             string LB = DropDownList27.SelectedValue;
             string TC = DropDownList25.SelectedValue;
-            msj8.Text = N2.ActPCF(numI, MC, MT, MU, CP, LB, TC, TextBox12.Text, TextBox13.Text, numI);
+            msj8.Text = N2.ActPCF(numI,MU,CP,LB,TC,MC,MT,r1,r2,r3,
+                TextBox12.Text, TextBox13.Text, numI);
             TextBox12.Text = "";
             TextBox13.Text = "";
         }

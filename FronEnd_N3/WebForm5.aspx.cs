@@ -238,13 +238,56 @@ namespace FronEnd_N3
 
         protected void Button13_Click(object sender, EventArgs e)
         {
+            string r1 = "";
+            string r2 = "";
+            string r3 = "";
+            if (FileUpload1.HasFiles)
+            {
+                string FU1 = FileUpload1.FileName;
+                r1 = "Imagenes/" + FU1;
+                int tamaño = FileUpload1.PostedFile.ContentLength;
+                if(tamaño>5242880)
+                {Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true);}
+                else
+                {
+                    FileUpload1.SaveAs(Server.MapPath(r1));
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
+                }
+            }
+            if (FileUpload2.HasFiles)
+            {
+                string FU1 = FileUpload1.FileName;
+                r2 = "Imagenes/" + FU1;
+                int tamaño = FileUpload1.PostedFile.ContentLength;
+                if (tamaño > 5242880)
+                { Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true); }
+                else
+                {
+                    FileUpload1.SaveAs(Server.MapPath(r2));
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
+                }
+            }
+            if (FileUpload3.HasFiles)
+            {
+                string FU1 = FileUpload1.FileName;
+                r3 = "Imagenes/" + FU1;
+                int tamaño = FileUpload1.PostedFile.ContentLength;
+                if (tamaño > 5242880)
+                { Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true); }
+                else
+                {
+                    FileUpload1.SaveAs(Server.MapPath(r3));
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
+                }
+            }
             string cT = DropDownList13.SelectedValue;
             string cM = DropDownList14.SelectedValue;
             string tM = DropDownList21.SelectedValue;
             string cMo = DropDownList15.SelectedValue;
             string cpu = DropDownList16.SelectedValue;
             string la = DropDownList17.SelectedValue;
-            msj13.Text = N2.InPCFIN(TextBox20.Text,cT, cM, tM, cMo, cpu, la);
+
+            msj13.Text = N2.InPCFIN(TextBox20.Text,cMo,cpu,la,cT,cM,cT,r1,r2,r3);
             Session["N2"] = N2;
             TextBox20.Text = "";
         }

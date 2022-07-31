@@ -1075,6 +1075,7 @@ namespace DAL_N1
             return Resp;
         }//Fin del método
 
+        
         public void ACT_MODCPU(string indica1,string camMod, string camMar)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
@@ -1245,7 +1246,7 @@ namespace DAL_N1
             }
         }//Fin del método
 
-        public void ACT_PCFINAL(string indica, string MC, string MT, string MU, string CP, string LB, string TC)
+        public void ACT_PCFINAL(string ind, string iMo, string iC, string iL, string iT, string iMC, string iMT, string im1, string im2, string im3)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1254,13 +1255,16 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@indica", indica);
-                    com.Parameters.AddWithValue("@idMonC", MC);
-                    com.Parameters.AddWithValue("@idMonT", MT);
-                    com.Parameters.AddWithValue("@idMous", MU);
-                    com.Parameters.AddWithValue("@idCpu", CP);
-                    com.Parameters.AddWithValue("@idLab",LB);
-                    com.Parameters.AddWithValue("@idtec",TC);
+                    com.Parameters.AddWithValue("@indica", ind);
+                    com.Parameters.AddWithValue("@idMous", iMo);
+                    com.Parameters.AddWithValue("@idCpu", iC);
+                    com.Parameters.AddWithValue("@idLab", iL);
+                    com.Parameters.AddWithValue("@idtec", iT);
+                    com.Parameters.AddWithValue("@idMonC", iMC);
+                    com.Parameters.AddWithValue("@idMonT", iMT);
+                    com.Parameters.AddWithValue("@img1",im1);
+                    com.Parameters.AddWithValue("@img2",im2);
+                    com.Parameters.AddWithValue("@img3",im3);
                     com.CommandText = "Act_PCFINAL ";
                     com.ExecuteNonQuery();
                 }
@@ -1527,7 +1531,7 @@ namespace DAL_N1
             }
         }//Fin del método
 
-        public void AGR_PCFINAL(string num, string IT, string MOC, string MOT, string IM, string CG, string LB)
+        public void AGR_PCFINAL(string num, string iMo, string iC, string iL, string iT, string iMC, string iMT, string im1, string im2, string im3)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1537,12 +1541,15 @@ namespace DAL_N1
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.AddWithValue("@num", num);
-                    com.Parameters.AddWithValue("@idMonC", MOC);
-                    com.Parameters.AddWithValue("@idMonT", MOT);
-                    com.Parameters.AddWithValue("@idMous", IM);
-                    com.Parameters.AddWithValue("@idCpu", CG);
-                    com.Parameters.AddWithValue("@idLab", LB);
-                    com.Parameters.AddWithValue("@idtec", IT);                                                 
+                    com.Parameters.AddWithValue("@idMous", iMo);
+                    com.Parameters.AddWithValue("@idCpu",iC);
+                    com.Parameters.AddWithValue("@idLab",iL);
+                    com.Parameters.AddWithValue("@idtec",iT);
+                    com.Parameters.AddWithValue("@idMonC",iMC);
+                    com.Parameters.AddWithValue("@idMonT",iMT);
+                    com.Parameters.AddWithValue("@img1",im1);
+                    com.Parameters.AddWithValue("@img2",im2);
+                    com.Parameters.AddWithValue("@img3",im3);
                     com.CommandText = "InsertarPCFINAL ";
                     com.ExecuteNonQuery();
                 }

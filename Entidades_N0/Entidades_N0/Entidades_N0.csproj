@@ -61,7 +61,6 @@
     <Compile Include="teclado.cs" />
     <Compile Include="TipoRAM.cs" />
     <Compile Include="Tipo_CPU.cs" />
-    <Compile Include="ubicacion.cs" />
     <Compile Include="usuarios.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -205,6 +205,15 @@
     </asp:DropDownList>
     <br />
     <br />
+    <asp:FileUpload ID="FileUpload1" runat="server" />
+    <br />
+    <br />
+    <asp:FileUpload ID="FileUpload2" runat="server" />
+    <br />
+    <br />
+    <asp:FileUpload ID="FileUpload3" runat="server" />
+    <br />
+    <br />
     <asp:Label ID="Label40" runat="server" Text="Escriba el numero de Serie: "></asp:Label>
     <asp:TextBox ID="TextBox12" runat="server" Height="20px" Width="180px"></asp:TextBox>
     <br />

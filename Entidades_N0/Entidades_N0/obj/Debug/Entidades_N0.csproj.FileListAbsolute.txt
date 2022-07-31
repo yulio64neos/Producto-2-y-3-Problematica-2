@@ -1,0 +1,5 @@
+C:\producto 2 y 3\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\bin\Debug\Entidades_N0.dll
+C:\producto 2 y 3\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\bin\Debug\Entidades_N0.pdb
+C:\producto 2 y 3\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\obj\Debug\Entidades_N0.csproj.CoreCompileInputs.cache
+C:\producto 2 y 3\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\obj\Debug\Entidades_N0.dll
+C:\producto 2 y 3\Producto-2-y-3-Problematica-2\Entidades_N0\Entidades_N0\obj\Debug\Entidades_N0.pdb

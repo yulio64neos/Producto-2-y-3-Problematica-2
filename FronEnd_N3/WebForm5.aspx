@@ -206,6 +206,7 @@
     &nbsp;
     <asp:Label ID="msj12" runat="server"></asp:Label>
     <br />
+    <br />
     <h4>Sección para Registrar la Computadora Final</h4>
     <asp:Label ID="Label41" runat="server" Text="Escriba el Número de Serie: "></asp:Label>
     <asp:TextBox ID="TextBox20" runat="server" Width="212px"></asp:TextBox>
@@ -235,6 +236,15 @@
     &nbsp;
     <asp:DropDownList ID="DropDownList17" runat="server" Height="16px" Width="114px">
     </asp:DropDownList>
+    <br />
+    <br />
+    <asp:FileUpload ID="FileUpload1" runat="server" />
+    <br />
+    <br />
+    <asp:FileUpload ID="FileUpload2" runat="server" />
+    <br />
+    <br />
+    <asp:FileUpload ID="FileUpload3" runat="server" />
     <br />
     <br />
     <asp:Button ID="Button13" runat="server" Text="Agregar" OnClick="Button13_Click" />

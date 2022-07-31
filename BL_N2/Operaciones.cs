@@ -497,13 +497,13 @@ namespace BL_N2
             }
             return msj;
         }//Fin del método
-        public string ActPCF(string indica, string MC, string MT, string MU, string CP, string LB, string TC,
+        public string ActPCF(string ind, string iMo, string iC, string iL, string iT, string iMC, string iMT, string im1, string im2, string im3,
             string numS, string des, string numI)
         {
             string msj = "";
             try
             {
-                obj.ACT_PCFINAL(indica,MC,MT,MU,CP,LB,TC);
+                obj.ACT_PCFINAL(ind,iMo,iC,iL,iT,iMC,iMT,im1,im2,im3);
                 obj.RG_ACT(numS, des, numI);
                 msj = "Los Cambios se han echo Correctamente";
             }
@@ -701,12 +701,12 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
-        public string InPCFIN(string a1, string a2, string a3, string a4, string a5, string a6,string a7)
+        public string InPCFIN(string num, string iMo, string iC, string iL, string iT, string iMC, string iMT, string im1, string im2, string im3)
         {
             string msj = "";
             try
             {
-                obj.AGR_PCFINAL(a1,a2,a3,a4,a5,a6,a7);
+                obj.AGR_PCFINAL(num,iMo,iC,iL,iT,iMC,iMT,im1,im2,im3);
                 msj = "EL REGISTRO FUE CORRECTO";
             }
             catch (Exception e)
