@@ -15,3 +15,4 @@ C:\producto 2 y 3\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.csproj.C
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.csproj.CopyComplete
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.dll
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.pdb
+C:\producto 2 y 3\Producto-2-y-3-Problematica-2\DAL_N1\obj\Debug\DAL_N1.csproj.AssemblyReference.cache
