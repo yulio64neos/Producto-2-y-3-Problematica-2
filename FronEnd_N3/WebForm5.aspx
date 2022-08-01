@@ -3,121 +3,137 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h4>Sección para Registra el Tipo de RAM</h4>
-    <p>
-        <asp:Label ID="Label1" runat="server" Text="Escriba que tipo es=&gt;"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        &nbsp;&nbsp;
-        <asp:Button ID="Button1" runat="server" Text="Agregar" OnClick="Button1_Click" />
-        &nbsp;&nbsp;
-        <asp:Label ID="msj1" runat="server"></asp:Label>
-    </p>
-    <br />
-    <h4>Sección para Registrar la RAM</h4>
-    <p>
-        <asp:Label ID="Label2" runat="server" Text="Escriba la Capacidad: "></asp:Label>
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label3" runat="server" Text="Escriba la Velocidad: "></asp:Label>
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-        &nbsp;
-        <asp:Label ID="Label4" runat="server" Text="Seleccione el tipo de RAM:  "></asp:Label>
-        <asp:DropDownList ID="DropDownList1" runat="server" Height="35px" Width="149px">
-        </asp:DropDownList>
-    </p>
-    <p>
-        <asp:Button ID="Button2" runat="server" Text="Agregar" OnClick="Button2_Click" />
-        <asp:Label ID="msj2" runat="server"></asp:Label>
-    </p>
-    <br />
-    <h4>Sección para Registrar el Gabinete</h4>
-    <p>
-        <asp:Label ID="Label5" runat="server" Text="Escriba el Modelo: "></asp:Label>
-        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-        &nbsp;&nbsp;
-        <asp:Label ID="Label6" runat="server" Text="Escribe su Tipo de Froma:"></asp:Label>
-        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-        &nbsp;&nbsp;
-        <asp:Label ID="Label7" runat="server" Text="Seleccione la Marca"></asp:Label>
-        <asp:DropDownList ID="DropDownList2" runat="server" Height="25px" Width="192px">
-        </asp:DropDownList>
-    </p>
-    <p>
-        <asp:Button ID="Button3" runat="server" Text="Agregar " OnClick="Button3_Click" />
-        &nbsp;&nbsp;
-        <asp:Label ID="msj3" runat="server"></asp:Label>
-    </p>
-    <br />
-    <h4>Sección para Registrar el Modelo del CPU</h4>
-    <p>
-        <asp:Label ID="Label8" runat="server" Text="Escriba el Modelo: "></asp:Label>
-        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-        &nbsp;
-        <asp:Label ID="Label9" runat="server" Text="Seleccione la Marca:  "></asp:Label>
-        &nbsp;
-        <asp:DropDownList ID="DropDownList3" runat="server" Height="18px" Width="122px">
-        </asp:DropDownList>
-        &nbsp;
-    </p>
-    <p>
-        <asp:Button ID="Button4" runat="server" Text="Agregar" OnClick="Button4_Click" />
-        &nbsp;&nbsp;&nbsp;
-        <asp:Label ID="msj4" runat="server"></asp:Label>
-    </p>
-    <br />
-    <h4>Sección para Registrar el Tipo del CPU</h4>
-    <p>
-        <asp:Label ID="Label10" runat="server" Text="Escriba su Familia:  "></asp:Label>
-        <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label11" runat="server" Text="Escriba su Velocidad:   "></asp:Label>
-        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
-        &nbsp;
-        <asp:Label ID="Label12" runat="server" Text="Seleccione el Modelo   "></asp:Label>
-        <asp:DropDownList ID="DropDownList4" runat="server" Height="17px" Width="112px">
-        </asp:DropDownList>
-    </p>
-    <p>
-        <asp:Button ID="Button5" runat="server" Text="Agregar" OnClick="Button5_Click" />
-        &nbsp;&nbsp;&nbsp;
-        <asp:Label ID="msj5" runat="server"></asp:Label>
-    </p>
-    <br />
-    <h4>Sección para Registrar el CPU Generico</h4>
-    <br />
-    <asp:Label ID="Label13" runat="server" Text="Escriba el Modelo:   "></asp:Label>
-    <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
-    &nbsp;&nbsp;
-    <asp:Label ID="Label14" runat="server" Text="Seleccione el Modelo del Gabinete"></asp:Label>
-    &nbsp;
-    <asp:DropDownList ID="DropDownList5" runat="server" Height="19px" Width="123px">
-    </asp:DropDownList>
-    &nbsp;
-    <asp:Label ID="Label37" runat="server" Text="Seleccione el Tipo del Gabinete"></asp:Label>
-    &nbsp;
-    <asp:DropDownList ID="DropDownList18" runat="server" Height="19px" Width="123px">
-    </asp:DropDownList>
-    &nbsp;<br />
-    <asp:Label ID="Label15" runat="server" Text="Seleccione la Capacidad de la RAM"></asp:Label>
-    &nbsp;
-    <asp:DropDownList ID="DropDownList6" runat="server" Height="19px" Width="119px">
-    </asp:DropDownList>
-    &nbsp;
-    <asp:Label ID="Label38" runat="server" Text="Seleccione la Velocidad de la RAM"></asp:Label>
-    &nbsp;<asp:DropDownList ID="DropDownList19" runat="server" Height="19px" Width="119px">
-    </asp:DropDownList>
-    <br />
-    &nbsp;<asp:Label ID="Label16" runat="server" Text="Seleccione la Familia del CPU  "></asp:Label>
-    <asp:DropDownList ID="DropDownList7" runat="server" Height="18px" Width="101px">
-    </asp:DropDownList>
-    &nbsp;<asp:Label ID="Label39" runat="server" Text="Seleccione la Velicidad del CPU  "></asp:Label>
-    <asp:DropDownList ID="DropDownList20" runat="server" Height="18px" Width="101px">
-    </asp:DropDownList>
-    <br />
-    <asp:Button ID="Button6" runat="server" Text="Agregar" OnClick="Button6_Click" />
-    &nbsp;&nbsp;
-    <asp:Label ID="msj6" runat="server"></asp:Label>
-    <br />
+    <div class="row">
+        <p class="fs-1">Sección para Registra el Tipo de RAM</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label1" runat="server" Text="Escriba que tipo de la RAM" CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <asp:Button ID="Button1" runat="server" Text="Agregar" OnClick="Button1_Click" CssClass="btn btn-success" />
+            <asp:Label ID="msj1" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
+    <div class="row">
+        <p class="fs-1">Sección para Registrar la RAM</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label2" runat="server" Text="Escriba la Capacidad: " CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label3" runat="server" Text="Escriba la Velocidad: " CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label4" runat="server" Text="Seleccione el tipo de RAM:  " CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <asp:Button ID="Button2" runat="server" Text="Agregar" OnClick="Button2_Click" CssClass="btn btn-success" />
+            <asp:Label ID="msj2" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
+    <div class="row">
+        <p class="fs-1">Sección para Registrar el Gabinete</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label5" runat="server" Text="Escriba el Modelo: " CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label6" runat="server" Text="Escribe su Tipo de Froma:" CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox5" runat="server"  CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label7" runat="server" Text="Seleccione la Marca"  CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <asp:Button ID="Button3" runat="server" Text="Agregar " OnClick="Button3_Click"  CssClass="btn btn-success"/>
+            <asp:Label ID="msj3" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
+    <div class="row">
+        <p class="fs-1">Sección para Registrar el Modelo del CPU</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label8" runat="server" Text="Escriba el Modelo: " CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label9" runat="server" Text="Seleccione la Marca: " CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList3" runat="server"  CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <asp:Button ID="Button4" runat="server" Text="Agregar" OnClick="Button4_Click"  CssClass="btn btn-success"/>
+            <asp:Label ID="msj4" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
+    <div class="row">
+        <p class="fs-1">Sección para Registrar el Tipo del CPU</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label10" runat="server" Text="Escriba su Familia:  " CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox7" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label11" runat="server" Text="Escriba su Velocidad: " CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox8" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label12" runat="server" Text="Seleccione el Modelo "></asp:Label>
+                <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <asp:Button ID="Button5" runat="server" Text="Agregar" OnClick="Button5_Click" CssClass="btn btn-success"/>
+            <asp:Label ID="msj5" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
+    <div class="row">
+        <p class="fs-1">Sección para Registrar el CPU Generico</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label13" runat="server" Text="Escriba el Modelo:  "  CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox9" runat="server"  CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label14" runat="server" Text="Seleccione el Modelo del Gabinete"  CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList5" runat="server" CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label37" runat="server" Text="Seleccione el Tipo del Gabinete"  CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList18" runat="server" CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label15" runat="server" Text="Seleccione la Capacidad de la RAM"  CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList6" runat="server"  CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label38" runat="server" Text="Seleccione la Velocidad de la RAM" CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList19" runat="server"  CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label16" runat="server" Text="Seleccione la Familia del CPU  "  CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList7" runat="server"  CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label39" runat="server" Text="Seleccione la Velicidad del CPU  " CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList20" runat="server" CssClass="form-select">
+                </asp:DropDownList>
+            </div>
+            <asp:Button ID="Button6" runat="server" Text="Agregar" OnClick="Button6_Click" CssClass="btn btn-success" />
+            <asp:Label ID="msj6" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
+    
+    
+    
     <h4>Sección para Resgistrar el Mouse</h4>
     <br />
     <asp:Label ID="Label17" runat="server" Text="Escriba el Conector"></asp:Label>
