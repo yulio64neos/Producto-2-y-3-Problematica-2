@@ -127,11 +127,6 @@ namespace FronEnd_N3
                 {
                     DropDownList17.Items.Add(listlabo.ToString());
                 }
-                string[] lisNIn = N2.DevuelveNumInv();
-                foreach(var lisnIn in lisNIn)
-                {
-                    DropDownList22.Items.Add(lisnIn.ToString());
-                }
             }
         }
 
@@ -286,18 +281,12 @@ namespace FronEnd_N3
             string cMo = DropDownList15.SelectedValue;
             string cpu = DropDownList16.SelectedValue;
             string la = DropDownList17.SelectedValue;
+            string dd = DropDownList12.SelectedValue;
 
-            msj13.Text = N2.InPCFIN(TextBox20.Text,cMo,cpu,la,cT,cM,cT,r1,r2,r3);
-            Session["N2"] = N2;
+            msj13.Text = N2.InPCFIN(TextBox20.Text,cMo,cpu,la,cT,cM,tM,r1,r2,r3);
+            N2.InCANDD(Int16.Parse(TextBox17.Text), TextBox20.Text, dd);
             TextBox20.Text = "";
         }
 
-        protected void Button11_Click(object sender, EventArgs e)
-        {
-            string dd = DropDownList12.SelectedValue;
-            string numI = DropDownList22.SelectedValue;
-            msj11.Text = N2.InCANDD(Int16.Parse(TextBox17.Text), numI, dd);
-            Session["N2"] = N2;
-        }
     }
 }

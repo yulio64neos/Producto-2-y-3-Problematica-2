@@ -33,6 +33,7 @@ namespace FronEnd_N3
             string numInv = DropDownList1.SelectedValue;
             GridView1.DataSource = N2.Lista_PCFINAL(numInv);
             GridView1.DataBind();
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)

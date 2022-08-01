@@ -303,6 +303,20 @@ END
 	SELECT * FROM Marca
 EXEC Act_MODCPU 
 
+
+--ACTUALIZAR CAN DISCO
+CREATE PROCEDURE Act_CanDD
+@ind varchar(10), 
+@cant int, @idDisco varchar(64)
+AS
+BEGIN
+UPDATE cantDisc SET Cantidad=@cant, id_Disco=(SELECT id_Disco FROM DiscoDuro WHERE TipoDisco=@idDisco) 
+WHERE num_inv=@ind
+END
+
+EXEC Act_CanDD 4725498687,2,'Mecanico'
+
+SELECT * FROM cantDisc
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 SELECT Marca.Marca FROM Marca 

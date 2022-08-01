@@ -960,6 +960,10 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
+        public void ActCanDD(string indi, int can, string DD)
+        {
+            obj.ACT_CanDD(indi,can,DD);
+        }//Fin del método
 
     }//Fin de la clase
 }

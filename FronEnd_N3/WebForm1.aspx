@@ -28,6 +28,9 @@
     </asp:GridView>
     <br />
     <br />
+    <asp:Label ID="Label5" runat="server"></asp:Label>
+    <br />
+    <br />
     <asp:Label ID="Label3" runat="server" Text="Detalles de actualización"></asp:Label>
     <br />
     <br />

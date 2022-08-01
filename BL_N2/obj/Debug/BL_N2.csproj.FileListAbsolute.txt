@@ -19,4 +19,3 @@ C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.Cor
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.CopyComplete
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.dll
 C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.pdb
-C:\producto 2 y 3\Producto-2-y-3-Problematica-2\BL_N2\obj\Debug\BL_N2.csproj.AssemblyReference.cache

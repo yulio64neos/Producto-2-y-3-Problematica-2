@@ -267,7 +267,6 @@ namespace DAL_N1
                     //Primero la variable com verifica la conexión con la variable con
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    //Asignamos los parámetros
                     com.Parameters.AddWithValue("@ADAPTADOR", adaptador);
                     com.CommandText = "MONITOR_PC_LABO";
                     com.ExecuteNonQuery();
@@ -363,7 +362,7 @@ namespace DAL_N1
                         "FROM laboratorio " +
                         "INNER JOIN computadorafinal ON(laboratorio.nombre_laboratorio = computadorafinal.nom_labo) " +
                         "INNER JOIN cantDisc ON(computadorafinal.num_inv = cantDisc.num_inv) " +
-                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco = 'SSD' ";
+                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco = 'Estado Solido' ";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
@@ -1841,6 +1840,26 @@ namespace DAL_N1
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.AddWithValue("@nomLab", labo);
                     com.CommandText = "ELIMINAR_LABO";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public void ACT_CanDD(string indicam, int can, string DD)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@ind", indicam);
+                    com.Parameters.AddWithValue("@cant", can);
+                    com.Parameters.AddWithValue("@idDisco", DD);
+                    com.CommandText = "Act_CanDD ";
                     com.ExecuteNonQuery();
                 }
                 //Cierras la cadena de conexión

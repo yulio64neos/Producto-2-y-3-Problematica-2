@@ -205,6 +205,15 @@
     </asp:DropDownList>
     <br />
     <br />
+    <asp:Label ID="Label42" runat="server" Text="Escriba la cantidad de Discos"></asp:Label>
+    &nbsp;
+    <asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
+    &nbsp;&nbsp;&nbsp;
+    <asp:Label ID="Label43" runat="server" Text="Seleccione el tipo de Disco Duro =&gt;"></asp:Label>
+    &nbsp;<asp:DropDownList ID="DropDownList28" runat="server" Height="16px" Width="212px">
+    </asp:DropDownList>
+    <br />
+    <br />
     <asp:FileUpload ID="FileUpload1" runat="server" />
     <br />
     <br />
