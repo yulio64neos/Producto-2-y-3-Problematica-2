@@ -427,3 +427,15 @@ select computadorafinal.num_inv as 'Número de Inventario',
 	where computadorafinal.num_inv = '3598758681'
 
 INSERT computadorafinal VALUES (3598758681,5,6,12,'K5',7);
+
+
+
+
+---Agregar MARCAS
+CREATE PROCEDURE InsertarMC
+@idC varchar(64), @idM varchar(64)
+AS
+BEGIN 
+INSERT Marca_Componente VALUES((SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idM),
+(SELECT id_Componente FROM Componentes WHERE nom_Componente=@idM))
+END
