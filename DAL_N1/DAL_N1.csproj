@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAL_N1</RootNamespace>
     <AssemblyName>DAL_N1</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Entidades_N0, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Entidades_N0\Entidades_N0\bin\Debug\Entidades_N0.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +48,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatosL.cs" />
+    <Compile Include="Models\actualizacion.cs" />
+    <Compile Include="Models\cantDisc.cs" />
+    <Compile Include="Models\componentes.cs" />
+    <Compile Include="Models\computadorafinal.cs" />
+    <Compile Include="Models\CPU_Generico.cs" />
+    <Compile Include="Models\DiscoDuro.cs" />
+    <Compile Include="Models\Gabinete.cs" />
+    <Compile Include="Models\imagenes.cs" />
+    <Compile Include="Models\laboratorio.cs" />
+    <Compile Include="Models\Marca.cs" />
+    <Compile Include="Models\Marca_Componente.cs" />
+    <Compile Include="Models\ModeloCPU.cs" />
+    <Compile Include="Models\monitor.cs" />
+    <Compile Include="Models\mouse.cs" />
+    <Compile Include="Models\RAM.cs" />
+    <Compile Include="Models\teclado.cs" />
+    <Compile Include="Models\TipoRAM.cs" />
+    <Compile Include="Models\Tipo_CPU.cs" />
+    <Compile Include="Models\ubicacion.cs" />
+    <Compile Include="Models\usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
