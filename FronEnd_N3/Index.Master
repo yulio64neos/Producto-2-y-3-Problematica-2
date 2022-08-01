@@ -23,12 +23,7 @@
                            <li><a href="WebForm5.aspx">Agregar</a></li>
                            <li><a href="WebForm6.aspx">Modificar</a></li>
                            <li><a href="WebForm7.aspx">Eliminar</a></li>
-                           <li><a href="#">Consultar</a>
-                               <ul>
-                                   <li><a href="WebForm4.aspx">Todas las tablas</a></li>
-                                   <li><a href="WebForm8.aspx">Por secciones</a></li>
-                               </ul>
-                           </li>
+                           <li><a href="WebForm4.aspx">Consultar Todas las tablas</a></li>
                        </ul>
                    </li>
                </ul>
