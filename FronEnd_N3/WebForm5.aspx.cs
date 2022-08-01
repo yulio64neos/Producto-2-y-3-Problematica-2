@@ -240,42 +240,43 @@ namespace FronEnd_N3
             string r1 = "";
             string r2 = "";
             string r3 = "";
+            string FU1 = FileUpload1.FileName;
+            string FU2 = FileUpload2.FileName;
+            string FU3 = FileUpload3.FileName;
+            
             if (FileUpload1.HasFiles)
             {
-                string FU1 = FileUpload1.FileName;
                 r1 = "Imagenes/" + FU1;
                 int tamaño = FileUpload1.PostedFile.ContentLength;
                 if(tamaño>5242880)
                 {Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true);}
                 else
                 {
-                    FileUpload1.SaveAs(Server.MapPath(r1));
+                    FileUpload1.SaveAs(Server.MapPath(r1 + FileUpload1.FileName));
                     Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
                 }
             }
             if (FileUpload2.HasFiles)
             {
-                string FU1 = FileUpload1.FileName;
-                r2 = "Imagenes/" + FU1;
-                int tamaño = FileUpload1.PostedFile.ContentLength;
+                r2 = "Imagenes/" + FU2;
+                int tamaño = FileUpload2.PostedFile.ContentLength;
                 if (tamaño > 5242880)
                 { Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true); }
                 else
                 {
-                    FileUpload1.SaveAs(Server.MapPath(r2));
+                    FileUpload2.SaveAs(Server.MapPath(r2 + FileUpload2.FileName));
                     Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
                 }
             }
             if (FileUpload3.HasFiles)
             {
-                string FU1 = FileUpload1.FileName;
-                r3 = "Imagenes/" + FU1;
-                int tamaño = FileUpload1.PostedFile.ContentLength;
+                r3 = "Imagenes/" + FU3;
+                int tamaño = FileUpload3.PostedFile.ContentLength;
                 if (tamaño > 5242880)
                 { Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet", "arlet('File is too gig')", true); }
                 else
                 {
-                    FileUpload1.SaveAs(Server.MapPath(r3));
+                    FileUpload3.SaveAs(Server.MapPath(r3 + FileUpload3.FileName));
                     Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Arlet1", "arlet('Save')", true);
                 }
             }

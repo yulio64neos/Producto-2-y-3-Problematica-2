@@ -156,7 +156,7 @@
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label20" runat="server" Text="Seleccione la Marca: " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList9" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList9" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <asp:Button ID="Button8" runat="server" Text="Agregar" OnClick="Button8_Click"   CssClass="btn btn-success"/>
@@ -176,7 +176,7 @@
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label23" runat="server" Text="Seleccione la Marca: " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList10" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList10" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <asp:Button ID="Button9" runat="server" Text="Agregar" OnClick="Button9_Click" CssClass="btn btn-success"/>
@@ -200,7 +200,7 @@
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label27" runat="server" Text="Seleccione la Marca: " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList11" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList11" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
                 <asp:Button ID="Button10" runat="server" Text="Agregar" OnClick="Button10_Click" CssClass="btn btn-success"/>
@@ -227,37 +227,37 @@
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label32" runat="server" Text="Seleccione el Teclado:  " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList13" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList13" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label34" runat="server" Text="Seleccione el Mouse:  " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList15" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList15" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label33" runat="server" Text="Seleccione los Conectores del Monitor:  " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList14" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList14" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label40" runat="server" Text="Seleccione el Tamaño del Monitor:  " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList21" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList21" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label35" runat="server" Text="Seleccione el CPU:  " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList16" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList16" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label36" runat="server" Text="Seleccione el Laboratorio:  " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList17" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList17" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <div class="mb-3">
                 <asp:Label ID="Label28" runat="server" Text="Seleccione el Disco Duro:  " CssClass="form-label"></asp:Label>
-                <asp:DropDownList ID="DropDownList12" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="DropDownList12" runat="server" CssClass="form-select">
                 </asp:DropDownList>
             </div>
             <div class="mb-3">
