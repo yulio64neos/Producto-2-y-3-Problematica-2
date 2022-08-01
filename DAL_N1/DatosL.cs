@@ -2598,5 +2598,81 @@ namespace DAL_N1
             }
             return (tabla);
         }
+
+        public List<Marca> GetListaMarca()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select Marca from Marca;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca objCPUFinal = new Marca()
+                            {
+                                marca = Convert.ToString(lect["Marca"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public List<componentes> GetListaCom()
+        {
+            List<componentes> Resp = new List<componentes>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "SELECT nom_Componente FROM Componentes;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            componentes objCPUFinal = new componentes()
+                            {
+                                nom_Componente = Convert.ToString(lect["nom_Componente"])
+                            };
+                            Resp.Add(objCPUFinal);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public void AGR_MC(string m, string c)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@idM", m);
+                    com.Parameters.AddWithValue("@idC", c);                    
+                    com.CommandText = "InsertarMC ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
     }//Fin de la clase
 }

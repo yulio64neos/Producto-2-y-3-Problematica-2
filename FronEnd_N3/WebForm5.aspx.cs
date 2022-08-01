@@ -124,9 +124,13 @@ namespace FronEnd_N3
                 }
                 string[] listLab = N2.Devuelvelaboratorio();
                 foreach (var listlabo in listLab)
-                {
-                    DropDownList17.Items.Add(listlabo.ToString());
-                }
+                {DropDownList17.Items.Add(listlabo.ToString());}
+                string[] listMar = N2.DevuelveMar();
+                foreach (var marjeq in listMar)
+                {DropDownList22.Items.Add(marjeq.ToString());}
+                string[] listCompo = N2.DevuelveCom();
+                foreach (var Componente in listCompo)
+                {DropDownList23.Items.Add(Componente.ToString());}
             }
         }
 
@@ -288,5 +292,22 @@ namespace FronEnd_N3
             TextBox20.Text = "";
         }
 
+        protected void Button14_Click(object sender, EventArgs e)
+        {
+            Label42.Text = N2.InsertComponente(TextBox18.Text);
+        }
+
+        protected void Button15_Click(object sender, EventArgs e)
+        {
+            Label44.Text = N2.InsertMarca(TextBox21.Text);
+        }
+
+        protected void Button16_Click(object sender, EventArgs e)
+        {
+            string mk = DropDownList22.SelectedValue;
+            string co = DropDownList23.SelectedValue;
+
+            Label46.Text = N2.InsertMC(mk, co);
+        }
     }
 }

@@ -274,4 +274,43 @@
         </div>
     </div>
 
+    <div class="row">
+        <p class="fs-1">Sección para Registra un Componete</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label30" runat="server" Text="Escriba el Componente: " CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox18" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <asp:Button ID="Button14" runat="server" OnClick="Button14_Click" Text="Agregar" CssClass="btn btn-success"/>
+            <asp:Label ID="Label42" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
+
+    <div class="row">
+        <p class="fs-1">Sección para Registra una Marca</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label43" runat="server" Text="Escriba la Marca: " CssClass="form-label"></asp:Label>
+                <asp:TextBox ID="TextBox21" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <asp:Button ID="Button15" runat="server" OnClick="Button15_Click" Text="Agregar" CssClass="btn btn-success"/>
+            <asp:Label ID="Label44" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
+
+    <div class="row">
+        <p class="fs-1">Sección para Registra una Marca con su Componente</p>
+        <div class="col-sm-12">
+            <div class="mb-3">
+                <asp:Label ID="Label45" runat="server" Text="Seleccione la Marca: " CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList22" runat="server"  CssClass="form-control"></asp:DropDownList>
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="Label47" runat="server" Text="Seleccione el Componente: " CssClass="form-label"></asp:Label>
+                <asp:DropDownList ID="DropDownList23" runat="server" CssClass="form-control"></asp:DropDownList>
+            </div>
+            <asp:Button ID="Button16" runat="server" OnClick="Button16_Click" Text="Agregar" CssClass="btn btn-success"/>
+            <asp:Label ID="Label46" runat="server" CssClass="form-text"></asp:Label>
+        </div>
+    </div>
 </asp:Content>

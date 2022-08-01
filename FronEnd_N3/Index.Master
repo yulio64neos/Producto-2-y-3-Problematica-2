@@ -13,22 +13,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container text-center">
-<<<<<<< HEAD
-            <div id="header">
-                   <ul class="menu">
-                   <li><a href="WebForm1.aspx">Mostrar inventario</a></li>
-                   <li><a href="WebForm2.aspx">Equipos con Laboratorio</a></li>
-                   <li><a href="WebForm3.aspx">Mostrar monitores</a></li>
-                   <li><a href="#">Operaciones Basicas</a>
-                       <ul>
-                           <li><a href="WebForm5.aspx">Agregar</a></li>
-                           <li><a href="WebForm6.aspx">Modificar</a></li>
-                           <li><a href="WebForm7.aspx">Eliminar</a></li>
-                           <li><a href="WebForm4.aspx">Consultar Todas las tablas</a></li>
-                       </ul>
-                   </li>
-               </ul>
-=======
+
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <a class="navbar-brand">
@@ -78,7 +63,6 @@
                 <div class="col-sm-4">
                     <a href="WebForm7.aspx" class="btn btn-success">Eliminar</a>
                 </div>
->>>>>>> Andrei
             </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

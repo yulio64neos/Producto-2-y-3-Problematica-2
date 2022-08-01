@@ -9,6 +9,6 @@ namespace Entidades_N0
     public class componentes
     {
         public int id_Componente { set; get; }  
-        public int nom_Componente { set; get; }
+        public string nom_Componente { set; get; }
     }
 }

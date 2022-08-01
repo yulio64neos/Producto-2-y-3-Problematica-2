@@ -124,9 +124,20 @@ namespace BL_N2
             return resp;
         }//Fin del método
 
-        public void InsertMarca(string Marca)
+        public string  InsertMarca(string Marca)
         {
-            obj.InsertarMarca(Marca);
+            string msj = "";
+            try
+            {
+                obj.InsertarMarca(Marca);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;            
         }//Fin del método
         /*----------------------------------------Marcas y sus componentes-----------------------------------------------------*/
         public string[] FilDD()
@@ -1241,5 +1252,60 @@ namespace BL_N2
             return obj.CantidadDisco();
         }//Fin del método
 
+        public string InsertComponente(string comp)
+        {
+            string msj = "";
+            try
+            {
+                obj.InsertarCompo(comp);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;            
+        }//Fin del método
+
+        public string[] DevuelveMar()
+        {
+            string[] resp;
+            List<Marca> cpf = obj.GetListaMarca();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].marca;
+            }
+            return resp;
+        }//Fin del método
+
+        public string[] DevuelveCom()
+        {
+            string[] resp;
+            List<componentes> cpf = obj.GetListaCom();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].nom_Componente;
+            }
+            return resp;
+        }//Fin del método
+
+        public string InsertMC(string M, string C)
+        {
+            string msj = "";
+            try
+            {
+                obj.AGR_MC(M,C);
+                msj = "EL REGISTRO FUE CORRECTO";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
     }//Fin de la clase
 }
