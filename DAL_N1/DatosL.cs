@@ -1712,8 +1712,8 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@idRAM", idTIPORAM);
-                    com.CommandText = "ELIMINA_RAM";
+                    com.Parameters.AddWithValue("@idRTIP", idTIPORAM);
+                    com.CommandText = "ELIMINA_TIPORAM";
                     com.ExecuteNonQuery();
                 }
                 //Cierras la cadena de conexión
@@ -1784,7 +1784,7 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@idModelo", id);
+                    com.Parameters.AddWithValue("@idCantDisk", id);
                     com.CommandText = "ELIMINA_CANTDISK";
                     com.ExecuteNonQuery();
                 }
@@ -2097,5 +2097,506 @@ namespace DAL_N1
             return (tabla);
         }
 
+        public List<mouse> GetIdMouse()
+        {
+            List<mouse> Resp = new List<mouse>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_mouse from mouse;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            mouse obj = new mouse()
+                            {
+                                id_mouse = Convert.ToInt32(lect["id_mouse"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable Mouse()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from mouse;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<ModeloCPU> GetIdModeloCPU()
+        {
+            List<ModeloCPU> Resp = new List<ModeloCPU>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_modcpu from ModeloCPU;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            ModeloCPU obj = new ModeloCPU()
+                            {
+                                id_modcpu = Convert.ToInt32(lect["id_modcpu"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+        public DataTable ModeloCPU()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from ModeloCPU;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<Gabinete> GetIdGabinete()
+        {
+            List<Gabinete> Resp = new List<Gabinete>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_Gabinete from Gabinete;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Gabinete obj = new Gabinete()
+                            {
+                                id_Gabinete = Convert.ToInt32(lect["id_Gabinete"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable Gabinete()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from Gabinete;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<Tipo_CPU> GetIdTipoCPU()
+        {
+            List<Tipo_CPU> Resp = new List<Tipo_CPU>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_Tcpu from Tipo_CPU;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Tipo_CPU obj = new Tipo_CPU()
+                            {
+                                id_Tcpu = Convert.ToInt32(lect["id_Tcpu"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+
+        public DataTable TipoCPU()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from Tipo_CPU;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<TipoRAM> GetIdTipoRAM()
+        {
+            List<TipoRAM> Resp = new List<TipoRAM>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_tipoRam from TipoRAM;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            TipoRAM obj = new TipoRAM()
+                            {
+                                id_tipoRam = Convert.ToInt32(lect["id_tipoRam"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable TipoRAM()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from TipoRAM;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<RAM> GetIdRAM()
+        {
+            List<RAM> Resp = new List<RAM>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_RAM from RAM;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            RAM obj = new RAM()
+                            {
+                                id_RAM = Convert.ToInt32(lect["id_RAM"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable RAM()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from RAM;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<CPU_Generico> GetId_CPUGEN()
+        {
+            List<CPU_Generico> Resp = new List<CPU_Generico>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_CPU from CPU_Generico;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            CPU_Generico obj = new CPU_Generico()
+                            {
+                                id_CPU = Convert.ToInt32(lect["id_CPU"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+        public DataTable CPU_GENERICO()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from CPU_Generico;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<laboratorio> GetId_Laboratorio()
+        {
+            List<laboratorio> Resp = new List<laboratorio>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select nombre_laboratorio from laboratorio;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            laboratorio obj = new laboratorio()
+                            {
+                                nombre_laboratorio = Convert.ToString(lect["nombre_laboratorio"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+        public DataTable Laboratorio()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from laboratorio;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+        public List<actualizacion> GetId_Actualizacion()
+        {
+            List<actualizacion> Resp = new List<actualizacion>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_act from actualizacion;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            actualizacion obj = new actualizacion()
+                            {
+                                id_act = Convert.ToInt32(lect["id_act"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+        public DataTable Actualizacion()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from actualizacion;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<computadorafinal> GetId_ComputadoraFINAL()
+        {
+            List<computadorafinal> Resp = new List<computadorafinal>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select num_inv from computadorafinal;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            computadorafinal obj = new computadorafinal()
+                            {
+                                num_inv = Convert.ToString(lect["num_inv"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable ComputadoraFinal()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from computadorafinal;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<cantDisc> GetId_cantDisk()
+        {
+            List<cantDisc> Resp = new List<cantDisc>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_cant from cantDisc;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            cantDisc obj = new cantDisc()
+                            {
+                                id_cant = Convert.ToInt32(lect["id_cant"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable CantidadDisco()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from cantDisc;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
     }//Fin de la clase
 }

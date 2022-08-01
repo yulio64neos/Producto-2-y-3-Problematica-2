@@ -847,6 +847,22 @@ namespace BL_N2
             }
             return msj;
         }//Fin del método
+        public string Eliminar_TIPORAM(int id)
+        {
+            string msj = "";
+            try
+            {
+                obj.ELIMINAR_TIPORAM(id);
+                msj = "Se ha eliminado el componente " + id + " de la manera correcta";
+            }
+            catch (Exception e)
+            {
+                msj = "ERROR " + e.Message;
+                return msj;
+            }
+            return msj;
+        }//Fin del método
+
 
         public string Eliminar_GAB(int id)
         {
@@ -1030,5 +1046,200 @@ namespace BL_N2
         {
             return obj.DiscoDuro();
         }//Fin del método
+
+        public int[] IdListaTeclado()
+        {
+            int[] resp;
+            List<teclado> cpf = obj.GetIdTeclado();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_teclado;
+            }
+            return resp;
+        }//Fin del método
+
+        public DataTable TecladoFull()
+        {
+            return obj.Teclado();
+        }//Fin del método
+
+        public int[] IdListaMouse()
+        {
+            int[] resp;
+            List<mouse> cpf = obj.GetIdMouse();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_mouse;
+            }
+            return resp;
+        }//Fin del método
+
+        public DataTable MouseFull()
+        {
+            return obj.Mouse();
+        }//Fin del método
+
+        public int[] IdListaModeloCPU()
+        {
+            int[] resp;
+            List<ModeloCPU> cpf = obj.GetIdModeloCPU();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_modcpu;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable ModeloCPUFull()
+        {
+            return obj.ModeloCPU();
+        }//Fin del método
+
+        public int[] IdListaGabinete()
+        {
+            int[] resp;
+            List<Gabinete> cpf = obj.GetIdGabinete();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_Gabinete;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable ModeloGabineteFull()
+        {
+            return obj.Gabinete();
+        }//Fin del método
+
+        public int[] IdListaTipoCPU()
+        {
+            int[] resp;
+            List<Tipo_CPU> cpf = obj.GetIdTipoCPU();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_Tcpu;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable TipoCPUFull()
+        {
+            return obj.TipoCPU();
+        }//Fin del método
+
+        public int[] IdListaTipoRAM()
+        {
+            int[] resp;
+            List<TipoRAM> cpf = obj.GetIdTipoRAM();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_tipoRam;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable TipoRAMFull()
+        {
+            return obj.TipoRAM();
+        }//Fin del método
+
+        public int[] IdListaRAM()
+        {
+            int[] resp;
+            List<RAM> cpf = obj.GetIdRAM();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_RAM;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable RAMFull()
+        {
+            return obj.RAM();
+        }//Fin del método
+
+        public int[] IdListaCPUGEN()
+        {
+            int[] resp;
+            List<CPU_Generico> cpf = obj.GetId_CPUGEN();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_CPU;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable CPU_GENFull()
+        {
+            return obj.CPU_GENERICO();
+        }//Fin del método
+
+        public string[] IdListaLaboratorio()
+        {
+            string[] resp;
+            List<laboratorio> cpf = obj.GetId_Laboratorio();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].nombre_laboratorio;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable LaboFull()
+        {
+            return obj.Laboratorio();
+        }//Fin del método
+
+        public int[] IdListaActualizacion()
+        {
+            int[] resp;
+            List<actualizacion> cpf = obj.GetId_Actualizacion();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_act;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable ActualizacionFULL()
+        {
+            return obj.Actualizacion();
+        }//Fin del método
+
+        public string[] IdListaComputadoraFinal()
+        {
+            string[] resp;
+            List<computadorafinal> cpf = obj.GetId_ComputadoraFINAL();
+            resp = new string[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].num_inv;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable ComputadoraFinalFULL()
+        {
+            return obj.ComputadoraFinal();
+        }//Fin del método
+
+        public int[] IdListaCantidadDisco()
+        {
+            int[] resp;
+            List<cantDisc> cpf = obj.GetId_cantDisk();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_cant;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable CantidadDiscoFULL()
+        {
+            return obj.CantidadDisco();
+        }//Fin del método
+
     }//Fin de la clase
 }
