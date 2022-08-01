@@ -497,13 +497,13 @@ namespace BL_N2
             }
             return msj;
         }//Fin del método
-        public string ActPCF(string indica, string MC, string MT, string MU, string CP, string LB, string TC,
+        public string ActPCF(string ind, string iMo, string iC, string iL, string iT, string iMC, string iMT, string im1, string im2, string im3,
             string numS, string des, string numI)
         {
             string msj = "";
             try
             {
-                obj.ACT_PCFINAL(indica,MC,MT,MU,CP,LB,TC);
+                obj.ACT_PCFINAL(ind,iMo,iC,iL,iT,iMC,iMT,im1,im2,im3);
                 obj.RG_ACT(numS, des, numI);
                 msj = "Los Cambios se han echo Correctamente";
             }
@@ -701,12 +701,12 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
-        public string InPCFIN(string a1, string a2, string a3, string a4, string a5, string a6,string a7)
+        public string InPCFIN(string num, string iMo, string iC, string iL, string iT, string iMC, string iMT, string im1, string im2, string im3)
         {
             string msj = "";
             try
             {
-                obj.AGR_PCFINAL(a1,a2,a3,a4,a5,a6,a7);
+                obj.AGR_PCFINAL(num,iMo,iC,iL,iT,iMC,iMT,im1,im2,im3);
                 msj = "EL REGISTRO FUE CORRECTO";
             }
             catch (Exception e)
@@ -768,7 +768,7 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
-        public string Elimina_Disco(string disk)
+        public string Elimina_Disco(int disk)
         {
             string msj = "";
             try
@@ -960,6 +960,75 @@ namespace BL_N2
             return msj;
         }//Fin del método
 
+        public void ActCanDD(string indi, int can, string DD)
+        {
+            obj.ACT_CanDD(indi,can,DD);
+        }//Fin del método
 
+        public int[] IdListaComponente()
+        {
+            int[] resp;
+            List<componentes> cpf = obj.GetIdComponente();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_Componente;
+            }
+            return resp;
+        }//Fin del método
+
+        public DataTable CompoFull()
+        {
+            return obj.Componentes();
+        }
+
+        public int[] IdListaMarca()
+        {
+            int[] resp;
+            List<Marca> cpf = obj.GetIdMarca();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_Marca;
+            }
+            return resp;
+        }//Fin del método
+
+        public DataTable MarcaFull()
+        {
+            return obj.Marca();
+        }
+
+        public int[] IdListaMonitor()
+        {
+            int[] resp;
+            List<monitor> cpf = obj.GetIdMonitor();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_monitor;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable MonitorFull()
+        {
+            return obj.Monitor();
+        }//Fin del método
+
+        public int[] IdListaDiscoDuro()
+        {
+            int[] resp;
+            List<DiscoDuro> cpf = obj.GetIdDisco();
+            resp = new int[cpf.Count];
+            for (int i = 0; i < cpf.Count; i++)
+            {
+                resp[i] = cpf[i].id_Disco;
+            }
+            return resp;
+        }//Fin del método
+        public DataTable DiscuDuroFuLL()
+        {
+            return obj.DiscoDuro();
+        }//Fin del método
     }//Fin de la clase
 }

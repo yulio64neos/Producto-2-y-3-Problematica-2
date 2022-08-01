@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 using BL_N2;
 
@@ -33,6 +34,7 @@ namespace FronEnd_N3
             string numInv = DropDownList1.SelectedValue;
             GridView1.DataSource = N2.Lista_PCFINAL(numInv);
             GridView1.DataBind();
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)

@@ -181,23 +181,6 @@
     &nbsp;
     <asp:Label ID="msj10" runat="server"></asp:Label>
     <br />
-    <h4>Sección para Resgitrar la Cantida de Disco Duro</h4>
-    <br />
-    <asp:Label ID="Label28" runat="server" Text="Seleccione el Disco Duro:  "></asp:Label>
-    <asp:DropDownList ID="DropDownList12" runat="server" Height="16px" Width="114px">
-    </asp:DropDownList>
-    &nbsp;
-    <asp:Label ID="Label29" runat="server" Text="Escriba la Cantidad:  "></asp:Label>
-    <asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
-    &nbsp;&nbsp;
-    <asp:Label ID="Label30" runat="server" Text="Seleccione el Numero de Inventario: "></asp:Label>
-    &nbsp;<asp:DropDownList ID="DropDownList22" runat="server" Height="16px" Width="114px">
-    </asp:DropDownList>
-    <br />
-    <asp:Button ID="Button11" runat="server" Text="Agregar" OnClick="Button11_Click" />
-    &nbsp;
-    <asp:Label ID="msj11" runat="server"></asp:Label>
-    <br />
     <h4>Sección para Registra un Laboratorio</h4>
     <asp:Label ID="Label31" runat="server" Text="Escriba el Nombre del Laboratorio: "></asp:Label>
     <asp:TextBox ID="TextBox19" runat="server"></asp:TextBox>
@@ -205,6 +188,7 @@
     <asp:Button ID="Button12" runat="server" Text="Agregar" OnClick="Button12_Click" />
     &nbsp;
     <asp:Label ID="msj12" runat="server"></asp:Label>
+    <br />
     <br />
     <h4>Sección para Registrar la Computadora Final</h4>
     <asp:Label ID="Label41" runat="server" Text="Escriba el Número de Serie: "></asp:Label>
@@ -237,8 +221,28 @@
     </asp:DropDownList>
     <br />
     <br />
+    <asp:Label ID="Label28" runat="server" Text="Seleccione el Disco Duro:  "></asp:Label>
+    <asp:DropDownList ID="DropDownList12" runat="server" Height="16px" Width="114px">
+    </asp:DropDownList>
+    &nbsp;<asp:Label ID="Label29" runat="server" Text="Escriba la Cantidad:  "></asp:Label>
+    <asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
+    <br />
+    <br />
+    <asp:FileUpload ID="FileUpload1" runat="server" />
+    <br />
+    <br />
+    <asp:FileUpload ID="FileUpload2" runat="server" />
+    <br />
+    <br />
+    <asp:FileUpload ID="FileUpload3" runat="server" />
+    <br />
+    <br />
     <asp:Button ID="Button13" runat="server" Text="Agregar" OnClick="Button13_Click" />
     &nbsp;
     <asp:Label ID="msj13" runat="server"></asp:Label>
+
+    <br />
+    <br />
+    <br />
 
 </asp:Content>

@@ -9,14 +9,13 @@ namespace Entidades_N0
     public class computadorafinal
     {
         public string num_inv { set; get; }
-        public string num_scpu { set; get; }
-        public int id_cpug { set; get; }
-        public string num_steclado { set; get; }
-        public int id_tecladog { set; get; }
-        public string num_smonitor { set; get; }
-        public int id_mong { set; get; }
-        public string num_smouse { set; get; }
         public int id_mousg { set; get; }
-        public string estado { set; get; }
+        public int id_cpug { set; get; }
+        public string nom_labo { set; get; }
+        public int id_tecladog { set; get; }
+        public int id_mong { set; get; }
+        public string img1 { set; get; }
+        public string img2 { set; get; }
+        public string img3 { set; get; }
     }
 }

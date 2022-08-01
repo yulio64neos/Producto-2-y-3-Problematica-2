@@ -267,7 +267,6 @@ namespace DAL_N1
                     //Primero la variable com verifica la conexión con la variable con
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    //Asignamos los parámetros
                     com.Parameters.AddWithValue("@ADAPTADOR", adaptador);
                     com.CommandText = "MONITOR_PC_LABO";
                     com.ExecuteNonQuery();
@@ -363,7 +362,7 @@ namespace DAL_N1
                         "FROM laboratorio " +
                         "INNER JOIN computadorafinal ON(laboratorio.nombre_laboratorio = computadorafinal.nom_labo) " +
                         "INNER JOIN cantDisc ON(computadorafinal.num_inv = cantDisc.num_inv) " +
-                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco = 'SSD' ";
+                        "INNER JOIN DiscoDuro ON(cantDisc.id_Disco = DiscoDuro.id_Disco) WHERE DiscoDuro.TipoDisco = 'Estado Solido' ";
                     SqlDataAdapter DA = new SqlDataAdapter(Com);
                     DA.Fill(Contenedor);
                     tabla = Contenedor.Tables[0];
@@ -1075,6 +1074,7 @@ namespace DAL_N1
             return Resp;
         }//Fin del método
 
+        
         public void ACT_MODCPU(string indica1,string camMod, string camMar)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
@@ -1245,7 +1245,7 @@ namespace DAL_N1
             }
         }//Fin del método
 
-        public void ACT_PCFINAL(string indica, string MC, string MT, string MU, string CP, string LB, string TC)
+        public void ACT_PCFINAL(string ind, string iMo, string iC, string iL, string iT, string iMC, string iMT, string im1, string im2, string im3)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1254,13 +1254,16 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@indica", indica);
-                    com.Parameters.AddWithValue("@idMonC", MC);
-                    com.Parameters.AddWithValue("@idMonT", MT);
-                    com.Parameters.AddWithValue("@idMous", MU);
-                    com.Parameters.AddWithValue("@idCpu", CP);
-                    com.Parameters.AddWithValue("@idLab",LB);
-                    com.Parameters.AddWithValue("@idtec",TC);
+                    com.Parameters.AddWithValue("@indica", ind);
+                    com.Parameters.AddWithValue("@idMous", iMo);
+                    com.Parameters.AddWithValue("@idCpu", iC);
+                    com.Parameters.AddWithValue("@idLab", iL);
+                    com.Parameters.AddWithValue("@idtec", iT);
+                    com.Parameters.AddWithValue("@idMonC", iMC);
+                    com.Parameters.AddWithValue("@idMonT", iMT);
+                    com.Parameters.AddWithValue("@img1",im1);
+                    com.Parameters.AddWithValue("@img2",im2);
+                    com.Parameters.AddWithValue("@img3",im3);
                     com.CommandText = "Act_PCFINAL ";
                     com.ExecuteNonQuery();
                 }
@@ -1527,7 +1530,7 @@ namespace DAL_N1
             }
         }//Fin del método
 
-        public void AGR_PCFINAL(string num, string IT, string MOC, string MOT, string IM, string CG, string LB)
+        public void AGR_PCFINAL(string num, string iMo, string iC, string iL, string iT, string iMC, string iMT, string im1, string im2, string im3)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1537,12 +1540,15 @@ namespace DAL_N1
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
                     com.Parameters.AddWithValue("@num", num);
-                    com.Parameters.AddWithValue("@idMonC", MOC);
-                    com.Parameters.AddWithValue("@idMonT", MOT);
-                    com.Parameters.AddWithValue("@idMous", IM);
-                    com.Parameters.AddWithValue("@idCpu", CG);
-                    com.Parameters.AddWithValue("@idLab", LB);
-                    com.Parameters.AddWithValue("@idtec", IT);                                                 
+                    com.Parameters.AddWithValue("@idMous", iMo);
+                    com.Parameters.AddWithValue("@idCpu",iC);
+                    com.Parameters.AddWithValue("@idLab",iL);
+                    com.Parameters.AddWithValue("@idtec",iT);
+                    com.Parameters.AddWithValue("@idMonC",iMC);
+                    com.Parameters.AddWithValue("@idMonT",iMT);
+                    com.Parameters.AddWithValue("@img1",im1);
+                    com.Parameters.AddWithValue("@img2",im2);
+                    com.Parameters.AddWithValue("@img3",im3);
                     com.CommandText = "InsertarPCFINAL ";
                     com.ExecuteNonQuery();
                 }
@@ -1598,7 +1604,7 @@ namespace DAL_N1
                 {
                     com.Connection = con;
                     com.CommandType = CommandType.StoredProcedure;
-                    com.Parameters.AddWithValue("@Mon", idMoni);
+                    com.Parameters.AddWithValue("@idMon", idMoni);
                     com.CommandText = "ELIMINA_MONITOR";
                     com.ExecuteNonQuery();
                 }
@@ -1607,7 +1613,7 @@ namespace DAL_N1
             }
         }//Fin del método
 
-        public void ELIMINAR_DISCO(string idDisco)
+        public void ELIMINAR_DISCO(int idDisco)
         {
             using (SqlConnection con = new SqlConnection(CadConnectSql))
             {
@@ -1840,6 +1846,256 @@ namespace DAL_N1
                 con.Close();
             }
         }//Fin del método
+
+        public void ACT_CanDD(string indicam, int can, string DD)
+        {
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandType = CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("@ind", indicam);
+                    com.Parameters.AddWithValue("@cant", can);
+                    com.Parameters.AddWithValue("@idDisco", DD);
+                    com.CommandText = "Act_CanDD ";
+                    com.ExecuteNonQuery();
+                }
+                //Cierras la cadena de conexión
+                con.Close();
+            }
+        }//Fin del método
+
+        public List<componentes> GetIdComponente()
+        {
+            List<componentes> Resp = new List<componentes>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_Componente from Componentes";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            componentes obj = new componentes()
+                            {
+                                id_Componente = Convert.ToInt32(lect["id_Componente"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable Componentes()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select id_Componente, nom_Componente as 'Componente' from Componentes;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<Marca> GetIdMarca()
+        {
+            List<Marca> Resp = new List<Marca>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select Id_Marca from Marca";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            Marca obj = new Marca()
+                            {
+                                id_Marca = Convert.ToInt32(lect["Id_Marca"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable Marca()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select Id_Marca, Marca from Marca;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<monitor> GetIdMonitor()
+        {
+            List<monitor> Resp = new List<monitor>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_monitor from monitor";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            monitor obj = new monitor()
+                            {
+                                id_monitor = Convert.ToInt32(lect["id_monitor"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable Monitor()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "SELECT id_monitor, conectores, tamano as 'Tamaño' FROM monitor;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<DiscoDuro> GetIdDisco()
+        {
+            List<DiscoDuro> Resp = new List<DiscoDuro>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_Disco from DiscoDuro";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            DiscoDuro obj = new DiscoDuro()
+                            {
+                                id_Disco = Convert.ToInt32(lect["id_Disco"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable DiscoDuro()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from DiscoDuro;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
+
+        public List<teclado> GetIdTeclado()
+        {
+            List<teclado> Resp = new List<teclado>();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand())
+                {
+                    com.Connection = con;
+                    com.CommandText = "select id_teclado from teclado;";
+                    SqlDataReader lect = com.ExecuteReader();
+                    if (lect.HasRows)
+                    {
+                        while (lect.Read())
+                        {
+                            teclado obj = new teclado()
+                            {
+                                id_teclado = Convert.ToInt32(lect["id_teclado"])
+                            };
+                            Resp.Add(obj);
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return Resp;
+        }
+
+        public DataTable Teclado()
+        {
+            DataTable tabla = null;
+            DataSet Contenedor = new DataSet();
+            using (SqlConnection con = new SqlConnection(CadConnectSql))
+            {
+                using (SqlCommand Com = new SqlCommand())
+                {
+                    Com.Connection = con;
+                    Com.CommandText = "select * from teclado;";
+                    SqlDataAdapter DA = new SqlDataAdapter(Com);
+                    DA.Fill(Contenedor);
+                    tabla = Contenedor.Tables[0];
+                }
+            }
+            return (tabla);
+        }
 
     }//Fin de la clase
 }

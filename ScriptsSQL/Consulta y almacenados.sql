@@ -136,6 +136,7 @@ BEGIN
 INSERT DiscoDuro VALUES(@TipoD,@coenctor,@capacidad,
 (SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca))
 END
+
 SELECT * FROM DiscoDuro
 SELECT * FROM Marca
 EXEC InsertarDD Solido,SATA,'1 tb',SAMSUNG
@@ -147,7 +148,9 @@ CREATE PROCEDURE InsertarCANTDISCO
 @idDisco varchar(20)
 AS
 BEGIN 
-INSERT cantDisc VALUES(12,'9876543210',8)
+INSERT cantDisc VALUES(@cantidad,
+(SELECT num_inv FROM computadorafinal WHERE num_inv=@num_inv),
+(SELECT id_Disco FROM DiscoDuro WHERE TipoDisco=@idDisco))
 END
 
 SELECT * FROM cantDisc
@@ -169,19 +172,21 @@ EXEC InsertarLABORATORIO K5
 --COMPUTADORA FINAL
 CREATE PROCEDURE InsertarPCFINAL
 @num varchar(10),
-@idMonC varchar(64), @idMonT varchar(64),
 @idMous varchar(64),
 @idCpu varchar(64),
 @idLab varchar(64),
-@idtec varchar(64)
+@idtec varchar(64),
+@idMonC varchar(64), @idMonT varchar(64),
+@img1 varchar(200), @img2 varchar(200), @img3 varchar(200)
 AS
 BEGIN 
 INSERT computadorafinal VALUES (@num,
-(SELECT id_monitor FROM monitor WHERE conectores=@idMonC AND tamano=@idMonT),
 (SELECT id_mouse FROM mouse WHERE conector=@idMous),
 (SELECT id_CPU FROM CPU_Generico WHERE Modelo=@idCpu),
 (SELECT nombre_laboratorio FROM laboratorio WHERE nombre_laboratorio=@idLab),
-(SELECT id_teclado FROM teclado WHERE conector=@idtec))
+(SELECT id_teclado FROM teclado WHERE conector=@idtec),
+(SELECT id_monitor FROM monitor WHERE conectores=@idMonC AND tamano=@idMonT),
+@img1,@img2,@img3)
 END
 
 SELECT * FROM computadorafinal
@@ -255,6 +260,7 @@ BEGIN
 UPDATE RAM SET Capacidad=@caCapacida, Velocidad =@camVelocida, F_TipoR=(SELECT id_tipoRam FROM TipoRAM WHERE
 Tipo=@tipoR) WHERE Capacidad =@indicar AND Velocidad=@indicar2
 END
+
 SELECT * FROM RAM
 SELECT * FROM TipoRAM
 EXEC Act_RAM 8,700,12,900,DDR4
@@ -268,6 +274,7 @@ BEGIN
 UPDATE Gabinete SET Modelo=@caModelo, TipoForma=@tForma, Id_Marca=(SELECT Id_Marca FROM Marca WHERE Marca.Marca=@idMarca)
 WHERE Modelo=@indicar1 AND TipoForma=@indicar2
 END
+
 SELECT * FROM Gabinete
 EXEC Act_GABINETE Generico,Torre, Hibrido,Cas,HP
 --ACTUALIZAR TIPO CPU
@@ -279,6 +286,7 @@ BEGIN
 UPDATE Tipo_CPU SET Familia=@mfam, Velocidad=@mVelo, id_modcpu=(SELECT id_modcpu FROM ModeloCPU WHERE modeloCPU=@mMod)
 WHERE Familia=@ind1 AND Velocidad =@ind2
 END
+
 SELECT * FROM Tipo_CPU
 EXEC Act_TCPU ongen,ghz,Gen,ghzx,Phenom
 --ACTUALIZAR MODELO
@@ -295,6 +303,20 @@ END
 	SELECT * FROM Marca
 EXEC Act_MODCPU 
 
+
+--ACTUALIZAR CAN DISCO
+CREATE PROCEDURE Act_CanDD
+@ind varchar(10), 
+@cant int, @idDisco varchar(64)
+AS
+BEGIN
+UPDATE cantDisc SET Cantidad=@cant, id_Disco=(SELECT id_Disco FROM DiscoDuro WHERE TipoDisco=@idDisco) 
+WHERE num_inv=@ind
+END
+
+EXEC Act_CanDD 4725498687,2,'Mecanico'
+
+SELECT * FROM cantDisc
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------
 SELECT Marca.Marca FROM Marca 
@@ -337,23 +359,24 @@ SELECT nom_Componente FROM Componentes WHERE id_Componente BETWEEN 1 AND 2
 
 CREATE PROCEDURE Act_PCFINAL
 @indica varchar(10),
-@idMonC varchar(64), @idMonT varchar(64),
 @idMous varchar(64),
 @idCpu varchar(64),
 @idLab varchar(64),
-@idtec varchar(64)
+@idtec varchar(64),
+@idMonC varchar(64), @idMonT varchar(64),
+@img1 varchar(200), @img2 varchar(200), @img3 varchar(200)
 AS
 BEGIN 
-UPDATE computadorafinal SET id_mong=(SELECT id_monitor FROM monitor WHERE conectores=@idMonC AND tamano=@idMonT),
-id_mousg=(SELECT id_mouse FROM mouse WHERE conector=@idMous),
+UPDATE computadorafinal SET id_mousg=(SELECT id_mouse FROM mouse WHERE conector=@idMous),
 id_cpug=(SELECT id_CPU FROM CPU_Generico WHERE Modelo=@idCpu),
 nom_labo=(SELECT nombre_laboratorio FROM laboratorio WHERE nombre_laboratorio=@idLab),
-id_tecladog=(SELECT id_teclado FROM teclado WHERE conector=@idtec)
+id_tecladog=(SELECT id_teclado FROM teclado WHERE conector=@idtec),
+id_mong=(SELECT id_monitor FROM monitor WHERE conectores=@idMonC AND tamano=@idMonT),
+img1= @img1,img2=@img2,img3= @img3
 WHERE num_inv=@indica
 END
 
 EXEC Act_PCFINAL 1234567890,CJK,'180x180',USB,CRJ,K2,PS27
-
 
 
 CREATE PROCEDURE RegisDAct
